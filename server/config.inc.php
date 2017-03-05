@@ -1,9 +1,9 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);
+//error_reporting(E_ALL ^ E_NOTICE);
 define("STORAGE","file"); //file 文件存储，mysql 数据库存储，redis 缓存存储
-define("DOMAIN","http://192.168.56.133:8081");
-define('ONLINE_DIR','/mnt/hgfs/swoole/chatroom/rooms/');
+define("DOMAIN","http://chat.codeception.cn");
+define('ONLINE_DIR','/home/www/chat/swoole-webim-demo/rooms/');
 
 /*房间配置*/
 $rooms = array(
