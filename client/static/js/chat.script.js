@@ -68,6 +68,11 @@ var chat = {
 			this.sendMessage();
 		}
 	},
+	test_sendMessage:function (string) {
+		$('#chattext').val(string);
+		this.sendMessage();
+	},
+
 	sendMessage : function(){		
 		if(!this.data.login) return false;
 		//发送消息操作
@@ -92,6 +97,9 @@ var chat = {
 		this.data.wSock.onopen = function( event ){
 			//初始化房间
 			chat.print('wsopen',event);
+
+			chat.doLogin(config.user,config.email);
+
 			//判断是否已经登录过，如果登录过。自动登录。不需要再次输入昵称和邮箱
 			/*
 			var isLogin = chat.data.storage.getItem("dologin");
@@ -182,7 +190,6 @@ var chat = {
 	},
 	wsOnerror : function(){
 		this.data.wSock.onerror = function(event){
-			//alert('服务器关闭，请联系QQ:1335244575 开放测试2');
 		}
 	},
 	showMsgCount:function(roomid,type){

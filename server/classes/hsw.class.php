@@ -73,6 +73,19 @@ class hsw {
 				$this->serv->task( json_encode($data) );
 				
 				break;
+            case 4:  //抢红包
+                $data = array(
+                    'task'=>'red_packet',
+                    'params' => array(
+                        'u_id'=> $data['u_id'],
+                        'packet_id'=>$data['packet_id']
+                    ),
+                    'fd' => $frame->fd,
+					'roomid' => $data['roomid']
+                );
+
+                $this->serv->task( json_encode($data) );
+                break;
 			default :
 				$this->serv->push($frame->fd, json_encode(array('code'=>0,'msg'=>'type error')));
 		}
