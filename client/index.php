@@ -135,9 +135,9 @@
 <script src="./static/js/functions.js?v=2115"></script>
 <script src="./static/js/xlyjs.js?v=215"></script>
 <script>
-    /*setInterval(function () {
+    setInterval(function () {
         chat.test_sendMessage("你好，中文");
-    },2000);*/-->
-</script>
+    },2000);
+</script>-->
 </body>
 </html>

@@ -79,7 +79,14 @@ var chat = {
 		var text = $('#chattext').val();
 		if(text.length == 0) return false;
 		chat.data.type = 2; //发送消息标志
-		var json = {"type": chat.data.type,"name": chat.data.name,"avatar": chat.data.avatar,"message": text,"c":'text',"roomid":this.data.crd};
+		var json = {
+			"type": chat.data.type,
+			"name": chat.data.name,
+			"avatar": chat.data.avatar,
+			"message": text,
+			"c":'text',
+			"roomid":this.data.crd
+		};
 		chat.wsSend(JSON.stringify(json));
 		return true;
 	},

@@ -3,6 +3,7 @@ class hsw {
 	private $serv = null;
 	public function __construct(){
 		File::init();
+
 		$this->serv = new swoole_websocket_server("0.0.0.0",9501);
 		$this->serv->set(array(
 			'task_worker_num'     => 8
@@ -12,6 +13,7 @@ class hsw {
 		$this->serv->on("Task",array($this,"onTask"));
 		$this->serv->on("Finish",array($this,"onFinish"));
 		$this->serv->on("close",array($this,"onClose"));
+
 		$this->serv->start();
 	}
 	
@@ -22,8 +24,31 @@ class hsw {
 				);
 		$this->serv->task( json_encode($data) );
 		echo "open\n";
+
+        $this->afterPushMessage(100,$request->fd);
 	}
-	
+
+	public function afterPushMessage($time,$fd){
+	    $the = $this;
+        swoole_timer_after($time, function() use ($the,$fd,$time) {
+            $data = array(
+                'task' => 'new',
+                'params' => array(
+                    'name' => '系统定时消息',
+                    'avatar' => 'a'
+                ),
+                'c' => 1,
+                'message' => '系统定时消息',
+                'fd' => $fd,
+                'roomid' =>'a'
+            );
+            $pushMsg = Chat::sendNewMsg( $data );
+            $this->serv->task( json_encode($data) );
+
+            $the->afterPushMessage($time,$fd);
+        });
+    }
+
 	public function onMessage( $serv , $frame ){
 		$data = json_decode( $frame->data , true );
 		switch($data['type']){
@@ -73,7 +98,7 @@ class hsw {
 				$this->serv->task( json_encode($data) );
 				
 				break;
-            case 4:  //抢红包
+            case 11:  //抢红包
                 $data = array(
                     'task'=>'red_packet',
                     'params' => array(
@@ -115,6 +140,7 @@ class hsw {
 				$pushMsg = Chat::change( $data );
 				break;
 		}
+		print_r($pushMsg);
 		$this->sendMsg($pushMsg,$data['fd']);
 		return "Finished";
 	}
