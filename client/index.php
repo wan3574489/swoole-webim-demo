@@ -56,7 +56,7 @@
                                         <div class="chat-status chat-system-notice">系统消息：欢迎&nbsp;名字85145537&nbsp;加入群聊
                                         </div>
                                         <div style="display: block;" class="msg-box">
-                                            <div class="chat-item me">
+                                            <div class="chat-item not-me">
                                                 <div class="clearfix">
                                                     <div class="avatar">
                                                         <div class="normal user-avatar"
@@ -64,9 +64,9 @@
                                                     </div>
                                                     <div class="msg-bubble-box">
                                                         <div class="msg-bubble-area">
-                                                            <div>
+                                                            <div class="msg-red-packet">
                                                                 <div class="msg-bubble">
-                                                                    <pre class="text">你好啊</pre>
+                                                                    <img src="static/images/timg.jpg">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -123,10 +123,10 @@
 <div class="carrousel"><span class="close entypo-cancel"></span>
     <div class="wrapper"><img src="./static/images/noimg.png"/></div>
 </div>
-<script src="./static/js/init.js"></script>
+<!--<script src="./static/js/init.js"></script>
 <script language="JavaScript">
-    config.user = "名字<?php echo rand(10000000, 99999999);?>";
-    config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
+    config.user = "名字<?php /*echo rand(10000000, 99999999);*/?>";
+    config.email = "<?php /*echo rand(10000000, 99999999);*/?>@qq.com";
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/face.js?v=3345"></script>
@@ -134,6 +134,10 @@
 <script src="./static/js/chat.script.js?v=26"></script>
 <script src="./static/js/functions.js?v=2115"></script>
 <script src="./static/js/xlyjs.js?v=215"></script>
-
+<script>
+    /*setInterval(function () {
+        chat.test_sendMessage("你好，中文");
+    },2000);*/-->
+</script>
 </body>
 </html>

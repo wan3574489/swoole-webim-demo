@@ -440,7 +440,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     overflow: hidden;
     border-bottom-right-radius: 3px;
     -moz-box-flex: 1;
-    flex: 1 0 580px;
+    flex: 1 0 320px;
     position: relative;
 }
 
@@ -881,6 +881,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     display: none;
 }
 
+
 .conv-detail-pannel .content-pannel-body .chat-status {
     /*margin: 16px auto;*/
     text-align: center;
@@ -890,6 +891,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow-wrap: normal;
+    width: 97vw;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-system-notice.safety-tips::before {
@@ -1029,6 +1031,13 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     max-width: 300px;
     overflow: hidden;
     transition: background-color 0.25s ease 0s;
+}
+
+.conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area .msg-red-packet{
+
+}
+.conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area .msg-red-packet img{
+    width: 200px;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-item.me .chat-profile-info {
