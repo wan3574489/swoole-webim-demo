@@ -121,6 +121,8 @@ var chat = {
 	},
 	wsMessage : function(){
 		this.data.wSock.onmessage=function(event){
+			console.log(event);
+
 			var d = jQuery.parseJSON(event.data);
 			switch(d.code){
 				case 1:

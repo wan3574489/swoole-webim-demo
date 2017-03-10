@@ -123,10 +123,10 @@
 <div class="carrousel"><span class="close entypo-cancel"></span>
     <div class="wrapper"><img src="./static/images/noimg.png"/></div>
 </div>
-<!--<script src="./static/js/init.js"></script>
+<script src="./static/js/init.js"></script>
 <script language="JavaScript">
-    config.user = "名字<?php /*echo rand(10000000, 99999999);*/?>";
-    config.email = "<?php /*echo rand(10000000, 99999999);*/?>@qq.com";
+    config.user = "名字<?php echo rand(10000000, 99999999);?>";
+    config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/face.js?v=3345"></script>
@@ -135,9 +135,9 @@
 <script src="./static/js/functions.js?v=2115"></script>
 <script src="./static/js/xlyjs.js?v=215"></script>
 <script>
-    setInterval(function () {
+    /*setInterval(function () {
         chat.test_sendMessage("你好，中文");
-    },2000);
-</script>-->
+    },2000);*/
+</script>
 </body>
 </html>

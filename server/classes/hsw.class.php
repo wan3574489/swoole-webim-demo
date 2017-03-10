@@ -1,6 +1,9 @@
 <?php
 class hsw {
 	private $serv = null;
+
+    private $isClose = array();
+
 	public function __construct(){
 		File::init();
 
@@ -25,13 +28,20 @@ class hsw {
 		$this->serv->task( json_encode($data) );
 		echo "open\n";
 
-        $this->afterPushMessage(100,$request->fd);
+        $this->isClose[$request->fd] = 0;
+        $this->afterPushMessage(2000,$request->fd);
 	}
 
 	public function afterPushMessage($time,$fd){
 	    $the = $this;
+
+        if(isset($this->isClose[$fd]) && ($this->isClose[$fd] == 1) ){
+            return false;
+        }
+
         swoole_timer_after($time, function() use ($the,$fd,$time) {
-            $data = array(
+
+            /*$data = array(
                 'task' => 'new',
                 'params' => array(
                     'name' => '系统定时消息',
@@ -42,8 +52,19 @@ class hsw {
                 'fd' => $fd,
                 'roomid' =>'a'
             );
-            $pushMsg = Chat::sendNewMsg( $data );
-            $this->serv->task( json_encode($data) );
+            $pushMsg = Chat::sendNewMsg( $data );*/
+
+            //
+            $select_time = connect::getTime();
+
+            $sql = "select data from ".connect::tablename("fortune_event")." where time > ".$select_time." time <= ".$select_time+$time;
+            $sql = "select data from ".connect::tablename("fortune_event")." where 1 = 1 ";
+
+            if($ret = connect::select($sql)){
+                foreach($ret as $r){
+                    $this->serv->task( $r['data'] );
+                }
+            }
 
             $the->afterPushMessage($time,$fd);
         });
@@ -146,7 +167,9 @@ class hsw {
 	}
 	
 	public function onClose( $serv , $fd ){
-		
+
+        $this->isClose[$fd] = 1;
+
 		$pushMsg = array('code'=>0,'msg'=>'','data'=>array());
 		//获取用户信息
 		$user = Chat::logout("",$fd);

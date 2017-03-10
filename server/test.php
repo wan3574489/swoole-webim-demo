@@ -13,4 +13,16 @@ require_once "classes/".STORAGE."/ChatUser.class.php";
 require_once "classes/".STORAGE."/ChatLine.class.php";
 require_once "classes/Chat.class.php";
 require_once "classes/hsw.class.php";
-$server = new hsw();
+
+
+if(!packet::create('a',4)){
+    echo packet::getErrorMessage();
+}else{
+
+}
+exit;
+/*if(!packet::rob(36,8)){
+    echo packet::getErrorMessage();
+}else{
+
+}*/

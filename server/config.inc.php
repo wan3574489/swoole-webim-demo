@@ -1,7 +1,7 @@
 <?php
 
 //error_reporting(E_ALL ^ E_NOTICE);
-define("STORAGE","file"); //file 文件存储，mysql 数据库存储，redis 缓存存储
+define("STORAGE","redis"); //file 文件存储，mysql 数据库存储，redis 缓存存储
 define("DOMAIN","http://chat.codeception.cn");
 define('ONLINE_DIR','/home/www/chat/swoole-webim-demo/rooms/');
 

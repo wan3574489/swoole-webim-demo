@@ -27,19 +27,15 @@ class File {
     }
 
 	public static function getRoomidKey($roomid){
-		return 'Room-'.$roomid;
+		return 'room-key-'.$roomid;
 	}
 
 	public static function changeUser($oldroomid,$fd,$newroomid){
-		/*$old = self::$instance->online_dir.$oldroomid.'/'.$fd;
-		$new = self::$instance->online_dir.$newroomid.'/'.$fd;
-		$return = copy($old,$new); //拷贝到新目录
-		unlink($old); //删除旧目录下的文件*/
 		$oldroomidKey = self::getRoomidKey($oldroomid);
 		$newroomidKey = self::getRoomidKey($newroomid);
 
-		$oldValue = self::$instance->clinet->lGet($oldroomidKey,$fd);
-		self::$instance->clinet->lSet($newroomidKey,$fd,$oldValue);
+		$oldValue = self::$instance->client->lGet($oldroomidKey,$fd);
+		self::$instance->client->lSet($newroomidKey,$fd,$oldValue);
 
 		self::outRoom($oldroomid,$fd);
 		self::joinRoom($newroomid,$fd);
@@ -48,18 +44,18 @@ class File {
 	}
 
 	public static function joinRoom($room,$fd){
-		self::$instance->clinet->sadd("room-".$room,$fd);
-		self::$instance->clinet->set('fd-'.$fd,$room);
+		self::$instance->client->sadd("room-".$room,$fd);
+		self::$instance->client->set('fd-'.$fd,$room);
 	}
 
 	public static function outRoom($room,$fd){
-		self::$instance->clinet->sRem("room-".$room,$fd);
-		self::$instance->clinet->delete('fd-'.$fd,$room);
+		self::$instance->client->sRem("room-".$room,$fd);
+		self::$instance->client->delete('fd-'.$fd,$room);
 
 	}
 
 	public static function getRoomUsers($room){
-		return self::$instance->clinet->sMembers($room);
+		return self::$instance->client->sMembers($room);
 	}
 
 	public static function checkDir($dir, $clear_file = false) {
@@ -71,7 +67,11 @@ class File {
 	//登录
 	public static function login($roomid,$fd, $info){
 		$roomidKey = self::getRoomidKey($roomid);
-		$flag = self::$instance->clinet->lSet($roomidKey,$fd,json_decode($info));
+
+        self::$instance->client->rPush($roomidKey, 'A');
+        self::$instance->client->rPush($roomidKey, 'b');
+
+		$flag = self::$instance->client->lSet($roomidKey,$fd,json_encode($info));
 
 		self::joinRoom($roomid,$fd);
 		return $flag;
@@ -104,29 +104,29 @@ class File {
 	
 	public static function getUser($roomid,$userid) {
 		if($roomid == ""){
-			$roomid = self::$instance->clinet->get('fd-'.$userid);
+			$roomid = self::$instance->client->get('fd-'.$userid);
 		}
         if ($roomid == "") {
             return false;
         }
 
 		$roomidKey = self::getRoomidKey($roomid);
-		$ret = self::$instance->clinet->lGet($roomidKey,$userid);
+		$ret = self::$instance->client->lGet($roomidKey,$userid);
         $info = @json_decode($ret,true);
 		$info['roomid'] = $roomid;//赋予用户所在的房间
         return $info;
     }
 
 	public static function logout($userid) {
-		$roomid = self::$instance->clinet->get('fd-'.$userid);
+		$roomid = self::$instance->client->get('fd-'.$userid);
 		$roomidKey = self::getRoomidKey($roomid);
-		$flag = self::$instance->clinet->lSet($roomidKey,$userid,0);
+		$flag = self::$instance->client->lSet($roomidKey,$userid,0);
 
 		self::outRoom($roomid,$userid);
     }
 	
 	public static function exists($roomid,$userid){
-		$roomid = self::$instance->clinet->get('fd-'.$userid);
+		$roomid = self::$instance->client->get('fd-'.$userid);
 		if($roomid == $userid){
 			return true;
 		}
