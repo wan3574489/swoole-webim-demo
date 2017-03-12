@@ -6,6 +6,7 @@ class message{
             'message'=>$string,
             'code'   =>$code
         );
+        connect::debug("message:".$string);
     }
 
     static function getErrorMessage(){

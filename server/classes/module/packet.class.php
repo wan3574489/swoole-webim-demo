@@ -32,7 +32,7 @@ class packet extends message {
             $insert_packet_sql = " insert into ".connect::tablename("fortune_packet")." (user_id,roomid,packet_number,create_at,status) VALUES($userid,'$roomid',$packet_number,$time,1); ";
             $update_user_monery_sql = " update ".connect::tablename("fortune_user")." set virtual_money=virtual_money - $packet_number where id = $userid";
 
-            echo $insert_packet_sql;
+           // echo $insert_packet_sql;
 
             if(!$id = connect::insert($insert_packet_sql)){
 
@@ -47,7 +47,7 @@ class packet extends message {
                 return false;
             }
 
-            if(!self::createSmallPacket($id,$packet_number)){
+            if(!self::createSmallPacket($roomid,$id,$packet_number)){
                 connect::rollback();
                 return false;
             }
@@ -63,8 +63,11 @@ class packet extends message {
                 return false;
             }
 
+            connect::debug("包创建成功,id".$id);
+
             connect::submitCommit();
 
+            return true;
         }catch (Exception $e){
             connect::rollback();
         }
@@ -76,7 +79,7 @@ class packet extends message {
      * @param $packet_number
      * @return bool
      */
-     protected static function createSmallPacket($packet_id,$packet_number){
+     protected static function createSmallPacket($roomid,$packet_id,$packet_number){
         $time = connect::getTime();
         $residue_number = $packet_number*100;
         $max_number = 4;
@@ -103,7 +106,7 @@ class packet extends message {
                 $robot_place = rand(1,2);
             }
 
-            $insert_packet_sql = " insert into ".connect::tablename("fortune_packet_info")." (packet_id,user_id,packet_number,create_at,rob_at,plcae,status,robot_place) VALUES($packet_id,0,$rand_number/100,$time,0,$i+1,0,$robot_place); ";
+            $insert_packet_sql = " insert into ".connect::tablename("fortune_packet_info")." (roomid,packet_id,user_id,packet_number,create_at,rob_at,plcae,status,robot_place) VALUES('{$roomid}',$packet_id,0,$rand_number/100,$time,0,$i+1,0,$robot_place); ";
             if(!connect::insert($insert_packet_sql)){
                 self::addErrorMessage(connect::getInstance()->error);
                 return false;
@@ -147,6 +150,8 @@ class packet extends message {
         }
 
 
+        connect::openCommit();
+
         // 用户类型
         if($user['user_type'] == 5){
             $update_sql = "update ".connect::tablename("fortune_packet_info")." set user_id=$userid ,status = 1 ,rob_at = $time where status = 0 and id = ( select id  from (select id from ".connect::tablename("fortune_packet_info")." where packet_id = $packet_id and status = 0 order by robot_place asc limit 1 )as a) ";
@@ -155,7 +160,13 @@ class packet extends message {
         }
 
         if(!connect::query($update_sql)){
-            echo connect::getInstance()->error;
+            self::addErrorMessage("红包领取完了",1000);
+            return false;
+        }
+
+        $update_sql = "update ".connect::tablename("fortune_packet")." set rob_number = rob_number +1  where id = $packet_id";
+        if(!connect::query($update_sql)){
+            connect::rollback();
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }
@@ -163,12 +174,42 @@ class packet extends message {
         //领取成功
         if(!event::afterRobEvent(array(
             'packet_id'=>$packet_id,
+            'packet'   =>$packet,
             'userid'   => $userid,
             'roomid'   =>$roomid,
-            'user' =>$user
+            'user' =>$user,
+            'pay_user'=> self::getUser($packet['user_id'])
         ))){
+            connect::rollback();
             return false;
         }
+
+        connect::submitCommit();
+
+        return true;
+    }
+
+    /**
+     * 谁继续发红包
+     */
+    static function next_packet_which_send($packet){
+        $packet_id = $packet['id'];
+
+        $sql = " select user_id from ".connect::tablename("fortune_packet_info")." where packet_id = ".$packet_id." and plcae = 4 and status = 1 ";
+        if(!$user = connect::select($sql,true)){
+            return false;
+        }
+
+        connect::debug('有人需要发下一个红包');
+
+        //
+        $user_id = $user['user_id'];
+        event::next_packet_which_sendEvent(array(
+            'pay_user'=>packet::getUser($user_id),
+            'roomid' => $packet['roomid']
+        ));
+
+
 
         return true;
     }

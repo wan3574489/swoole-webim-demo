@@ -9,11 +9,20 @@ class connect{
         }
         return self::$time;
     }
-    private static function get_millisecond()
+
+    static function resetTime(){
+        self::$time = self::get_millisecond();
+    }
+
+     static function get_millisecond()
     {
         list($usec, $sec) = explode(" ", microtime());
-        $msec=round($usec*1000);
-        return $sec.$msec;
+        $msec= sprintf("%04d", round($usec*1000));
+        $ret =  $sec.$msec;
+        if(strlen($ret) == 12){
+            return ($ret*100)/ 10;
+        }
+        return $ret;
     }
 
     static function getInstance(){
@@ -118,5 +127,11 @@ class connect{
 
     static function tablename($table){
         return 'jnp_'.$table;
+    }
+
+    static function debug($string){
+        if(php_sapi_name() == 'cli'){
+            echo $string."\n";
+        }
     }
 }

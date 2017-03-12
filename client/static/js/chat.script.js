@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	// Run the init method on document ready:
-	face.init();
+	//face.init();
 	chat.init();
 	
 });
@@ -121,11 +121,13 @@ var chat = {
 	},
 	wsMessage : function(){
 		this.data.wSock.onmessage=function(event){
-			console.log(event);
+			//console.log(event);
 
 			var d = jQuery.parseJSON(event.data);
+			console.log(d);
 			switch(d.code){
 				case 1:
+					return ;
 					if(d.data.mine){
 						chat.data.fd = d.data.fd;
 						chat.data.name = d.data.name;
@@ -161,15 +163,15 @@ var chat = {
 					}
 					break;
 				case 3:
-					chat.removeUser('logout',d.data);
+					/*chat.removeUser('logout',d.data);
 					if(d.data.mine && d.data.action == 'logout'){
 						
 						return;
 					}
 					chat.displayError('chatErrorMessage_logout',d.msg,1);
-					break;
+					break;*/
 				case 4: //页面初始化
-					chat.initPage(d.data);
+					packet.initRoom(d.data);
 					break;
 				case 5:
 					if(d.data.mine){
@@ -187,6 +189,26 @@ var chat = {
 					//删除旧房间该用户
 					chat.changeUser(d.data);
 					chat.addUserLine('user',d.data);
+					break;
+				//发红包
+				case 1001:
+					packet.packet(d.params);
+					break;
+				//谁领取了谁的红包
+				case 1002:
+					packet.user_rob_packet(d.data);
+					break;
+				//下一个红包谁发出
+				case 1003:
+					packet.next_packet_which_send(d.data);
+					break;
+				//下一个红包即将发出
+				case 1004:
+					packet.who_send_next_packet({});
+					break;
+				//下一个红包倒计时
+				case 1005:
+					packet.next_packet_last({});
 					break;
 				default :
 					chat.displayError('chatErrorMessage_logout',d.msg,1);
@@ -393,7 +415,7 @@ var chat = {
 		}
 	},
 	copyright:function(){
-		console.log("您好！不介意的话可以加QQ讨论学习（1335244575）");
+
 	},
 	print:function(flag,obj){
 		console.log('----' + flag + ' start-------');

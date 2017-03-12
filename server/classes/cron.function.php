@@ -1,24 +1,6 @@
 <?php
 
 
-require_once "config.inc.php";
-require_once "emotion.config.php";
-require_once "functions.php";
-require_once "classes/module/connect.class.php";
-require_once "classes/module/message.class.php";
-require_once "classes/module/event.class.php";
-require_once "classes/module/packet.class.php";
-require_once "classes/".STORAGE."/ChatBase.class.php";
-require_once "classes/".STORAGE."/File.class.php";
-require_once "classes/".STORAGE."/ChatUser.class.php";
-require_once "classes/".STORAGE."/ChatLine.class.php";
-require_once "classes/Chat.class.php";
-require_once "classes/hsw.class.php";
-
-
-$create_timer = 1000;
-$rob_timer    = 4000;
-
 /**
  * 创建一个红包
  */
@@ -30,11 +12,11 @@ function createPacket(){
     $roomid = 'a';
     if(!hasPacket($roomid)){
         if($rebootid = getRandReboot([])){
-           if($a =  packet::create($roomid,$rebootid)){
-               melog("创建红包成功,红包编号:$roomid,创建人:$rebootid");
-           }else{
-               melog("创建红包失败:".packet::getErrorMessage());
-           }
+            if($a =  packet::create($roomid,$rebootid)){
+                melog("创建红包成功,红包编号:$a,创建人:$rebootid");
+            }else{
+                melog("创建红包失败:".packet::getErrorMessage());
+            }
         }
     }
 
@@ -77,8 +59,8 @@ function hasCanRobPacket($roomid){
 
     $end_time = connect::getTime();
     //10秒中没有领取完就领取一次
-    $begin_time   = $end_time-1000*30;
-    $sql = 'select packet_id from '.connect::tablename("fortune_packet_info") . " where roomid  = '{$roomid}' and create_at >= $begin_time and create_at <= $end_time and status = 0 limit 1";
+    $begin_time   = $end_time-10000*30;
+    $sql = 'select packet_id from '.connect::tablename("fortune_packet_info") . " where roomid  = '{$roomid}' and /*create_at >= $begin_time and create_at <= $end_time and*/ status = 0 limit 1";
     if($has = connect::select($sql,true)){
         return $has['packet_id'];
     }
@@ -91,13 +73,15 @@ function hasPacket($roomid){
     if(connect::count($sql) <=0){
         return false;
     }
+    return true;
 
-    //20秒内没有创建一个红包就让机器人创建一个
+    //60秒内没有创建一个红包就让机器人创建一个
     $end_time = connect::getTime();
-    $begin_time   = $end_time-1000*60;
+    $begin_time   = $end_time-10000*60;
     $sql = 'select count(*) from '.connect::tablename("fortune_packet") . " where roomid  = '{$roomid}' and create_at >= $begin_time and create_at <= $end_time";
 
     if(connect::count($sql) <=0){
+        echo "end time : ".$end_time." begin_time :".$begin_time."\n";
         echo $sql."\n";
         return false;
     }
@@ -124,22 +108,3 @@ function getRandReboot($ex){
 function melog($string){
     echo "[". date("Y-m-d H:i:s ",time())."]".$string."\n";
 }
-
-swoole_timer_after($create_timer,"createPacket");
-swoole_timer_after($rob_timer,"robPacket");
-
-/*if($packet = packet::getPacket(55)){
-    packet::next_packet_which_send($packet);
-}
-
-/*if(!packet::create('a',4)){
-    echo packet::getErrorMessage();
-}else{
-
-}
-exit;
-if(!packet::rob(55,8)){
-    echo packet::getErrorMessage();
-}else{
-
-}*/

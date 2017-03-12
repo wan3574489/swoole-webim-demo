@@ -29,7 +29,20 @@ class hsw {
 		echo "open\n";
 
         $this->isClose[$request->fd] = 0;
-        $this->afterPushMessage(2000,$request->fd);
+
+        $this->afterPushMessage(500,$request->fd);
+	}
+
+	private $pushTime = false;
+	public function addPushTime($fd,$value){
+		$this->pushTime[$fd] = $value;
+	}
+
+	public function getPushTime($fd){
+		if(isset($this->pushTime[$fd]) && !empty($this->pushTime[$fd])){
+			return $this->pushTime[$fd];
+		}
+		return connect::get_millisecond();
 	}
 
 	public function afterPushMessage($time,$fd){
@@ -41,31 +54,23 @@ class hsw {
 
         swoole_timer_after($time, function() use ($the,$fd,$time) {
 
-            /*$data = array(
-                'task' => 'new',
-                'params' => array(
-                    'name' => '系统定时消息',
-                    'avatar' => 'a'
-                ),
-                'c' => 1,
-                'message' => '系统定时消息',
-                'fd' => $fd,
-                'roomid' =>'a'
-            );
-            $pushMsg = Chat::sendNewMsg( $data );*/
+            $select_time = $this->getPushTime($fd);
+			//$__sql = "";
 
-            //
-            $select_time = connect::getTime();
+			$end_time = connect::get_millisecond();
+            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time";
+            /*$__sql = "select data from ".connect::tablename("fortune_event")." where 1 = 1 ";
+			echo $__sql."\n";*/
+			//echo $__sql."\n";
 
-            $sql = "select data from ".connect::tablename("fortune_event")." where time > ".$select_time." time <= ".$select_time+$time;
-            $sql = "select data from ".connect::tablename("fortune_event")." where 1 = 1 ";
-
-            if($ret = connect::select($sql)){
+            if($ret = connect::select($__sql)){
                 foreach($ret as $r){
-                    $this->serv->task( $r['data'] );
+					$data = json_decode($r['data'],true);
+					$data['fd'] = $fd;
+                    $this->serv->task( json_encode($data) );
                 }
             }
-
+			$this->addPushTime($fd,$end_time);
             $the->afterPushMessage($time,$fd);
         });
     }
@@ -83,6 +88,7 @@ class hsw {
 					'fd' => $frame->fd,
 					'roomid' =>$data['roomid']
 				);
+				
 				if(!$data['params']['name'] || !$data['params']['email'] ){
 					$data['task'] = "nologin";
 					$this->serv->task( json_encode($data) );
@@ -160,8 +166,16 @@ class hsw {
 			case 'change':
 				$pushMsg = Chat::change( $data );
 				break;
+			case 'create_packet':
+			case 'rob_packet':
+			case 'which_send_packet':
+			case 'system_prompt_next_packet':
+			case 'system_prompt_next_packet_done':
+				$pushMsg  = $data ;
+				$this->serv->push( $data['fd'] ,json_encode($pushMsg));
+				return "Finished";
 		}
-		print_r($pushMsg);
+
 		$this->sendMsg($pushMsg,$data['fd']);
 		return "Finished";
 	}

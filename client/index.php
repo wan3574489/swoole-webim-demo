@@ -7,109 +7,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
-    <title>公共聊天室</title>
-    <link media="all" href="./static/css/style.css?v=2222" type="text/css" rel="stylesheet">
-    <link media="all" href="./static/css/shake.css?v=2222" type="text/css" rel="stylesheet">
+    <title>红包接力</title>
+    <link media="all" href="./static/css/style.css?v=<?php echo time(); ?>" type="text/css" rel="stylesheet">
+    <link media="all" href="./static/css/shake.css?v=<?php echo time(); ?>" type="text/css" rel="stylesheet">
 </head>
 <body>
+
+<!--温馨提示-->
+<script type="text/html" id="system_init">
+    <div style="display: block;" class="msg-box">
+        <div class="chat-item not-me">
+            <div class="clearfix">
+                <div class="avatar">
+                    <div class="normal user-avatar"
+                         style="background-image: url(<%=system_avatar%>);"></div>
+                </div>
+                <div class="msg-bubble-box">
+                    <div class="msg-username">温馨提示</div>
+                    <div class="msg-bubble-area">
+                        <div class="msg-bubble">
+                            <p>
+                                抢红包金额最小的发，系统自动代发！红包正在派件中，请稍后！
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--系统提示下一个红包即将发出-->
+<script type="text/html" id="system_prompt_next_packet">
+    <div style="display: block;" class="msg-box">
+        <div class="chat-item not-me">
+            <div class="clearfix">
+                <div class="avatar">
+                    <div class="normal user-avatar"
+                         style="background-image: url(<%=system_avatar%>);"></div>
+                </div>
+                <div class="msg-bubble-box">
+                    <div class="msg-username">系统提示</div>
+                    <div class="msg-bubble-area">
+                        <div class="msg-bubble">
+                            <p>
+                                下一个红包即将发出
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--系统提示下一个红包即将发出-->
+<script type="text/html" id="system_prompt_next_packet_done">
+    <div style="display: block;" class="msg-box prompt_<%=number%>">
+        <div class="chat-item not-me">
+            <div class="clearfix">
+                <div class="avatar">
+                    <div class="normal user-avatar"
+                         style="background-image: url(<%=system_avatar%>);"></div>
+                </div>
+                <div class="msg-bubble-box">
+                    <div class="msg-username">系统提示</div>
+                    <div class="msg-bubble-area">
+                        <div class="msg-bubble">
+                            <p class="countdown_number">
+                                5
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--红包的item-->
+<script type="text/html" id="system_packet_info">
+    <div style="display: block;" class="msg-box" data-packet="<%=packet_id%>">
+        <div class="chat-item not-me">
+            <div class="clearfix">
+                <div class="avatar">
+                    <div class="normal user-avatar"
+                         style="background-image: url(<%=avatar%>);"></div>
+                </div>
+                <div class="msg-bubble-box">
+                    <div class="msg-username"><%=name%></div>
+                    <div class="msg-bubble-area">
+                        <div class="msg-red-packet">
+                            <div class="msg-packet-bubble">
+                                <!--<img src="/static/images/timg.jpg">-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--用户领取了红包-->
+<script type="text/html" id="system_user_rob_packet_info">
+    <div class="chat-status chat-system-notice chat-rob-packet">
+        <div class="chat-content-out">
+            <span><img src="static/images/red_packet.jpg" height="20"></span>
+            <span class="over-hiden"><%=geter_name%></span>
+            <span>领取了</span>
+            <span class="over-hiden"><%=payer_name%></span>
+            <span class="color-red">红包</span>
+        </div>
+    </div>
+</script>
+
+<!--提示下一个红包谁发出-->
+<script type="text/html" id="system_prompt_next_packet_who_send">
+    <div class="chat-status chat-system-notice chat-next-packet">
+        <div class="chat-content-out">
+            <div class="chat-content-avatar">
+                <img src="<%=payer_avater%>" height="20">
+            </div>
+            <div class="chat-content-desc">
+                <span>下一个红包由</span>
+                <span class="over-hiden color-red"><%=payer_name%></span>
+                <span>发出</span>
+            </div>
+        </div>
+    </div>
+</script>
+
 <div id="layout-container">
     <div id="layout-main">
 
         <div id="body">
 
             <div id="menu-pannel-body">
-                <!--<div id="sub-menu-pannel" class="conv-list-pannel">
-                    <div class="conv-lists-box" id="user-lists">
-                        <div class="conv-lists" id="conv-lists"></div>
-                    </div>
-                </div>-->
                 <div id="content-pannel">
                     <div class="conv-detail-pannel">
-                        <!--<div class="nocontent-logo" style="display:none;" >
-                            <div>
-                                <img alt="欢迎" src="./static/images/noimg.png">
-                            </div>
-                        </div>-->
                         <div class="content-pannel-body chat-box-new" id="chat-box">
                             <div class="main-chat chat-items" id="chat-lists">
                                 <div class="msg-items" id="chatLineHolder">
                                     <div class="msg-items" id="chatLineHolder-a" style="display:block">
-                                        <div style="display: block;" class="msg-box">
-                                            <div class="chat-item me">
-                                                <div class="clearfix">
-                                                    <div class="avatar">
-                                                        <div class="normal user-avatar"
-                                                             style="background-image: url(http://chat.codeception.cn/static/images/avatar/f1/f_6.jpg);"></div>
-                                                    </div>
-                                                    <div class="msg-bubble-box">
-                                                        <div class="msg-bubble-area">
-                                                            <div>
-                                                                <div class="msg-bubble">
-                                                                    <pre class="text">123</pre>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="chat-status chat-system-notice">系统消息：欢迎&nbsp;名字85145537&nbsp;加入群聊
-                                        </div>
-                                        <div style="display: block;" class="msg-box">
-                                            <div class="chat-item not-me">
-                                                <div class="clearfix">
-                                                    <div class="avatar">
-                                                        <div class="normal user-avatar"
-                                                             style="background-image: url(http://chat.codeception.cn/static/images/avatar/f1/f_6.jpg);"></div>
-                                                    </div>
-                                                    <div class="msg-bubble-box">
-                                                        <div class="msg-bubble-area">
-                                                            <div class="msg-red-packet">
-                                                                <div class="msg-bubble">
-                                                                    <img src="static/images/timg.jpg">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <!--<div class="send-msg-box-wrapper">
-                                <div class="input-area" style="display:none;">
-                                    <ul class="tool-bar">
-                                        <li class="tool-item">
-                                            <i class="iconfont tool-icon tipper-attached emotion_btn" title="表情"></i>
-                                            <div class="faceDiv"></div>
-                                        </li>
-                                        <li class="tool-item">
-                                            <i class="iconfont tool-icon icon-card tipper-attached" onclick="upload()" title="图片"></i>
-                                        </li>
-                                    </ul>
-                                    <span class="user-guide">Enter 发送 , Ctrl+Enter 换行</span>
-                                    <div class="msg-box" style="height:100%;">
-                                        <textarea class="textarea input-msg-box" onkeydown="chat.keySend(event);" id="chattext"></textarea>
-                                    </div>
-                                </div>
-                                <div class="action-area" style="display:none;">
-                                    <a href="javascript:;" class="send-message-button" onclick="chat.sendMessage()">发送</a>
-                                </div>
-                                <div id="loginbox" class="area" style="width:100%;text-align:center;display:block;">
-                                    <form action="javascript:void(0)" onsubmit="return chat.doLogin('','');">
-                                        <div class="clearfix" style="margin-top:35px">
-                                            <input name="name" id="name" style="margin-right:20px;width:250px;" placeholder="请输入昵称" class="fm-input" value="" type="text">
-                                            <input id="email" class="fm-input" style="margin-right:20px;width:250px;" name="email" placeholder="请输入Email" type="text">
-                                            <button type="submit" class="blue big">登录</button>
-                                        </div>
-
-                                    </form>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -129,15 +174,17 @@
     config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
 </script>
 <script src="./static/js/jquery.min.js"></script>
+<script src="./static/js/template-native.js"></script>
 <script src="./static/js/face.js?v=3345"></script>
 <script src="./static/js/create.div.js?v=1"></script>
+<script src="./static/js/packet.script.js?v=26"></script>
 <script src="./static/js/chat.script.js?v=26"></script>
 <script src="./static/js/functions.js?v=2115"></script>
-<script src="./static/js/xlyjs.js?v=215"></script>
+<!--<script src="./static/js/xlyjs.js?v=215"></script>-->
 <script>
     /*setInterval(function () {
-        chat.test_sendMessage("你好，中文");
-    },2000);*/
+     chat.test_sendMessage("你好，中文");
+     },2000);*/
 </script>
 </body>
 </html>

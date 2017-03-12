@@ -45,6 +45,8 @@ html {
 
 body {
     box-sizing: border-box;
+    color: #cb8c2c;
+
 }
 
 input, textarea, keygen, select, button {
@@ -864,8 +866,12 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 .conv-detail-pannel .content-pannel-body .chat-items {
     -moz-box-flex: 1;
     flex: 1 1 0%;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     position: relative;
+
+    /*overflow-y: hidden;*/
+    overflow-x: hidden;
+    margin-right: -15px;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-items .msg-items {
@@ -874,7 +880,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     min-height: 100%;
     /*min-width: 550px;*/
     width: 100%;
-    padding: 4px 16px 16px;
+    padding: 4px 4px 16px;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-items .msg-items .msg-box:first-child .safety-tips::before {
@@ -892,6 +898,78 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     white-space: nowrap;
     overflow-wrap: normal;
     width: 97vw;
+
+    margin: 10px 0px;
+}
+
+.conv-detail-pannel .content-pannel-body .chat-rob-packet {
+    /*background-color:rgb(189, 190, 191);*/
+    color:#ffffff;
+    width:auto !important;
+}
+
+.conv-detail-pannel .content-pannel-body .chat-rob-packet .chat-content-out{
+    background-color: rgb(189, 190, 191);
+    margin: 0 auto;
+    max-width: 75vw;
+}
+
+.conv-detail-pannel .content-pannel-body .chat-rob-packet .chat-content-out span img{
+    margin-top: 4px;
+}
+
+.chat-next-packet .chat-content-out{
+    width: 80vw;
+    margin: 0 auto;
+    height: 60px;
+    background-color: #fff1d6;
+    line-height: 60px;
+    border: solid 1px rgb(226, 226, 226);
+}
+
+.chat-next-packet .chat-content-out div{
+    float: left;
+}
+.chat-next-packet .chat-content-out div img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.chat-next-packet .chat-content-out .chat-content-avatar{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.chat-content-desc .over-hiden{
+
+}
+.chat-content-desc .color-red{
+    color:#d91d2B;
+}
+
+.chat-next-packet .chat-content-out .chat-content-desc{
+    margin-left: 5px;
+    line-height: 75px;
+    font-size: 17px;
+}
+.chat-next-packet .chat-content-out .chat-content-desc span{
+    display: inline-block;
+    overflow: hidden;
+    height: 25px;
+    line-height: 27px;
+}
+
+.chat-rob-packet span{
+    display: inline-block;
+    overflow: hidden;
+    height: 25px;
+    line-height: 30px;
+}
+
+.over-hiden{
+    width: 54px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-system-notice.safety-tips::before {
@@ -976,8 +1054,15 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     float: left;
 }
 
+.conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-box .msg-username {
+    padding-left: 5px;
+    font-size: 12px;
+    margin-bottom: 4px;
+    color: #cb8c2c;
+}
+
 .conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area {
-    padding-right: 140px;
+    /*padding-right: 140px;*/
     padding-left: 0px;
     float: left;
     clear: both;
@@ -1028,11 +1113,31 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     background-color: rgb(255, 255, 255);
     line-height: 21px;
     width: auto;
-    max-width: 300px;
+    max-width: 60vw;
     overflow: hidden;
     transition: background-color 0.25s ease 0s;
 }
 
+.conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area .msg-packet-bubble {
+    position: relative;
+    min-height: 21px;
+    float: left;
+    clear: both;
+    padding: 5px 11px;
+    border: 1px solid rgb(225, 224, 228);
+    border-radius: 6px;
+    background-color: rgb(255, 255, 255);
+    line-height: 21px;
+    /* width: auto; */
+    /* max-width: 60vw; */
+    overflow: hidden;
+    transition: background-color 0.25s ease 0s;
+    background-image: url(/static/images/timg.jpg);
+    width: 240px;
+    height: 85px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 .conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area .msg-red-packet{
 
 }
