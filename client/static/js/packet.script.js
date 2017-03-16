@@ -9,6 +9,13 @@ var packet = {
         var html = template('system_init', data);
         $("#chatLineHolder-a").append(html);
         chat.scrollDiv('chat-lists');
+
+        //事件绑定
+        $(document).on("click",'.packet',function (e) {
+            e.stopPropagation();
+            alert($(this).data('packet'));
+            return false;
+        });
     },
 
     /**
