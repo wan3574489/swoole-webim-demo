@@ -30,7 +30,7 @@ class connect{
             if(self::$time == false){
                 self::$time = self::get_millisecond();
             }
-            self::$instance = new mysqli('127.0.0.1', 'root', '', 'packet');
+            self::$instance = new mysqli('127.0.0.1', 'root', '', 'jnp');
             if(mysqli_connect_errno())
             {
                 echo mysqli_connect_error();
