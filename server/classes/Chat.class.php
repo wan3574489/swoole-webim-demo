@@ -120,6 +120,22 @@ class Chat {
 		unset( $data );
 		return $pushMsg;
 	}
+
+	public static function doLoginOpenid($data){
+		$pushMsg['code'] = 101;
+		$pushMsg['data']['roomid'] = $data['roomid'];
+		$pushMsg['data']['fd'] = $data['fd'];
+		$_sql = "select * from ".connect::tablename('fortune_user')." where openid = '".$data['openid']."'";
+		$user = connect::select($_sql,true);
+		$pushMsg['data']['name'] = $user['truename'];
+		$pushMsg['data']['avatar'] =$user['img'];
+		$data['params']['email'] = $data['openid']."@qq.com";
+		$pushMsg['data']['time'] = date("H:i",time());
+		self::login($data['roomid'],$data['fd'],$data['params']['name'],$data['params']['email'],$pushMsg['data']['avatar']);
+		unset( $data );
+		return $pushMsg;
+	}
+
 	//登录
 	public static function doLogin( $data ){
 		$pushMsg['code'] = 1;

@@ -1,3 +1,8 @@
+<?php
+/*if(!isset($_GET['openid'])){
+    exit("1");
+}*/
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -170,8 +175,9 @@
 </div>
 <script src="./static/js/init.js"></script>
 <script language="JavaScript">
-    config.user = "名字<?php echo rand(10000000, 99999999);?>";
-    config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
+    //config.user = "名字<?php echo rand(10000000, 99999999);?>";
+    //config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
+    config.openid  = "<?php echo $_GET['openid'];?>";
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>

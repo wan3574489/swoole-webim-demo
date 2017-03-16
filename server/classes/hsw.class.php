@@ -78,6 +78,17 @@ class hsw {
 	public function onMessage( $serv , $frame ){
 		$data = json_decode( $frame->data , true );
 		switch($data['type']){
+			//openid登陆
+			case 101:
+				$data = array(
+					'task' => 'loginOpenid',
+					'params' => array(
+						'openid' => $data['openid'],
+					),
+					'fd' => $frame->fd,
+					'roomid' =>$data['roomid']
+				);
+				break;
 			case 1://登录
 				$data = array(
 					'task' => 'login',
@@ -146,12 +157,40 @@ class hsw {
 		$pushMsg = array('code'=>0,'msg'=>'','data'=>array());
 		$data = json_decode($data,true);
 		switch( $data['task'] ){
+			case "rob":
+				$packet_id = $data['packet_id'];
+				$openid = $data['openid'];
+				if(packet::rob($packet_id,$openid)){
+					$pushMsg = array(
+						'task'      =>'rob_success',
+						'code'      => 1101,
+						'data'    => array(
+							'code'      => 1100,
+						),
+						'roomid'=>$data['roomid']
+					);
+				}else{
+					$pushMsg = array(
+						'task'      =>'rob_fail',
+						'code'      => 1102,
+						'data'    => array(
+							'code'      => 1102,
+						),
+						'roomid'=>$data['roomid']
+					);
+				}
+
+				$this->serv->push( $data['fd'] , json_encode($pushMsg) );
+				return 'Finished';
 			case 'open':
 				$pushMsg = Chat::open( $data );
 				$this->serv->push( $data['fd'] , json_encode($pushMsg) );
 				return 'Finished';
 			case 'login':
 				$pushMsg = Chat::doLogin( $data );
+				break;
+			case 'loginOpenid':
+				$pushMsg = Chat::doLoginOpenid( $data );
 				break;
 			case 'new':
 				$pushMsg = Chat::sendNewMsg( $data );
@@ -166,8 +205,8 @@ class hsw {
 			case 'change':
 				$pushMsg = Chat::change( $data );
 				break;
-			case 'create_packet':
 			case 'rob_packet':
+			case 'create_packet':
 			case 'which_send_packet':
 			case 'system_prompt_next_packet':
 			case 'system_prompt_next_packet_done':

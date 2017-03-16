@@ -24,6 +24,20 @@ var chat = {
 		chat.data.storage = window.localStorage;
 		this.ws();
 	},
+
+	rob:function (packet_id) {
+		var json = {"type": 'rob',"openid": config.openid,'roomid':'a','packet_id':packet_id};
+		chat.wsSend(JSON.stringify(json));
+		return false;
+	},
+	doLoginFromOpenid:function(openid){
+		openid = $.trim(openid) ;
+		chat.data.type = 101; //登录标志
+		chat.data.openid = openid; //邮箱
+		var json = {"type": chat.data.type,"openid": openid,'roomid':'a'};
+		chat.wsSend(JSON.stringify(json));
+		return false;
+	},
 	doLogin : function( name , email ){
 		if(name == '' || email == ''){
 			name =  $("#name").val();
@@ -105,17 +119,8 @@ var chat = {
 			//初始化房间
 			chat.print('wsopen',event);
 
-			chat.doLogin(config.user,config.email);
+			chat.doLoginFromOpenid(config.openid);
 
-			//判断是否已经登录过，如果登录过。自动登录。不需要再次输入昵称和邮箱
-			/*
-			var isLogin = chat.data.storage.getItem("dologin");
-			if( isLogin ) {
-				var name =  chat.data.storage.getItem("name");
-				var email =  chat.data.storage.getItem("email");
-				chat.doLogin( name , email );
-			}
-			*/
 			
 		}
 	},
@@ -126,6 +131,21 @@ var chat = {
 			var d = jQuery.parseJSON(event.data);
 			console.log(d);
 			switch(d.code){
+				case 101:
+					if(d.data.mine){
+						chat.data.fd = d.data.fd;
+						chat.data.name = d.data.name;
+						chat.data.avatar = d.data.avatar;
+						chat.data.storage.setItem("dologin",1);
+						chat.data.storage.setItem("name",d.data.name);
+						chat.data.storage.setItem("email",chat.data.email);
+						document.title = d.data.name + '-' + document.title;
+						chat.loginDiv(d.data);
+					}
+					/*chat.addChatLine('newlogin',d.data,d.data.roomid);
+					chat.addUserLine('user',d.data);
+					chat.displayError('chatErrorMessage_login',d.msg,1);*/
+					break;
 				case 1:
 					return ;
 					if(d.data.mine){

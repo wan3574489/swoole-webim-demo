@@ -215,7 +215,11 @@ class packet extends message {
     }
 
     static function getUser($userid){
-        $sql = "select * from ".connect::tablename("fortune_user")." where id = ".$userid;
+        if(strlen($userid) > 15){
+            $sql = "select * from ".connect::tablename("fortune_user")." where openid = ".$userid;
+        }else{
+            $sql = "select * from ".connect::tablename("fortune_user")." where id = ".$userid;
+        }
         return connect::select($sql,true);
     }
 
