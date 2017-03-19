@@ -10,12 +10,108 @@ var packet = {
         $("#chatLineHolder-a").append(html);
         chat.scrollDiv('chat-lists');
 
+
+        packet.event();
+    },
+
+    event:function () {
+
         //事件绑定
         $(document).on("click",'.packet',function (e) {
             e.stopPropagation();
-            alert($(this).data('packet'));
+            if(!chat.canRob()){
+                page.showToBuy();
+                return false;
+            }
+            var packet_id = $(this).data("packet");
+            chat.checkRob(packet_id);
+            return;
+
+            if(packet.isCachePacket(packet_id)){
+                chat.rob(packet_id);
+                //packet.showCachePacket(packet_id);
+                return false;
+            }
+            page.showOpenRedpack(packet_id);
             return false;
         });
+
+    },
+
+    isCachePacket:function (packet_id) {
+        var k = "cache_packet_"+packet_id;
+        var packet = chat.data.storage.getItem(k);
+        if(typeof(packet) != 'undefined' && packet != '' && packet != null){
+            return true;
+        }
+        return false;
+    },
+    
+    showCachePacket:function (packet_id) {
+        //alert("YES");
+        var k = "cache_packet_"+packet_id;
+        var packet = chat.data.storage.getItem(k);
+        console.log(packet);
+    },
+    
+    cachePacket:function (packet_id,data) {
+        var k = "cache_packet_"+packet_id;
+        chat.data.storage.setItem(k,JSON.stringify(data));
+    },
+
+    robCheck:function (data) {
+        var packet_id = data.packet_id;
+        chat.data.storage.setItem("virtual_money",data.virtual_money);
+
+        //用户没有钱
+        if(data.no_money == 0){
+            page.showToBuy();
+            return false;
+        }
+        //用户已经领取
+        if(data.iamisrob > 0){
+            page.showRedpackRecord(data);
+            return ;
+        }
+        //用户手慢
+        if(data.rob.length >=4){
+            page.showRobFailed(data);
+            return ;
+        }
+        //正常领取
+        page.showOpenRedpack(packet_id);
+        return false;
+    },
+
+    robSuccess:function (data) {
+        console.log("Success");
+        console.log(data);
+
+        page.showRobSuccess(data);
+
+    },
+
+    robFailed:function (data) {
+        console.log(data);
+        packet.cachePacket(data.packet_id,data);
+        var code = data.error_code;
+        switch (code){
+            //红包领取完成
+            case 1000:
+                page.showRobFailed(data);
+                break;
+            //用户钱不够
+            case 1010:
+                page.showRedpackRecord(data);
+                break;
+            //已经领取
+            case 1011:
+                page.showRedpackRecord(data);
+                break;
+            default:
+                break;
+        }
+
     },
 
     /**

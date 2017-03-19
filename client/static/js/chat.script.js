@@ -19,14 +19,36 @@ var chat = {
 		remains     : []
 	},
 	init : function (){
+
 		this.copyright();
 		this.off();
 		chat.data.storage = window.localStorage;
+		chat.data.storage.clear();
+		chat.data.storage.setItem("can_join",0);
 		this.ws();
 	},
 
+	getRoomUserVirtualMoney:function () {
+		return chat.data.storage.getItem("virtual_money");
+	},
+	getRoomMoney:function () {
+		return chat.data.storage.getItem("roomid_money");
+	},
+	canRob:function(){
+		if(chat.data.storage.getItem("can_join") == '1'){
+			return true;
+		}
+		return false;
+	},
+
+	checkRob:function (packet_id) {
+		var json = {"type": 35,"openid": config.openid,'roomid':'a','packet_id':packet_id};
+		chat.wsSend(JSON.stringify(json));
+		return false;
+	},
+
 	rob:function (packet_id) {
-		var json = {"type": 'rob',"openid": config.openid,'roomid':'a','packet_id':packet_id};
+		var json = {"type": 30,"openid": config.openid,'roomid':'a','packet_id':packet_id};
 		chat.wsSend(JSON.stringify(json));
 		return false;
 	},
@@ -132,6 +154,7 @@ var chat = {
 			console.log(d);
 			switch(d.code){
 				case 101:
+					console.log(d.data);
 					if(d.data.mine){
 						chat.data.fd = d.data.fd;
 						chat.data.name = d.data.name;
@@ -139,7 +162,12 @@ var chat = {
 						chat.data.storage.setItem("dologin",1);
 						chat.data.storage.setItem("name",d.data.name);
 						chat.data.storage.setItem("email",chat.data.email);
-						document.title = d.data.name + '-' + document.title;
+						chat.data.storage.setItem("can_join",d.data.can_join);
+						chat.data.storage.setItem("virtual_money",d.data.virtual_money);
+						chat.data.storage.setItem("roomid_money",d.data.roomid_money);
+						chat.data.storage.setItem("roomid",d.data.roomid);
+						page.userLoadSuccess();
+						//document.title = d.data.name + '-' + document.title;
 						chat.loginDiv(d.data);
 					}
 					/*chat.addChatLine('newlogin',d.data,d.data.roomid);
@@ -210,6 +238,7 @@ var chat = {
 					chat.changeUser(d.data);
 					chat.addUserLine('user',d.data);
 					break;
+
 				//发红包
 				case 1001:
 					packet.packet(d.params);
@@ -229,6 +258,18 @@ var chat = {
 				//下一个红包倒计时
 				case 1005:
 					packet.next_packet_last({});
+					break;
+				//用户领取成功
+				case 1101:
+					packet.robSuccess(d.data);
+					break;
+				//用户领取失败
+				case 1102:
+					packet.robFailed(d.data);
+					break;
+				//检测红包是否能被领取。
+				case 1135:
+					packet.robCheck(d.data);
 					break;
 				default :
 					chat.displayError('chatErrorMessage_logout',d.msg,1);

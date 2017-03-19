@@ -59,7 +59,7 @@ function hasCanRobPacket($roomid){
 
     $end_time = connect::getTime();
     //10秒中没有领取完就领取一次
-    $begin_time   = $end_time-10000*30;
+    $begin_time   = $end_time-10000*100;
     $sql = 'select packet_id from '.connect::tablename("fortune_packet_info") . " where roomid  = '{$roomid}' and /*create_at >= $begin_time and create_at <= $end_time and*/ status = 0 limit 1";
     if($has = connect::select($sql,true)){
         return $has['packet_id'];

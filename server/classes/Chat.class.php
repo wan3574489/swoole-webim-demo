@@ -123,12 +123,16 @@ class Chat {
 
 	public static function doLoginOpenid($data){
 		$pushMsg['code'] = 101;
+		$pushMsg['data']['mine'] = 1;
 		$pushMsg['data']['roomid'] = $data['roomid'];
+		$pushMsg['data']['roomid_money'] = packet::getPayMonery($data['roomid']);
 		$pushMsg['data']['fd'] = $data['fd'];
 		$_sql = "select * from ".connect::tablename('fortune_user')." where openid = '".$data['openid']."'";
 		$user = connect::select($_sql,true);
-		$pushMsg['data']['name'] = $user['truename'];
+		$pushMsg['data']['name'] = $user['nickname'];
 		$pushMsg['data']['avatar'] =$user['img'];
+		$pushMsg['data']['virtual_money']  = $user['virtual_money'];
+		$pushMsg['data']['can_join'] = $user['virtual_money'] < packet::getPayMonery($data['roomid'])?0:1;
 		$data['params']['email'] = $data['openid']."@qq.com";
 		$pushMsg['data']['time'] = date("H:i",time());
 		self::login($data['roomid'],$data['fd'],$data['params']['name'],$data['params']['email'],$pushMsg['data']['avatar']);
