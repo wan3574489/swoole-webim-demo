@@ -1,21 +1,9 @@
 # 在线聊天室(Making a Web Chat With PHP and Swoole)
 
 ------
-@author: 翎羽鹭 (http://www.hellosee.cc)
-
-@email: 1335244575@qq.com
 
 使用swoole扩展和php开发的一个在线聊天室，**目前实现的功能有** ：
 
-> * 支持群聊
-> * 支持发送文字
-> * 支持发送图片
-> * 支持@人
-> * 支持分房间聊天功能
-> * 显示消息数
-
-在线聊天DEMO：
-### [在线聊天室](http://chat.hellosee.cc/)  http://chat.hellosee.cc
 
 # 如何运行？
 
@@ -37,10 +25,11 @@
 # 资料说明
 swoole官网 http://www.swoole.com
 
-程序聊天界面采用 钉钉 http://dingtalk.com 
+网站目录说明:
 
-前端使用插件：
-上传图片插件：xlyjs 一个封装好的跨域上传js控件（https://github.com/hellosee/xlyjs ）
+client 网站访问目录
+service 服务端目录
+  --> hsw_server.php websocket目录
+  --> rob.php 机器人自动领取目录
+  --> create.php 系统第一次运行的时候，需要运行一次它会自动生成一个红包。
 
-本程序使用的是文件存储。没有测试抗压能力，并且可能存在BUG，切勿用做商业用途。只提供一起学习和讨论。
-如果您有问题，欢迎联系 共同学习
