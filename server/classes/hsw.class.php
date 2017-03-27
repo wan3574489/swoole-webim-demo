@@ -30,7 +30,7 @@ class hsw {
 
         $this->isClose[$request->fd] = 0;
 
-        $this->afterPushMessage(5000,$request->fd);
+        $this->afterPushMessage(2000,$request->fd);
 	}
 
 	private $pushTime = false;
@@ -58,7 +58,7 @@ class hsw {
 			//$__sql = "";
 
 			$end_time = connect::get_millisecond();
-            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time";
+            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time order by time asc";
            // $__sql = "select data from ".connect::tablename("fortune_event")." where id = 49159 ";
 			//echo $__sql."\n";*/
 			//echo $__sql."\n";

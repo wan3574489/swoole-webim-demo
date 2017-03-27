@@ -174,6 +174,7 @@ class packet extends message {
         }
 
         if(!connect::query($update_sql)){
+            connect::rollback();
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }

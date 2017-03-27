@@ -341,11 +341,11 @@ if(!isset($_GET['openid'])){
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>
 <script src="./static/js/face.js?v=3345"></script>
-<script src="./static/js/create.div.js?v=1"></script>
-<script src="./static/js/packet.script.js?v=26"></script>
-<script src="./static/js/page.script.js"></script>
-<script src="./static/js/chat.script.js?v=26"></script>
-<script src="./static/js/functions.js?v=2115"></script>
+<script src="./static/js/create.div.js?v=<?php echo time();?>"></script>
+<script src="./static/js/packet.script.js?v=<?php echo time();?>"></script>
+<script src="./static/js/page.script.js?<?php echo time();?>"></script>
+<script src="./static/js/chat.script.js?v=<?php echo time();?>"></script>
+<script src="./static/js/functions.js?v=<?php echo time();?>"></script>
 <!--<script src="./static/js/xlyjs.js?v=215"></script>-->
 <script>
     /*setInterval(function () {
