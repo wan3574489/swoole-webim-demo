@@ -87,7 +87,7 @@
 
 <!--红包的item-->
 <script type="text/html" id="system_packet_info">
-    <div style="display: block;" class="msg-box" data-packet="<%=packet_id%>">
+    <div style="display: block;" class="msg-box packet" data-packet="<%=packet_id%>">
         <div class="chat-item not-me">
             <div class="clearfix">
                 <div class="avatar">
@@ -173,13 +173,13 @@
     config.user = "名字<?php echo rand(10000000, 99999999);?>";
     config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
 </script>
-<script src="./static/js/jquery.min.js"></script>
-<script src="./static/js/template-native.js"></script>
-<script src="./static/js/face.js?v=3345"></script>
-<script src="./static/js/create.div.js?v=1"></script>
-<script src="./static/js/packet.script.js?v=26"></script>
-<script src="./static/js/chat.script.js?v=26"></script>
-<script src="./static/js/functions.js?v=2115"></script>
+<script src="./static/js/jquery.min.js?<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/template-native.js?<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/face.js?v=<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/create.div.js?v=<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/packet.script.js?v=<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/chat.script.js?v=<?php echo rand(10000000, 99999999);?>"></script>
+<script src="./static/js/functions.js?v=<?php echo rand(10000000, 99999999);?>"></script>
 <!--<script src="./static/js/xlyjs.js?v=215"></script>-->
 <script>
     /*setInterval(function () {

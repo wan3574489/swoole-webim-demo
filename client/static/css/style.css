@@ -40,7 +40,9 @@ html, body {
 }
 
 html {
+    /*
     background: rgb(90, 131, 183) url('../images/main-bg.png') no-repeat scroll 0% 0% / cover;
+    */
 }
 
 body {
@@ -2263,4 +2265,70 @@ business-item:first-child .icon::after {
 .close:hover {
     font-size: 20px;
     color: #DDD;
+}
+
+.topic-open{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.topic-open .shade{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    opacity: 0.3;
+}
+
+.topic-open .topic-header{
+
+}
+.topic-open .topic-header:after{
+    clear: both;
+}
+.topic-structure{
+    width: 70vw;
+    margin-top: 0;
+    margin: auto;
+    position: absolute;
+    z-index: 3;
+    top: -6%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffda78;
+    height: 454px;
+}
+
+.topic-open .topic-header .topic-backgroud-img-1{
+    width: 80%;
+    float: left;
+}
+.topic-open .topic-header .topic-backgroud-img-1 img{
+    height: 43px;
+    width: 100%;
+    margin-top: -2rem;
+    margin-left: 30px;
+}
+
+.topic-open .topic-header .topic-exit{
+    float: left;
+    width: 20px;
+}
+.topic-open .topic-header .topic-exit img{
+    margin-top: -1.5rem;
+    margin-left: 36px;
+}
+
+.topic-open .topic-content{
+    padding: 10px 13px;
+    font-size: 16px;
+    line-height: 24px;
+    overflow: hidden;
+    /*background-color: #ffda78;
+     height: 41px;
+    border: solid 1px #a7a7a6;*/
 }
