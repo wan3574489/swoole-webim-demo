@@ -30,7 +30,7 @@ class hsw {
 
         $this->isClose[$request->fd] = 0;
 
-        $this->afterPushMessage(500,$request->fd);
+        $this->afterPushMessage(2000,$request->fd);
 	}
 
 	private $pushTime = false;
@@ -58,9 +58,9 @@ class hsw {
 			//$__sql = "";
 
 			$end_time = connect::get_millisecond();
-            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time";
-            /*$__sql = "select data from ".connect::tablename("fortune_event")." where 1 = 1 ";
-			echo $__sql."\n";*/
+            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time order by time asc";
+           // $__sql = "select data from ".connect::tablename("fortune_event")." where id = 49159 ";
+			//echo $__sql."\n";*/
 			//echo $__sql."\n";
 
             if($ret = connect::select($__sql)){
@@ -78,6 +78,19 @@ class hsw {
 	public function onMessage( $serv , $frame ){
 		$data = json_decode( $frame->data , true );
 		switch($data['type']){
+			//openid登陆
+			case 101:
+				$data = array(
+					'task' => 'loginOpenid',
+					'params' => array(
+						'openid' => $data['openid'],
+					),
+					'fd' => $frame->fd,
+					'roomid' =>$data['roomid'],
+					'openid' => $data['openid'],
+				);
+				$this->serv->task( json_encode($data) );
+				break;
 			case 1://登录
 				$data = array(
 					'task' => 'login',
@@ -125,6 +138,31 @@ class hsw {
 				$this->serv->task( json_encode($data) );
 				
 				break;
+			case 30:
+				$data = array(
+					'task'=>'rob',
+					'params' => array(
+						'openid'=> $data['openid'],
+						'packet_id'=>$data['packet_id']
+					),
+					'fd' => $frame->fd,
+					'roomid' => $data['roomid']
+				);
+
+				$this->serv->task( json_encode($data) );
+				break;
+			case 35:
+				$data = array(
+					'task'=>'check_rob',
+					'params' => array(
+						'openid'=> $data['openid'],
+						'packet_id'=>$data['packet_id']
+					),
+					'fd' => $frame->fd,
+					'roomid' => $data['roomid']
+				);
+				$this->serv->task( json_encode($data) );
+				break;
             case 11:  //抢红包
                 $data = array(
                     'task'=>'red_packet',
@@ -145,7 +183,87 @@ class hsw {
 	public function onTask( $serv , $task_id , $from_id , $data ){
 		$pushMsg = array('code'=>0,'msg'=>'','data'=>array());
 		$data = json_decode($data,true);
+
+		//print_r($data);
 		switch( $data['task'] ){
+			case "check_rob":
+				$packet_id = $data['params']['packet_id'];
+				$openid = $data['params']['openid'];
+
+				$user = packet::getUser($openid);
+				$packet = packet::getPacket($packet_id);
+
+				if($user['virtual_money'] < packet::getPayMonery($packet['roomid'])){
+					$no_money = 0;
+				}else{
+					$no_money = 1;
+				}
+				$ret = packet::getUserRobPacketNumber($packet_id,$user['id']);
+				if($ret == false){
+					$ret = 0;
+				}
+				$pushMsg = array(
+					'task'      =>'rob_check',
+					'code'      => 1135,
+					'data'    => array(
+						'code'      =>  1135,
+						'rob'       =>  packet::getPacketRob($packet_id),
+						'no_money' =>  $no_money,
+						'iamisrob' =>  $ret,
+						'packet_id' => $packet_id
+					),
+					'roomid'=>$data['roomid']
+				);
+				
+				$pushMsg['data']['user'] = array(
+					'nickname'=>$user['nickname'],
+					'avatar'=>$user['img'],
+					'virtual_money'=>$user['virtual_money']
+				);
+
+				$this->serv->push( $data['fd'] , json_encode($pushMsg) );
+				return 'Finished';
+			case "rob":
+				$packet_id = $data['params']['packet_id'];
+				$openid = $data['params']['openid'];
+
+				if(packet::rob($packet_id,$openid)){
+					$pushMsg = array(
+						'task'      =>'rob_success',
+						'code'      => 1101,
+						'data'    => array(
+							'code'      => 1100,
+						),
+						'roomid'=>$data['roomid']
+					);
+					//已经领取了的信息
+					$pushMsg['data']['packet_number'] = packet::getUserRobPacketNumber($packet_id,packet::$user['id']);
+
+				}else{
+					$pushMsg = array(
+						'task'      =>'rob_fail',
+						'code'      => 1102,
+						'data'    => array(
+							'code'      => 1102,
+							'error_code'=>packet::getErrorCode(),
+							'error_message'=>packet::getErrorMessage()
+						),
+						'roomid'=>$data['roomid']
+					);
+				}
+
+				//用户现在的信息
+				$pushMsg['data']['packet_id'] = $packet_id;
+
+				$pushMsg['data']['user'] = array(
+					'nickname'=>packet::$user['nickname'],
+					'avatar'=>packet::$user['img'],
+					'virtual_money'=>packet::$user['virtual_money']
+				);
+				$pushMsg['data']['rob'] = packet::getPacketRob($packet_id);
+
+				$this->serv->push( $data['fd'] , json_encode($pushMsg) );
+				return 'Finished';
 			case 'open':
 				$pushMsg = Chat::open( $data );
 				$this->serv->push( $data['fd'] , json_encode($pushMsg) );
@@ -153,6 +271,10 @@ class hsw {
 			case 'login':
 				$pushMsg = Chat::doLogin( $data );
 				break;
+			case 'loginOpenid':
+				$pushMsg = Chat::doLoginOpenid( $data );
+				$this->serv->push( $data['fd'] ,json_encode($pushMsg));
+				return "Finished";
 			case 'new':
 				$pushMsg = Chat::sendNewMsg( $data );
 				break;
@@ -166,8 +288,8 @@ class hsw {
 			case 'change':
 				$pushMsg = Chat::change( $data );
 				break;
-			case 'create_packet':
 			case 'rob_packet':
+			case 'create_packet':
 			case 'which_send_packet':
 			case 'system_prompt_next_packet':
 			case 'system_prompt_next_packet_done':

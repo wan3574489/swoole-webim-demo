@@ -1,0 +1,3586 @@
+.balance span:after, .ic_chat:before, .ic_record:before, .ic_tool:after, .ic_tool:before, .payWay > li > i.active:after {
+    content: ''
+}
+
+.fromWhere, .noticeInfo_text span, .send_person em {
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+#confirm:active, .backBagBtn:active, .buyBtn:active, .cancel:active, .getRedpack a:active, .ic_chat:active, .ic_options:active, .ic_record:active, .ic_tool:active, .joinroomBox, .kld-add:active, .kld-pay:active, .kld-reduce:active, .kldBox span:active, .moreOptions ul li:active, .mybeans span:nth-child(2):active, .noCard_yesBtn:active, .qd_btn:active, .yesBtn:active {
+    opacity: .6
+}
+
+body {
+    overflow: hidden
+}
+
+.main.hide {
+    visibility: hidden;
+    display: block
+}
+
+#openScroller {
+    background: #fff
+}
+
+.header {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 4rem
+}
+
+.userName {
+    color: #bf5926;
+    font-size: 1rem;
+    padding-left: .5rem
+}
+
+.otheruserInfoContent {
+    display: inline-block
+}
+
+.sendInfo {
+    display: inline-block !important;
+    width: 3rem;
+    height: 2rem;
+    border-radius: .2rem;
+    background: #26bf26;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 2rem;
+    vertical-align: top;
+    margin-top: 1.1rem
+}
+
+.box_right, .getRedpack em, .ic_getRedpack, .ic_head, .userGet {
+    display: inline-block
+}
+
+.sendInfo:active {
+    background: #1bad16
+}
+
+.white_bg {
+    background: #fff !important
+}
+
+.white_bg span:nth-child(2) {
+    border-right: .5rem solid #fff !important
+}
+
+.welfare_bg {
+    background: #E90100 !important
+}
+
+.ic_mark {
+    position: absolute;
+    width: 1.46rem;
+    height: 1.46rem;
+    margin-top: -.05rem;
+    background: url(../images/redpackKld/ic_vip.png) center no-repeat;
+    background-size: 100%;
+    left: 0;
+    top: 0
+}
+
+.textBox {
+    width: 22rem;
+    position: relative;
+    margin-top: 1rem;
+    padding-bottom: 1rem
+}
+
+.ic_head {
+    width: 3.2rem;
+    height: 3.2rem;
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+    margin-left: .57rem;
+    font-size: 0;
+    background: #fff
+}
+
+.box_content, .box_content1 {
+    position: relative;
+    background: #F9F1E6;
+    color: #bf5926;
+    margin-top: .3rem
+}
+
+.ic_head img {
+    border-radius: 3.5rem
+}
+
+.box_right {
+    max-width: 16.8rem;
+    vertical-align: top;
+    margin-left: .6rem
+}
+
+.balance span, .ic_getRedpack, .ic_time_mark, .no_notice span {
+    vertical-align: middle
+}
+
+.box_title {
+    color: #bf5926;
+    font-size: 1rem;
+    padding-left: .5rem
+}
+
+.box_content {
+    font-size: 1.15rem;
+    border: .1rem solid #E6DED3;
+    border-radius: .3rem;
+    padding: .8rem .57rem;
+    text-align: justify
+}
+
+.box_content1 {
+    font-size: 1.25rem;
+    border: .1rem solid #E6DED3;
+    border-radius: .3rem;
+    padding: .8rem .5rem;
+    text-align: center
+}
+
+.box_content span:nth-child(1), .box_content span:nth-child(2), .box_content1 span:nth-child(1), .box_content1 span:nth-child(2) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent
+}
+
+.box_content1 span:nth-child(1) {
+    border-right: .5rem solid #E6DED3;
+    left: -.5rem
+}
+
+.box_content1 span:nth-child(2) {
+    border-right: .5rem solid #fff;
+    left: -.4rem
+}
+
+.box_content span:nth-child(1) {
+    border-right: .5rem solid #E6DED3;
+    left: -.5rem
+}
+
+.box_content span:nth-child(2) {
+    border-right: .5rem solid #F9F1E6;
+    left: -.4rem
+}
+
+.redpackBox {
+    height: 7.14rem
+}
+
+.redpack {
+    position: relative;
+    color: #bf5926;
+    border: .1rem solid #E6DED3;
+    border-radius: .4rem;
+    background: #fff;
+    margin-top: .3rem
+}
+
+.redpack_top {
+    background: #fa9d3b;
+    height: 5.2rem;
+    width: 16.6rem;
+    border-radius: .3rem .3rem 0 0
+}
+
+.ic_redpack {
+    position: relative;
+    width: 4.5rem;
+    height: 5.2rem
+}
+
+.ic_redpack img {
+    width: 2.8rem;
+    height: 3.2rem;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.redpack_right {
+    position: relative;
+    top: .95rem;
+    height: 3.2rem;
+    padding-right: .3rem
+}
+
+.redpack span:nth-child(1), .redpack span:nth-child(2) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    top: .5rem
+}
+
+.redpack_title {
+    font-size: 1.15rem;
+    color: #fff
+}
+
+.redpack_text {
+    font-size: 1rem;
+    color: #fcfcfc;
+    margin-top: .2rem
+}
+
+.kdredpack {
+    font-size: .875rem;
+    color: #929292;
+    padding: .2rem 0 .2rem .8rem
+}
+
+.redpack span:nth-child(1) {
+    border-right: .5rem solid #E6DED3;
+    left: -.5rem
+}
+
+.redpack span:nth-child(2) {
+    border-right: .5rem solid #fa9d3b;
+    left: -.4rem
+}
+
+.ic_nextsend img, .userInfo_right img {
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+
+.getRedpack {
+    max-width: 22rem;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    margin: 1rem auto;
+    border-radius: .25rem;
+    background: #D8D4D3;
+    color: #fff;
+    padding: .2rem 1rem;
+    font-size: 1rem;
+    position: relative
+}
+
+.ic_getRedpack {
+    width: 1.15rem;
+    height: 1.43rem;
+    background: url(../images/redpackKld/ic_redbag.png) center no-repeat;
+    background-size: 100%
+}
+
+.getRedpack em {
+    color: #fff;
+    width: -webkit-fit-content;
+    width: -moz-fit-content
+}
+
+.redcolor {
+    color: #ff2739
+}
+
+.getRedpack span, .textColor {
+    color: #fc9732
+}
+
+.nextsend {
+    width: 20.8rem;
+    height: 3.82rem;
+    margin: 1.5rem auto;
+    border: .1rem solid #EDD4B4;
+    background: #fef1d7;
+    text-align: center;
+    border-radius: .4rem
+}
+
+.ic_nextsend {
+    position: relative;
+    width: 4rem;
+    height: 3.82rem
+}
+
+.ic_nextsend img {
+    width: 3rem;
+    height: 3rem;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    border-radius: 100%
+}
+
+.send_person {
+    display: flex;
+    line-height: 3.6rem;
+    font-size: 1.15rem;
+    color: #bf5926
+}
+
+.balance span, .ic_cashRight, .ic_chat:before, .ic_record:before, .ic_tool:after, .ic_tool:before, .otherUser_left, .otherUser_right, .send_person em, .userInfo_left {
+    display: inline-block
+}
+
+.send_person em {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    max-width: 7rem;
+    color: #ed1126;
+    white-space: nowrap
+}
+
+.userInfo {
+    width: 100%;
+    position: relative;
+    margin-top: 2rem
+}
+
+.userInfo_right {
+    width: 4.5rem;
+    height: 3.5rem;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.userInfo_right img {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    border-radius: 3.5rem;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.otherUser_left, .userInfo_left {
+    width: -moz-fit-content;
+    font-size: 1.15rem;
+    max-width: 18rem;
+    white-space: normal
+}
+
+.userInfo_left {
+    width: -webkit-fit-content;
+    border: .1rem solid #EDD4B4;
+    padding: 1rem .5rem;
+    background: #a0e75a;
+    color: #333;
+    position: relative;
+    float: right;
+    right: 4.8rem;
+    border-radius: .5rem
+}
+
+.userInfo_left span:nth-child(1), .userInfo_left span:nth-child(2) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    top: 1rem
+}
+
+.userInfo_left span:nth-child(1) {
+    border-left: .5rem solid #EDD4B4;
+    right: -.5rem
+}
+
+.userInfo_left span:nth-child(2) {
+    border-left: .5rem solid #a0e75a;
+    right: -.4rem
+}
+
+.otheruserInfo {
+    width: 100%;
+    position: relative;
+    margin-top: 1rem
+}
+
+.otherUser_right {
+    width: 4.5rem;
+    height: 3.5rem;
+    margin-left: .5rem
+}
+
+.otherUser_right img {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 3.5rem
+}
+
+.otherUser_left {
+    width: -webkit-fit-content;
+    border: .1rem solid #EDD4B4;
+    padding: 1rem .5rem;
+    background: #fff;
+    color: #333;
+    float: left;
+    border-radius: .5rem;
+    margin-top: .2rem
+}
+
+.otherUser_left span:nth-child(1), .otherUser_left span:nth-child(2) {
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    top: 1rem;
+    position: absolute
+}
+
+.otherUser_left span:nth-child(1) {
+    border-right: .5rem solid #EDD4B4;
+    left: -.5rem
+}
+
+.otherUser_left span:nth-child(2) {
+    border-right: .5rem solid #fff;
+    left: -.4rem
+}
+
+#forBottom {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    height: .2rem
+}
+
+.ic_redpack {
+    background: url(../images/redpackKld/ic_redpack.png) center no-repeat;
+    background-size: 66%
+}
+
+.mybox {
+    position: relative;
+    margin: 1rem auto;
+    border-radius: .5rem;
+    height: 8rem
+}
+
+.myredpack {
+    position: absolute;
+    width: 16.8rem;
+    height: 7.14rem;
+    right: 4.8rem;
+    background: #fff;
+    border-radius: .3rem
+}
+
+.myredpack span:nth-child(1), .myredpack span:nth-child(2) {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .5rem solid transparent;
+    border-bottom: .5rem solid transparent;
+    top: 1rem
+}
+
+.ic_img {
+    position: absolute;
+    right: .5rem
+}
+
+.myredpack span:nth-child(1) {
+    border-left: .5rem solid #EDD4B4;
+    right: -.5rem
+}
+
+.myredpack span:nth-child(2) {
+    border-left: .5rem solid #fa9d3b;
+    right: -.4rem
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    background: #302627;
+    width: 100%;
+    height: 4.21rem;
+    z-index: 99
+}
+
+.footBox {
+    align-items: center;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-box-pack: Justify;
+    padding: 0 1.15rem;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box
+}
+
+.foot_l p {
+    color: #7c6769;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    margin-left: .3rem
+}
+
+.balance {
+    min-width: 8rem;
+    height: 1.714rem;
+    border-radius: 1rem;
+    background: #1f1616;
+    color: #ffb726;
+    position: relative
+}
+
+.balance span {
+    width: 100%;
+    margin-left: .5rem;
+    line-height: 1.714rem;
+    font-size: 1rem
+}
+
+.ic_chat, .ic_record, .ic_tool {
+    margin-left: .875rem
+}
+
+.balance span:after {
+    display: inline-block;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../../images/kldShop/ic_kld_add.png) center no-repeat;
+    background-size: 1rem;
+    position: absolute;
+    top: .25rem;
+    right: .5rem
+}
+
+.ic_chat, .ic_chat:before, .ic_record, .ic_record:before, .ic_tool {
+    width: 2.57rem;
+    height: 2.57rem;
+    border-radius: 100%
+}
+
+.ic_chat {
+    background: url(../images/redpackKld/ic_chat.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_chat:before {
+    background: url(../images/redpackKld/ic_lock.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_record {
+    background: url(../images/redpackKld/ic_record.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_record:before {
+    background: url(../images/redpackKld/ic_lock.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_tool {
+    background: url(../images/redpackKld/ic_tool.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_tool:before {
+    width: 2.2rem;
+    height: 1.6rem;
+    border-radius: 100%;
+    background: url(../images/redpackKld/ic_new.png) center no-repeat;
+    background-size: 2.1rem;
+    position: relative;
+    top: -.6rem;
+    left: -.2rem;
+    z-index: 1
+}
+
+.ic_options, .ic_tool:after {
+    width: 2.57rem;
+    height: 2.57rem;
+    border-radius: 100%
+}
+
+.ic_tool:after {
+    position: absolute;
+    background: url(../images/redpackKld/ic_lock.png) center no-repeat;
+    background-size: 100%;
+    margin-left: -2.2rem
+}
+
+.ic_options {
+    background: url(../images/redpackKld/ic_options.png) center no-repeat;
+    background-size: 100%;
+    margin-left: .875rem
+}
+
+.moreOptions {
+    width: 7.5rem;
+    position: absolute;
+    bottom: 5rem;
+    right: 1.15rem;
+    background: #725054;
+    border-radius: .3rem;
+    z-index: 11
+}
+
+.moreOptions span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: .6rem solid transparent;
+    border-right: .6rem solid transparent;
+    border-top: .7rem solid #725054;
+    bottom: -.5rem;
+    right: .8rem
+}
+
+.moreOptions ul li {
+    text-align: center;
+    padding: .8rem 1.2rem;
+    font-size: 1.15rem;
+    color: #fff;
+    border-top: .1rem solid #422021
+}
+
+.openRedpack_text, .user_name {
+    color: #f9c69c;
+    text-align: center
+}
+
+.moreOptions ul li:active {
+    background: #422021
+}
+
+.noRedpack, .openRedpack {
+    position: absolute;
+    height: 27.4rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -10.1rem;
+    background: #d84e43;
+    border-radius: .5rem;
+    width: 20.2rem;
+    z-index: 101
+}
+
+.noRedpack {
+    margin-top: -13.7rem
+}
+
+.margintop {
+    margin-top: 2rem !important
+}
+
+.openRedpack {
+    margin-top: -13.7rem
+}
+
+.openRedpack_box {
+    width: 20.2rem;
+    height: 19.3rem;
+    background: url(../images/redpackKld/red_bg.png) center no-repeat;
+    background-size: 100%;
+    background-position-y: inherit
+}
+
+.user_head {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto;
+    padding-top: 3rem
+}
+
+.user_head img {
+    border-radius: 3rem
+}
+
+.ic_open {
+    width: 7.5rem;
+    height: 7.5rem;
+    margin: 0 auto;
+    position: relative;
+    top: -5.5rem
+}
+
+.user_name {
+    font-size: 1rem;
+    margin-top: .6rem
+}
+
+.openRedpack_text {
+    font-size: 1.15rem;
+    margin-top: .5rem
+}
+
+.openRedpack_text1 {
+    text-align: center;
+    font-size: 1.7rem;
+    color: #ffe2b1;
+    margin-top: 1.3rem
+}
+
+.lookluck {
+    text-align: center;
+    color: #f9c69c;
+    position: relative;
+    top: 5rem
+}
+
+.ic_cashRight {
+    width: .8rem;
+    height: .8rem;
+    background: url(../images/redpackKld/ic_cashright.png) center no-repeat;
+    background-size: 100%
+}
+
+.ic_del {
+    position: absolute;
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url(../images/redpackKld/ic_del.png) center no-repeat;
+    background-size: 1.2rem;
+    left: .5rem;
+    top: .6rem
+}
+
+.noWelfareBag, .welfareBag {
+    position: absolute;
+    width: 20.2rem;
+    height: 27.4rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -10.1rem;
+    margin-top: -13.7rem;
+    background: #d9ab41;
+    z-index: 101;
+    border-radius: .5rem;
+    overflow: hidden
+}
+
+.openBoxList_head img, .user_img img {
+    border-radius: 100%
+}
+
+.welfareBag_box {
+    width: 20.3rem;
+    height: 19.3rem;
+    background: url(../images/redpackKld/yellow_bg.png) center no-repeat;
+    background-size: 100%;
+    background-position-y: inherit
+}
+
+.welfare_name {
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    margin-top: .6rem
+}
+
+.openRedpack_text2 {
+    text-align: center;
+    font-size: 1.7rem;
+    color: #fff;
+    margin-top: 2rem
+}
+
+.whiteluck {
+    color: #fff
+}
+
+.ic_whiteRight {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    background: url(../images/redpackKld/ic_whiteright.png) center no-repeat;
+    background-size: 100%
+}
+
+.welfareBag_text {
+    color: #6f3422;
+    font-size: .875rem;
+    text-align: center;
+    margin-top: .5rem
+}
+
+.welfareBag_num {
+    text-align: center;
+    color: #e96e00;
+    font-size: 1rem;
+    margin-top: .3rem
+}
+
+.openRedpack_text3 {
+    text-align: center;
+    font-size: 1.7rem;
+    color: #fff;
+    margin-top: 1rem
+}
+
+.ic_reddel {
+    position: absolute;
+    display: block;
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url(../images/redpackKld/ic_reddel.png) center no-repeat;
+    background-size: 1.2rem;
+    left: .5rem;
+    top: .6rem
+}
+
+.redpackResultMain {
+    background: #fff;
+    position: relative;
+    z-index: 1
+}
+
+.redpackResult {
+    background: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%
+}
+
+.openEnd {
+    height: 4rem;
+    background: url(../images/redpackKld/open_bg.png) center no-repeat;
+    background-size: 100%
+}
+
+.openEndTitle {
+    position: relative;
+    height: 4rem;
+    z-index: 1;
+    background: rgba(254, 39, 39, 1)
+}
+
+.openEndTitle span {
+    line-height: 4rem;
+    padding-left: 1rem;
+    font-size: 1.15rem;
+    color: #ffe4b2
+}
+
+.openEndTitleMain {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.openEndh1 {
+    font-size: 1.25rem;
+    color: #ffe4b2;
+    text-align: center
+}
+
+.openEndh2 {
+    font-size: .875rem;
+    color: #ffe4b2;
+    text-align: center
+}
+
+.openEndMiddle {
+    position: relative;
+    top: -2rem;
+    padding-bottom: .8rem
+}
+
+.user_img {
+    width: 5.14rem;
+    height: 5.14rem;
+    margin: 0 auto
+}
+
+.openEndname {
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+    margin-top: .5rem
+}
+
+.openEndNum, .openEndname2 {
+    font-size: 1.15rem;
+    text-align: center
+}
+
+.openEndname2 {
+    color: #999;
+    margin-top: .3rem
+}
+
+.openEndNum {
+    color: #333;
+    margin-top: 1rem
+}
+
+.openEndNum em {
+    font-size: 4rem
+}
+
+.openEndnotice {
+    font-size: 1rem;
+    color: #4365aa;
+    text-align: center
+}
+
+.getRedpacknotice {
+    height: 3rem;
+    line-height: 3rem;
+    background: #f5f1f0;
+    padding-left: 1rem;
+    color: #999
+}
+
+.openBoxList {
+    height: 5.14rem;
+    position: relative;
+    border-top: .1rem solid #F5F5F5
+}
+
+.openBoxList_head {
+    width: 3.43rem;
+    height: 3.43rem;
+    margin-left: 1rem;
+    margin-top: .98rem
+}
+
+.openBoxList_name span {
+    line-height: 5.15rem;
+    margin-left: 1rem;
+    color: #333;
+    font-size: 1.15rem
+}
+
+.openBoxList_num {
+    position: absolute;
+    right: 1rem;
+    top: 1.7rem;
+    color: #666
+}
+
+.openBoxList_num em {
+    font-size: 1.7rem
+}
+
+.ic_lucky {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3rem;
+    height: 2.5rem;
+    background: url(../images/redpackKld/ic_lucky1.png) center no-repeat;
+    background-size: 100%
+}
+
+.redpackNotice, .welfareRule {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 101
+}
+
+.welfareRule {
+    width: 20.2rem;
+    background: #302627;
+    margin-left: -10.1rem;
+    margin-top: -13.7rem;
+    border-radius: .5rem;
+    padding: 0 1.15rem 1.15rem;
+    box-sizing: border-box
+}
+
+.welfareRuleContent p {
+    font-size: 1.15rem;
+    color: #fff;
+    line-height: 1.4rem;
+    text-align: justify;
+    margin-top: .35rem
+}
+
+.welfareRule img {
+    margin-top: -2rem
+}
+
+.knowBtn {
+    display: block;
+    width: 17.1rem;
+    height: 3.14rem;
+    border: 0;
+    border-radius: .5rem;
+    background: #d43a39;
+    color: #fff;
+    font-size: 1.35rem;
+    margin: 1.15rem auto 0
+}
+
+.redpackNotice {
+    width: 20.2rem;
+    height: 15.8rem;
+    background: #fff;
+    margin-left: -10.1rem;
+    margin-top: -7.9rem;
+    border-radius: .5rem
+}
+
+.redpackNotice_title {
+    height: 4.14rem;
+    line-height: 4.14rem;
+    margin-left: 1rem;
+    font-size: 1.35rem;
+    padding-top: .3rem
+}
+
+.add_yes, .no_notice span {
+    width: 1.4rem;
+    height: 1.4rem
+}
+
+.redpackNoticeContent {
+    padding: 0 2rem 1rem 1rem;
+    text-align: justify
+}
+
+.redpackNoticeContent p {
+    color: #333;
+    font-size: 1.15rem
+}
+
+.redpackNoticeContent p:nth-child(1) {
+    font-size: 1.15rem;
+    color: #70271d;
+    margin-bottom: .8rem
+}
+
+.redpackNoticeContent p em {
+    color: #ff2739
+}
+
+.no_notice {
+    margin-left: 1rem;
+    color: #4365aa;
+    font-size: 1rem;
+    margin-top: .6rem
+}
+
+.no_notice span {
+    display: inline-block;
+    border: .1rem solid #D9D9D9;
+    border-radius: 1rem;
+    position: relative;
+    top: -.1rem
+}
+
+.add_yes {
+    background: url(../images/redpackKld/btn_single_press.png) center no-repeat;
+    background-size: 2.2rem;
+    border: .1rem solid #ff2739 !important
+}
+
+.toBuy {
+    position: absolute;
+    width: 20.6rem;
+    background: #302627;
+    top: 50%;
+    left: 50%;
+    margin-left: -10.3rem;
+    margin-top: -11.9rem;
+    border-radius: .5rem;
+    z-index: 101;
+    padding: 0 1.15rem 1.15rem;
+    box-sizing: border-box
+}
+
+.ic_rmb {
+    width: 6.4rem;
+    height: 6.4rem;
+    margin: 2rem auto 1rem
+}
+
+.toBuy_title {
+    color: #fff;
+    font-size: 1.35rem;
+    text-align: center;
+    line-height: 2rem
+}
+
+.toBuy_num {
+    font-size: 1.15rem;
+    text-align: center;
+    color: #999;
+    background: #1f1616;
+    border-radius: 1rem;
+    max-width: 13rem;
+    margin: .5rem auto 1.5rem;
+    padding: .2rem .3rem;
+    box-sizing: border-box;
+    height: 1.9rem
+}
+
+.toBuy p {
+    color: #997a7d;
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.3rem
+}
+
+.toBuy p em {
+    color: #fdd384
+}
+
+.buyBtn {
+    display: block;
+    border: 0;
+    width: 17.8rem;
+    height: 3.5rem;
+    background: #d43a39;
+    margin: 1rem auto 0;
+    color: #fff;
+    border-radius: .5rem;
+    font-size: 1.35rem
+}
+
+.ic_yuan_del {
+    display: block;
+    position: absolute;
+    top: -3.6rem;
+    right: -1.2rem;
+    width: 4.5rem;
+    height: 4.5rem;
+    background: url(../images/redpackKld/ic_delete.png) center no-repeat;
+    background-size: 2rem
+}
+
+.buyFailure, .buySuccess, .buying {
+    top: 50%;
+    left: 50%;
+    z-index: 101
+}
+
+.cashNum, .newRedpack {
+    right: 1rem;
+    position: absolute
+}
+
+.buyFailure {
+    position: absolute;
+    width: 20rem;
+    height: 20.2rem;
+    background: #fff;
+    margin-left: -10rem;
+    margin-top: -10.1rem;
+    border-radius: .5rem
+}
+
+.ic_lost {
+    width: 6.42rem;
+    height: 6.42rem;
+    margin: 2.5rem auto 1rem
+}
+
+.buyFailure_title {
+    text-align: center;
+    color: #333;
+    font-size: 1.35rem
+}
+
+.buyFailure_text {
+    text-align: center;
+    color: #999;
+    font-size: 1.15rem;
+    margin-top: .3rem
+}
+
+.confirmBtn {
+    display: block;
+    border: 0;
+    width: 17.8rem;
+    height: 3.5rem;
+    background: #1bad16;
+    margin: 2rem auto 1rem;
+    color: #fff;
+    border-radius: .5rem;
+    font-size: 1.35rem
+}
+
+.buySuccess {
+    position: absolute;
+    width: 20rem;
+    height: 22.4rem;
+    background: #fff;
+    margin-left: -10rem;
+    margin-top: -11.2rem;
+    border-radius: .5rem
+}
+
+.ic_success {
+    width: 6.42rem;
+    height: 6.42rem;
+    margin: 2.5rem auto 1rem
+}
+
+.buySuccess_title {
+    text-align: center;
+    color: #333;
+    font-size: 1.35rem
+}
+
+.buySuccess_text {
+    text-align: center;
+    color: #70271d;
+    font-size: 1.15rem;
+    margin-top: .3rem
+}
+
+.finishBtn {
+    display: block;
+    border: 0;
+    width: 17.8rem;
+    height: 3.5rem;
+    background: #1bad16;
+    margin: 2rem auto 1rem;
+    color: #fff;
+    border-radius: .5rem;
+    font-size: 1.35rem
+}
+
+.buySuccess_text1 {
+    text-align: center;
+    color: #999;
+    font-size: 1rem;
+    margin-top: 1rem
+}
+
+.buying {
+    position: absolute;
+    width: 20rem;
+    background: #fff;
+    margin-left: -10rem;
+    margin-top: -10.1rem;
+    border-radius: .5rem;
+    padding-bottom: 1.2rem
+}
+
+.buying_title {
+    margin-left: 1rem;
+    color: #333;
+    font-size: 1.35rem;
+    margin-top: 2rem
+}
+
+.toBuyNum {
+    width: 17.7rem;
+    margin: 2rem auto 1rem
+}
+
+.add, .reduce {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.35rem
+}
+
+.reduce {
+    border: 0;
+    color: #ccc;
+    border-radius: .4rem;
+    background: #f5f5f5
+}
+
+.reduce:active {
+    background: #F5F1F0
+}
+
+.add {
+    border: 0;
+    color: #fff;
+    border-radius: .4rem;
+    background: #1bad16
+}
+
+.add:active {
+    background: #26bf26
+}
+
+.buying_text {
+    width: 9.7rem;
+    height: 3rem;
+    border: .1rem solid #EBEBEB;
+    border-radius: .4rem;
+    text-align: center;
+    font-size: 1.35rem;
+    color: #333;
+    margin-left: .4rem;
+    margin-right: .4rem;
+    background: #F5F5F5
+}
+
+.buying p {
+    margin: 1.5rem 1rem 0;
+    color: #999;
+    font-size: 1rem
+}
+
+.buying p em {
+    color: #70271d
+}
+
+.wxbuyBtn, .zfbBtn {
+    display: block;
+    width: 17.8rem;
+    height: 3.5rem;
+    color: #fff;
+    font-size: 1.35rem
+}
+
+.wxbuyBtn {
+    border: 0;
+    background: #1bad16;
+    margin: 2rem auto 0;
+    border-radius: .5rem
+}
+
+.wxbuyBtn:active {
+    background: #7ce073
+}
+
+.zfbBtn {
+    border: 0;
+    background: #00b9f2;
+    margin: 1rem auto 0;
+    border-radius: .5rem
+}
+
+.ic_groupBox, .ic_left, .redpackRecord_title, .reward_img, .reward_text, .usertext img {
+    display: inline-block
+}
+
+.zfbBtn:active {
+    background: #79d6f2
+}
+
+#recordWarper {
+    background: #fff
+}
+
+.redpackRecord {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.redpackRecord_head {
+    position: relative;
+    height: 4rem;
+    background: #d84e43;
+    line-height: 4rem;
+    top: 0;
+    left: 0;
+    z-index: 1
+}
+
+#recordScroller {
+    margin-bottom: 2rem
+}
+
+.redpackRecord_title {
+    color: #ffe4b2;
+    font-size: 1.35rem;
+    margin-left: 1rem;
+    font-weight: 600
+}
+
+.ic_left {
+    width: 1rem;
+    height: 1rem;
+    background: url(../images/redpackKld/ic_yellowleft.png) center no-repeat;
+    background-size: .7rem;
+    margin-left: 1.2rem
+}
+
+.redpackRecordMain {
+    padding-bottom: 1rem;
+    background: #fff
+}
+
+.redpackMain {
+    background: #fff;
+    position: relative;
+    z-index: 1
+}
+
+.redpackRecord_head_img {
+    width: 6rem;
+    height: 6rem;
+    margin: 0 auto;
+    padding-top: 2rem
+}
+
+.redpackRecord_head_img img {
+    border-radius: 6rem
+}
+
+.redRecordName {
+    text-align: center;
+    font-size: 1.15rem;
+    color: #333;
+    margin-top: .5rem
+}
+
+.redRecordtext {
+    text-align: center;
+    font-size: 1rem;
+    color: #999;
+    margin-top: .2rem
+}
+
+.redtotal, .robBox {
+    margin-top: 1rem;
+    text-align: center
+}
+
+.redtotal {
+    font-size: 1.15rem;
+    color: #333
+}
+
+.redtotal em {
+    font-size: 4rem
+}
+
+.robBox {
+    width: 50%
+}
+
+.num, .num1 {
+    font-size: 1.7rem;
+    color: #999
+}
+
+.join_record, .robText {
+    color: #999;
+    font-size: 1rem
+}
+
+.join_record {
+    height: 2.85rem;
+    line-height: 2.85rem;
+    padding-left: 1rem;
+    background: #F5F2F0
+}
+
+.redpackRecordBox {
+    background: #fff;
+    min-height: 16rem
+}
+
+.redpackRecordList {
+    position: relative;
+    height: 5.35rem;
+    border: .1rem solid #F5F5F5
+}
+
+.dot {
+    width: .8rem;
+    height: .8rem;
+    background: #cccaca;
+    border-radius: 1rem;
+    margin-left: 1rem;
+    margin-top: 1.6rem
+}
+
+.redpackRecordContent {
+    margin-top: 1.4rem;
+    margin-left: .5rem
+}
+
+.other_name {
+    font-size: 1.15rem;
+    color: #333
+}
+
+.other_name em {
+    color: #f19149
+}
+
+.redpackRecordTime {
+    font-size: 1rem;
+    color: #999;
+    margin-top: .3rem
+}
+
+.cashNum {
+    color: #666;
+    font-size: 1rem;
+    top: 1.5rem
+}
+
+.cashNum em {
+    font-size: 1.7rem
+}
+
+.late {
+    font-size: 1.35rem;
+    color: #333;
+    text-align: center;
+    margin-top: 3rem
+}
+
+.newRedpack {
+    width: 4.35rem;
+    height: 4.35rem;
+    bottom: 5.5rem;
+    border: .1rem solid #DCDBDB;
+    background: #fff;
+    border-radius: .4rem;
+    z-index: 5
+}
+
+.newRedpack img {
+    width: 2.7rem;
+    height: 3.1rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.newRedpack span:nth-child(1), .newRedpack span:nth-child(2) {
+    width: 0;
+    height: 0;
+    border-right: .5rem solid transparent;
+    left: 1.7rem;
+    position: absolute;
+    border-left: .5rem solid transparent
+}
+
+.newRedpack span:nth-child(1) {
+    border-top: .5rem solid #DCDBDB;
+    bottom: -.5rem
+}
+
+.newRedpack span:nth-child(2) {
+    border-top: .5rem solid #fff;
+    bottom: -.4rem
+}
+
+.ic_groupBox {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    right: 0;
+    top: 0
+}
+
+.ic_groupBox:active {
+    background: #323036
+}
+
+.reward {
+    width: 20.4rem;
+    height: 7.42rem;
+    margin: 1.5rem auto;
+    background: url(../images/redpackKld/reward_bg.png) center no-repeat;
+    background-size: 100%;
+    position: relative
+}
+
+.reward_img {
+    width: 4.4rem;
+    height: 5.42rem;
+    position: relative;
+    top: 1.85rem
+}
+
+.reward_img img {
+    position: absolute;
+    width: 3.42rem;
+    height: 3.42rem;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    border-radius: 100%
+}
+
+#facebox, #wrapper, .joinroomBox, .noDie, .reward_text {
+    position: relative
+}
+
+.reward_text {
+    top: .35rem
+}
+
+.reward_text1 {
+    font-size: 1.15rem;
+    color: #333;
+    white-space: nowrap
+}
+
+.reward_text1 em {
+    color: #ff2739
+}
+
+.reward_text2 {
+    color: #999;
+    font-size: 1rem
+}
+
+.reward_text2 em {
+    font-size: 1.15rem;
+    color: #ff2739
+}
+
+.reward_text2 span {
+    color: #ff2739
+}
+
+.joinroomBox {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden;
+    z-index: 2;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    background: #fef1d7
+}
+
+.joinBox {
+    width: 18rem;
+    margin: 0 auto
+}
+
+#wrapper {
+    z-index: 1;
+    margin-top: 1rem
+}
+
+.rotate45 {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+#facebox {
+    padding-bottom: 1rem;
+    padding-top: 1.5rem;
+    width: 88%;
+    margin: 0 auto;
+    background: #F7F7FA
+}
+
+.usertext img {
+    width: 3rem;
+    height: 3rem;
+    background: 0 0
+}
+
+#facebox td img {
+    width: 2rem;
+    height: 2rem
+}
+
+.noDie {
+    width: 20.4rem;
+    height: 4.5rem;
+    background: url(../images/redpackKld/ic_noDie_bg.png) center no-repeat;
+    margin: 1.5rem auto;
+    background-size: 100%
+}
+
+.noDieBox {
+    position: absolute;
+    width: 20rem;
+    height: 20.8rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -10rem;
+    margin-top: -10.1rem;
+    border-radius: .5rem;
+    z-index: 101;
+    background: #fff;
+    text-align: center;
+    overflow: hidden
+}
+
+.my-noDie-num {
+    font-size: 1.15rem;
+    color: #333;
+    padding: .5rem 0
+}
+
+.my-noDie-num em {
+    font-size: 1.8rem;
+    color: #fa0e21;
+    padding: 0 .2rem
+}
+
+.my-noDie-hint {
+    color: #999;
+    line-height: 2
+}
+
+.my-noDie-hint .fred {
+    color: #ff3347
+}
+
+.lookActivity {
+    width: 17.85rem;
+    height: 3.4rem;
+    margin: .7rem auto;
+    border: 0;
+    border-radius: .4rem;
+    background: #ff1a30;
+    color: #fff;
+    font-size: 1.15rem
+}
+
+.lookActivity:active {
+    background: #fb5565
+}
+
+.noDieBar {
+    position: fixed;
+    right: 2rem;
+    bottom: 10rem;
+    width: 5.4rem;
+    height: 4.4rem;
+    background: url(../images/redpackKld/ic_noDieBar.png) center no-repeat;
+    background-size: 100%;
+    z-index: 10
+}
+
+.noDieBar em {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    color: #fa0e21;
+    right: -.7rem
+}
+
+.noDie-info {
+    margin-left: 5rem;
+    padding-top: .85rem;
+    color: #bf5926;
+    line-height: 1.4
+}
+
+.toolShop {
+    position: absolute;
+    width: 22.8rem;
+    height: 31.5rem;
+    top: 50%;
+    left: 50%;
+    margin-left: -11.4rem;
+    margin-top: -15rem;
+    background: #302627;
+    padding: 0 1.15rem 1.15rem;
+    box-sizing: border-box;
+    border-radius: .3rem;
+    z-index: 101
+}
+
+.toolshop_bg {
+    margin-top: -4rem
+}
+
+.mybeans {
+    line-height: 2.4rem;
+    font-size: 1rem;
+    position: relative
+}
+
+.mybeans span:nth-child(1) {
+    color: #fff
+}
+
+.mybeans span:nth-child(2) {
+    position: absolute;
+    color: #ffb1b1;
+    right: 0
+}
+
+.mybeans span em {
+    color: #d43a39
+}
+
+.noticeInfo img {
+    width: 1.714rem;
+    height: 1.714rem;
+    border-radius: 100%;
+    margin-top: .2rem
+}
+
+.noticeInfo_text {
+    color: #eb9d52;
+    font-size: 1rem;
+    margin-left: .5rem;
+    display: inherit
+}
+
+.noticeInfo_text em {
+    color: #c22a29;
+    font-size: 1rem
+}
+
+.noticeInfo {
+    height: 2.14rem;
+    line-height: 2.14rem;
+    background: #1f1616;
+    padding: 0 .5rem;
+    border-radius: .3rem;
+    overflow: hidden
+}
+
+.noticeInfo ul {
+    overflow: hidden
+}
+
+.noticeInfo_text span {
+    display: inline-block;
+    max-width: 6.5rem;
+    white-space: nowrap
+}
+
+.record_main img {
+    width: 3.7rem;
+    height: 5rem;
+    margin: 0 auto
+}
+
+.activityBox li {
+    width: 47%;
+    height: 11.4rem;
+    background: #4e3f40;
+    border-radius: .3rem;
+    float: left;
+    margin-top: .5rem;
+    position: relative
+}
+
+.activityBox li:nth-of-type(even) {
+    margin-left: 5%
+}
+
+.record_text {
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.15rem;
+    color: #fff;
+    margin-top: 1rem;
+    padding-left: 1.5rem
+}
+
+.ic_about {
+    display: inline-block;
+    width: 1.42rem;
+    height: 1.42rem;
+    background: url(../images/redpackKld/ic_about.png) center no-repeat;
+    background-size: 100%;
+    position: relative;
+    top: .3rem;
+    left: .5rem
+}
+
+.record_time {
+    text-align: center;
+    background-color: rgba(63, 50, 52, .7);
+    border-radius: 1rem;
+    color: #fff;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    width: 5.28rem;
+    margin: -.7rem auto 0;
+    position: relative
+}
+
+.ic_time_mark {
+    display: inline-block;
+    width: .8rem;
+    height: .8rem;
+    background: url(../images/redpackKld/ic_time.png) center no-repeat;
+    background-size: 100%
+}
+
+.exchangeBean {
+    position: absolute;
+    height: 2.57rem;
+    width: 100%;
+    bottom: 0;
+    background: #d43a39;
+    margin-top: .3rem;
+    line-height: 2.57rem;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 0 0 .3rem .3rem
+}
+
+.infoBox, .noBeans {
+    border-radius: .3rem
+}
+
+.exchangeBean span:nth-child(1) {
+    color: #fff;
+    font-size: 1.15rem
+}
+
+.exchangeBean span:nth-child(2) {
+    font-family: "굴림";
+    color: #fff;
+    font-size: .8rem;
+    margin-left: .5rem
+}
+
+.left_day, .left_day_green {
+    width: 3.5rem;
+    height: 3.5rem;
+    color: #fff;
+    font-size: .875rem;
+    top: 0;
+    left: 0;
+    position: absolute
+}
+
+.exchangeBean span em {
+    text-decoration: line-through
+}
+
+.left_day {
+    background: url(../images/redpackKld/ic_left_top.png) center no-repeat;
+    background-size: 3.5rem
+}
+
+.left_day_green {
+    background: url(../images/redpackKld/ic_left_top_green.png) center no-repeat;
+    background-size: 3.5rem
+}
+
+.left_day span, .left_day_green span {
+    display: inline-block;
+    height: 3rem;
+    width: 3rem;
+    line-height: 2.3rem;
+    transform: rotate(-45deg);
+    text-align: center
+}
+
+.noOpen {
+    position: absolute;
+    width: 4rem;
+    top: 60%;
+    left: 50%;
+    margin-left: -2rem;
+    margin-top: -3rem
+}
+
+.noOpen img {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto
+}
+
+.noOpen p {
+    color: #7a6566;
+    font-size: 1rem;
+    margin-top: 1rem
+}
+
+@media screen and (max-height: 481px) {
+    .toolShop {
+        transform: scale(.85)
+    }
+}
+
+.infoBox {
+    position: absolute;
+    width: 15.2rem;
+    box-sizing: border-box;
+    padding: .6rem;
+    background: #201718;
+    color: #fff;
+    font-size: .95rem;
+    text-align: justify;
+    z-index: 1;
+    top: -5rem;
+    left: 5.3rem
+}
+
+.againConfirm, .noBeans {
+    box-sizing: border-box;
+    padding: 0 .5rem 1rem
+}
+
+.againConfirm p, .noBeans p {
+    text-align: center;
+    line-height: 2.8rem
+}
+
+.infoBox span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: .5rem solid transparent;
+    border-right: .5rem solid transparent;
+    border-top: .5rem solid #201718;
+    left: 2rem;
+    bottom: -.5rem
+}
+
+.revise {
+    top: -4rem;
+    left: -5rem
+}
+
+.revise span {
+    left: 12.2rem
+}
+
+.revise1 {
+    top: -4.6rem;
+    left: 5.85rem
+}
+
+.ic_detele {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute;
+    right: 1.2rem;
+    top: -4rem
+}
+
+.againConfirm, .lookBagCard, .noBeans {
+    top: 50%;
+    left: 50%;
+    z-index: 101;
+    position: absolute
+}
+
+.noBeans {
+    width: 20rem;
+    height: 13rem;
+    margin-left: -10rem;
+    margin-top: -6.5rem;
+    background: #302627
+}
+
+.ic_tip_bg {
+    margin-top: -2rem
+}
+
+.ic_kld {
+    width: 3.2rem;
+    height: 3.2rem;
+    margin: .5rem auto 0
+}
+
+.noBeans p {
+    color: #fff;
+    font-size: 1.35rem
+}
+
+.noBeansBtn {
+    height: 3.8rem;
+    margin-top: .3rem
+}
+
+#goGet, .cancel {
+    width: 7.78rem;
+    height: 2.57rem;
+    color: #fff;
+    font-size: 1.35rem
+}
+
+.cancel {
+    border: 0;
+    background: #4e3f40;
+    border-radius: .3rem;
+    margin-left: 1rem
+}
+
+#goGet {
+    border: 0;
+    background: #d43a39;
+    border-radius: .3rem;
+    margin-left: 1.2rem
+}
+
+#goGet:active {
+    opacity: .6
+}
+
+.againConfirm {
+    width: 20rem;
+    height: 13rem;
+    margin-left: -10rem;
+    margin-top: -6.5rem;
+    background: #302627;
+    border-radius: .3rem
+}
+
+.backBagCard, .lookBagCard {
+    padding: 2.85rem 1.15rem 1.15rem;
+    box-sizing: border-box
+}
+
+.againConfirm p {
+    color: #fff;
+    font-size: 1.35rem
+}
+
+.cardNum, .left_time {
+    line-height: 1.7rem;
+    color: #fff
+}
+
+#confirm {
+    border: 0;
+    width: 7.78rem;
+    height: 2.57rem;
+    background: #d43a39;
+    border-radius: .3rem;
+    color: #fff;
+    font-size: 1.35rem;
+    margin-left: 1.2rem
+}
+
+.lookBagCard {
+    width: 20rem;
+    margin-left: -10rem;
+    margin-top: -12.3rem;
+    background: #302627;
+    border-radius: .3rem
+}
+
+.getCard {
+    font-size: 1.35rem;
+    color: #fff;
+    text-align: center
+}
+
+.left_time, .lookBagCard p {
+    font-size: 1rem;
+    text-align: center
+}
+
+.getCard em, .lookBagCard p {
+    color: #fdd384
+}
+
+.lookBagCard img {
+    width: 14.2rem;
+    height: 13rem;
+    margin: 0 auto
+}
+
+.left_time {
+    width: 10rem;
+    background: #54484a;
+    border-radius: 1rem;
+    margin: -.8rem auto 0
+}
+
+.qd_btn {
+    display: block;
+    border: 0;
+    width: 15rem;
+    height: 3.14rem;
+    background: #d43a39;
+    border-radius: .3rem;
+    color: #fff;
+    font-size: 1.35rem;
+    margin: 1rem auto 0
+}
+
+.ic_cafei_del {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.8rem;
+    height: 2.8rem;
+    background: url(../images/redpackKld/ic_cafei_del.png) center no-repeat;
+    background-size: 1.2rem
+}
+
+.backBagCard, .dialog {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    z-index: 101
+}
+
+.backBagCard {
+    width: 20rem;
+    height: 24.6rem;
+    margin-left: -10rem;
+    margin-top: -12.3rem;
+    background: #302627;
+    border-radius: .3rem
+}
+
+.backBagCard img {
+    width: 14.2rem;
+    height: 14rem;
+    margin: 0 auto
+}
+
+.cardNum {
+    font-size: 1rem;
+    max-width: 8rem;
+    margin: -.8rem auto 0;
+    border-radius: 1rem;
+    background: #54484a;
+    text-align: center
+}
+
+.dialog {
+    width: 22.85rem;
+    height: 25rem;
+    background: #302627;
+    margin-left: -11.425rem;
+    margin-top: -12.5rem;
+    border-radius: .34rem
+}
+
+.dialog-close {
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    position: absolute;
+    right: .4rem;
+    top: 0
+}
+
+.getKld {
+    padding-top: 2.8rem;
+    height: 20rem;
+    margin-top: -10rem
+}
+
+.getKld .dialog-close {
+    top: -4rem
+}
+
+.getKld .title {
+    width: 21rem;
+    height: 6.5rem;
+    background: url(../images/redpackKld/tobuy_bg.png) top no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: -4rem;
+    left: .925rem
+}
+
+.getKld .kldBox {
+    width: 20.8rem;
+    margin: 0 auto;
+    position: relative;
+    line-height: 1.6rem;
+    color: #ecdbdb
+}
+
+.kldBox span {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #ffb1b1
+}
+
+.mykld {
+    line-height: 2rem
+}
+
+.mykld em {
+    color: #d43a39
+}
+
+.kldNumber {
+    width: 20.8rem;
+    height: 3.5rem;
+    margin: 1.4rem auto .8rem;
+    background: #201718;
+    border-radius: .35rem;
+    position: relative
+}
+
+.kld-add, .kld-reduce {
+    width: 4.36rem;
+    height: 3.5rem
+}
+
+.kld-reduce {
+    background: url(../../redpackGuess/images/ic_kld_reduce.png) center no-repeat #641e1e;
+    background-size: 36%;
+    border-radius: .35rem 0 0 .35rem
+}
+
+.kld-add {
+    background: url(../../redpackGuess/images/ic_kld_add.png) center no-repeat #cd3938;
+    background-size: 36%;
+    border-radius: 0 .35rem .35rem 0
+}
+
+.number-kld span {
+    height: 3.62rem;
+    display: inline-block;
+    vertical-align: top;
+    line-height: 3.62rem
+}
+
+.backBagBtn i, .kld-hint i, .kld_scroller li, .payWay > li > i {
+    vertical-align: middle
+}
+
+.kld-number {
+    text-align: center;
+    line-height: 3.62rem;
+    color: #ecdbdb;
+    font-size: 1.54rem
+}
+
+.kld-number span em {
+    font-weight: 700
+}
+
+.payRMB {
+    color: #d99898;
+    font-size: 1.15rem;
+    margin: 1rem
+}
+
+.payWay {
+    width: 20.8rem;
+    margin: 2rem auto;
+    color: #ecdbdb
+}
+
+.payWay > li > i {
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #201718;
+    margin-right: .3rem;
+    position: relative;
+    top: -.1rem
+}
+
+.payWay > li > i.active:after {
+    position: absolute;
+    top: .35rem;
+    left: .37rem;
+    height: .8rem;
+    width: .8rem;
+    border-radius: 50%;
+    background: #d43a39
+}
+
+.kld-pay {
+    display: block;
+    width: 20.4rem;
+    height: 3.14rem;
+    background: #d43a39;
+    color: #fff;
+    margin: 2rem auto 1rem;
+    border: 0;
+    border-radius: .3rem;
+    font-size: 1.35rem
+}
+
+.kld-hint {
+    width: 100%;
+    text-align: center;
+    color: #d99898
+}
+
+.kld-hint i {
+    width: 1.26rem;
+    height: 1.26rem;
+    background: url(../../redpackGuess/images/ic_kld_hint.png) center no-repeat;
+    background-size: 92%;
+    display: inline-block;
+    position: relative;
+    top: -.16rem;
+    right: -.2rem
+}
+
+.getKld p {
+    color: #997a7d;
+    font-size: 1rem;
+    text-align: center
+}
+
+.openResult {
+    position: absolute;
+    width: 20.6rem;
+    top: 50%;
+    left: 50%;
+    height: 27.4rem;
+    margin-top: -13.7rem;
+    margin-left: -10.3rem;
+    z-index: 101;
+    border-radius: .3rem;
+    background: #fff
+}
+
+.openResultHead_img {
+    width: 3.78rem;
+    height: 3.78rem;
+    margin: -4.3rem auto 0
+}
+
+.fromWhere {
+    text-align: center;
+    font-size: 1.15rem;
+    color: #422021;
+    line-height: 4rem;
+    white-space: nowrap;
+    width: 13rem;
+    margin: 0 auto
+}
+
+.openNum {
+    text-align: center;
+    font-size: 1.7rem;
+    color: #e02d3c
+}
+
+.openNum em {
+    font-size: 3.42rem
+}
+
+.backBagBtn, .noCard_yesBtn, .yesBtn {
+    height: 3.14rem;
+    font-size: 1.35rem
+}
+
+.btnBox {
+    margin-left: 1.15rem
+}
+
+.yesBtn {
+    border: 0;
+    border-radius: .3rem;
+    width: 8.78rem;
+    background: #e02d3c;
+    color: #fff;
+    margin-left: .6rem
+}
+
+.noCard_yesBtn {
+    display: block;
+    border: 0;
+    border-radius: .3rem;
+    width: 17.1rem;
+    background: #e02d3c;
+    color: #fff;
+    margin: 1rem auto
+}
+
+.backBagBtn, .backBagTip {
+    border-radius: .3rem;
+    color: #fff;
+    text-align: center
+}
+
+.backBagTip span, .lookfirstBag span {
+    border-left: .6rem solid transparent;
+    border-right: .6rem solid transparent
+}
+
+.backBagBtn {
+    position: relative;
+    width: 8.78rem;
+    background: #fc9526;
+    line-height: 3.14rem
+}
+
+.openResultfoot {
+    position: relative;
+    margin-top: 1rem
+}
+
+.backBagTip {
+    height: 3rem;
+    position: absolute;
+    top: -4rem;
+    left: 1.15rem;
+    background: #201718;
+    line-height: 3rem;
+    padding: 0 .8rem
+}
+
+.backBagTip span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .6rem solid #201718;
+    bottom: -.5rem;
+    left: 2rem
+}
+
+.backBagTip em {
+    color: #fdd384
+}
+
+.backBagBtn i {
+    display: inline-block;
+    width: 1.85rem;
+    height: 2.57rem;
+    background: url(../images/redpackKld/ic_backbag.png) center no-repeat;
+    background-size: 100%;
+    margin-left: -2.8rem;
+    margin-right: .5rem
+}
+
+.backBagBtn em {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #f76126;
+    color: #fff;
+    font-size: .875rem;
+    height: 1rem;
+    line-height: 1.1rem;
+    padding: 0 .1rem;
+    border-radius: .2rem
+}
+
+.firstBagAmount, .lookfirstBag {
+    border-radius: .5rem;
+    line-height: 1rem;
+    position: absolute
+}
+
+.ic_left_del {
+    width: 2.4rem;
+    height: 2.4rem;
+    position: absolute;
+    background: url(../images/redpackKld/ic_left_del.png) center no-repeat;
+    background-size: 1rem;
+    left: 0;
+    top: .5rem
+}
+
+.lookfirstBag {
+    background-color: rgba(88, 81, 81, .9);
+    width: 11.2rem;
+    box-sizing: border-box;
+    padding: .4rem;
+    font-size: .875rem;
+    top: -3.5rem;
+    right: -.5rem
+}
+
+.lookfirstBag em {
+    color: #fa9d3b
+}
+
+.lookfirstBag span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: .6rem solid #676161;
+    bottom: -.5rem;
+    right: 2rem
+}
+
+.firstBagAmount {
+    background: #e02d3c;
+    padding: .2rem;
+    font-size: 1rem;
+    color: #fff;
+    top: -1.8rem;
+    right: .5rem
+}
+
+.firstBagAmount span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: .4rem solid transparent;
+    border-right: .4rem solid transparent;
+    border-top: .4rem solid #e02d3c;
+    bottom: -.25rem;
+    right: .6rem
+}
+
+.cashmoveTop {
+    position: absolute;
+    left: 6rem;
+    bottom: -1.8rem;
+    color: #f33;
+    font-weight: 900;
+    font-size: 1.4rem;
+    z-index: 101;
+    opacity: 0
+}
+
+.kldShop:active, .kld_scroller li:active {
+    opacity: .6
+}
+
+.kld_section {
+    display: inline-block;
+    position: absolute;
+    right: 1rem
+}
+
+.kld_scroller li {
+    display: inline-block;
+    width: 2.8rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background: #cc291b;
+    color: #f33;
+    line-height: 2rem;
+    padding: 0 .35rem;
+    font-weight: 400;
+    font-size: .95rem;
+    text-align: center;
+    margin-left: .4rem
+}
+
+.kldactive {
+    box-shadow: .2rem .2rem .2rem #ac1a1a;
+    background: #ffc800 !important
+}
+
+.kldShop {
+    width: 2.5rem;
+    background: url(../../redpackGuess/images/ic_kldShop.png) center no-repeat;
+    background-size: 100%
+}
+
+body, html {
+    overflow: hidden;
+    height: 100%
+}
+
+input, input[type=button], textarea {
+    -webkit-appearance: none;
+    outline: 0
+}
+
+.clearfix:after, body .hide2 {
+    visibility: hidden
+}
+
+.backBox:active, .confirm-btn:active {
+    opacity: .6
+}
+
+.white_left, img {
+    position: relative
+}
+
+.scroller, html {
+    -webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none
+}
+
+body {
+    font-family: DroidSansFallback, Arial, Helvetica, sans-serif;
+    -webkit-text-size-adjust: none;
+    max-width: 875px;
+    margin: 0 auto;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch
+}
+
+article, aside, blockquote, button, code, dd, details, div, dl, dt, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hr, input, legend, li, menu, nav, ol, p, pre, section, td, textarea, th, ul {
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent
+}
+
+article, aside, details, figcaption, figure, footer, header, menu, nav, section {
+    display: block;
+    -webkit-tap-highlight-color: transparent
+}
+
+.clearfix:after {
+    clear: both;
+    font-size: 0;
+    display: block;
+    content: " ";
+    line-height: 0
+}
+
+input, textarea {
+    -webkit-user-select: auto
+}
+
+.flex-align-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+audio, canvas, video {
+    display: inline-block
+}
+
+em, i {
+    display: inline;
+    font-style: normal;
+    font-weight: 400
+}
+
+a {
+    color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    text-decoration: none
+}
+
+.back {
+    display: inline-block;
+    width: 3.5rem
+}
+
+.back:active {
+    background: #E90100
+}
+
+img {
+    display: block;
+    width: 100%
+}
+
+ol, ul {
+    list-style: none
+}
+
+.flex-wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+}
+
+.flex-con-1 {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    z-index: 2
+}
+
+.flex-con-2 {
+    -webkit-box-flex: 2;
+    -webkit-flex: 2;
+    flex: 2
+}
+
+.flex-vertical {
+    -webkit-box-orient: vertical;
+    -webkit-flex-flow: column;
+    flex-flow: column
+}
+
+body .hide {
+    display: none
+}
+
+.backBox, .white_left, .white_right {
+    display: inline-block
+}
+
+.backBox {
+    width: 4rem;
+    height: 4rem
+}
+
+.white_left {
+    width: 3.5rem;
+    height: 4rem;
+    background: url(../images/public/white_right.png) center no-repeat;
+    background-size: .7rem;
+    vertical-align: top
+}
+
+.white_right {
+    position: absolute;
+    right: 1rem;
+    top: 3rem;
+    padding: .65rem;
+    background: url(../images/public/white_left.png) center no-repeat;
+    background-size: .7rem
+}
+
+.header, .header2 {
+    top: 0;
+    width: 100%;
+    height: 4rem;
+    line-height: 4rem;
+    color: #fff;
+    font-size: 1.36rem;
+    text-align: left;
+    max-width: 875px;
+    z-index: 99;
+    font-weight: 600
+}
+
+body {
+    background-color: #f5f2f0
+}
+
+.header2 {
+    position: relative;
+    background-color: rgba(254, 39, 39, .95)
+}
+
+.header {
+    position: fixed;
+    background-color: #ff2739
+}
+
+.mask, .mask2, .white_mask3 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0
+}
+
+.mask, .mask2 {
+    z-index: 100;
+    background-color: #151313;
+    opacity: .7
+}
+
+.white_mask3 {
+    z-index: 102;
+    background-color: #fff;
+    opacity: 0
+}
+
+.pulldown, .pulldown1 {
+    height: 3rem;
+    color: #999;
+    text-align: center;
+    line-height: 3rem
+}
+
+.gray_close, .white_close {
+    width: 2.4rem;
+    height: 2.4rem;
+    position: absolute
+}
+
+.scroller {
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -moz-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none
+}
+
+#scroller {
+    padding-bottom: 2.6rem
+}
+
+.rotate {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg)
+}
+
+.loader2, .noInfo {
+    transform: translate(-50%, -50%)
+}
+
+.gray_close {
+    background: url(../images/cashRedpack/arrow_close.png) center no-repeat;
+    background-size: 1.2rem;
+    right: .6rem;
+    top: .7rem
+}
+
+.white_close {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVCAMAAAB1/u6nAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMA0RTF3BwOybMj+jEvAbg8m2k7xwAAAFpJREFUGNPF0DkOwCAQQ1EDCTvJ3P+0aZC+RkqPO7/KsvSmKJ+7TK1iIXq9rEoxbEdTFu5VOIp7xVHvqPOJSrihZJj1RmVZZ6fQ1AKO5sM/rPLzQ5VG3Yo/7QNsVQS1+bIc9AAAAABJRU5ErkJggg==) center no-repeat;
+    background-size: 1rem;
+    right: .3rem;
+    top: .5rem
+}
+
+.vip {
+    height: 5.28rem;
+    background: #fff;
+    position: relative;
+    border-bottom: .1rem solid #F5F1F0
+}
+
+.vip_img img {
+    width: 2.86rem;
+    height: 2.86rem;
+    margin-left: 1rem;
+    margin-top: 1.25rem
+}
+
+.vip_title {
+    height: 3rem;
+    margin-top: 1.2rem;
+    margin-left: .5rem
+}
+
+.vip_title_text {
+    font-size: 1.15rem;
+    color: #333;
+    line-height: 1.5rem
+}
+
+.vip_title_state {
+    font-size: 1rem;
+    color: #999;
+    line-height: 1.8rem
+}
+
+.arrows-right-gray {
+    padding: .65rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAaBAMAAABMRsE0AAAAHlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwLbf+mAAAACXRSTlMAbXRch5JkU3zIlQeuAAAAVUlEQVQI12NgCGSAANaZAhCG58xJEIbkzJkKYAbjTCShBjCDbebMGRChTCShKXAhBzCDGS5kiSHEDjO0EmgNLoGJMM0CYL04BTKhAgyREAGEd+AeBABbfifj7DrC8wAAAABJRU5ErkJggg==) center no-repeat;
+    background-size: .7rem;
+    position: absolute;
+    right: 1rem;
+    top: 1.9rem
+}
+
+.ic_mark, .ic_markout {
+    position: absolute;
+    top: 0;
+    width: 3rem;
+    height: 3rem;
+    display: block
+}
+
+.ic_right-gray {
+    padding: .65rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAaBAMAAABMRsE0AAAAHlBMVEUAAADMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMwLbf+mAAAACXRSTlMAbXRch5JkU3zIlQeuAAAAVUlEQVQI12NgCGSAANaZAhCG58xJEIbkzJkKYAbjTCShBjCDbebMGRChTCShKXAhBzCDGS5kiSHEDjO0EmgNLoGJMM0CYL04BTKhAgyREAGEd+AeBABbfifj7DrC8wAAAABJRU5ErkJggg==) center no-repeat;
+    background-size: .7rem;
+    position: absolute;
+    right: 1rem
+}
+
+.red {
+    background: #eb1a2b
+}
+
+.whitecolor {
+    color: #fff
+}
+
+.ic_mark {
+    right: 0;
+    background: url(../images/nationalAuction/ic_mark.png) center no-repeat;
+    background-size: 3rem
+}
+
+.ic_markout {
+    right: 0;
+    background: url(../images/nationalAuction/ic_markout.png) center no-repeat;
+    background-size: 3rem
+}
+
+.accountBan, .noInfo, .wxLoginCommand {
+    top: 50%;
+    left: 50%;
+    position: absolute
+}
+
+.wxLoginCommand {
+    width: 20.2rem;
+    margin-top: -12.6rem;
+    margin-left: -10.1rem;
+    background: #fff;
+    border-radius: .4rem;
+    z-index: 101
+}
+
+.wxLoginConcent {
+    width: 20.2rem;
+    height: 24.8rem;
+    background: url(../images/index/wxlogin_bg.png) center no-repeat;
+    background-size: 100%
+}
+
+#wxLoginBtn, .wxBtn {
+    width: 17.8rem;
+    height: 3.57rem
+}
+
+.wxLogin_text {
+    text-align: center;
+    font-size: 1.35rem;
+    color: #ffdc28;
+    padding-top: 13.5rem
+}
+
+.wxLogin_text1 {
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    padding-top: .2rem
+}
+
+.wxBtn {
+    margin: 0 auto;
+    padding-top: 1rem
+}
+
+#wxLoginBtn {
+    border: 0;
+    background: #fed216;
+    color: #ff2739;
+    font-size: 1.35rem;
+    border-radius: .3rem
+}
+
+.userSuggest {
+    font-size: .875rem;
+    color: #fff;
+    margin-top: 1rem;
+    text-align: center
+}
+
+.accountBan_title, .no_record {
+    font-size: 1.15rem;
+    text-align: center
+}
+
+.userSuggest em {
+    color: #fed216
+}
+
+.noInfo {
+    width: 10rem;
+    height: 10rem;
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.noInfo img {
+    width: 7rem;
+    margin: 0 auto
+}
+
+.no_record {
+    color: #999;
+    margin-top: 1rem
+}
+
+.accountBan {
+    width: 20rem;
+    margin-left: -10rem;
+    margin-top: -12rem;
+    background: #fff;
+    border-radius: .5rem;
+    z-index: 101
+}
+
+.accountBan_bg {
+    width: 15rem;
+    height: 8rem;
+    margin: 2rem auto 1.5rem
+}
+
+.accountBan_title {
+    color: #333
+}
+
+.accountBan_text {
+    color: #999;
+    padding: .5rem 1rem 1rem
+}
+
+.accountBan_text em {
+    color: #ff2739
+}
+
+.accountBanNotice {
+    text-align: center;
+    font-size: .875rem;
+    color: #ff8c1a
+}
+
+.okBtn {
+    display: block;
+    border: 0;
+    background: #ff2739;
+    width: 18.2rem;
+    height: 3.4rem;
+    margin: 1rem auto;
+    border-radius: .5rem;
+    font-size: 1.25rem;
+    color: #fff
+}
+
+.loadMore, .noMore {
+    text-align: center;
+    color: #999;
+    font-size: 1.15rem;
+    height: 3.5rem;
+    line-height: 3.5rem
+}
+
+.goTime {
+    width: 1.7rem;
+    height: 1.6rem;
+    color: #ff2739;
+    font-size: .5rem;
+    border-radius: 100%;
+    -webkit-border-radius: 2rem;
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    text-align: center;
+    border: .1rem solid #ff2739;
+    line-height: 1.7rem
+}
+
+.ic_vip {
+    display: inline-block;
+    width: 1.8rem;
+    height: 1.2rem;
+    background: url(../images/lookLucky/ic_viphead.png) center no-repeat;
+    background-size: 1.8rem;
+    position: relative;
+    top: .1rem
+}
+
+.ic_redclose, .loadMask, .red_close {
+    position: absolute
+}
+
+.red_close {
+    width: 1.2rem;
+    height: 1.2rem;
+    padding: 1rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAVBAMAAACwDgOmAAAAJFBMVEUAAADyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzyMgzWc/Y/AAAAC3RSTlMA0RTG3BwOtDAjPOzUPU4AAABqSURBVAjXNY2xCYAwFAUfBiFYWgk2ZgUL0RlsM4BTCI4lFkH+coF/5FWPu+I0rGL9rvAu/FzUzSP43KSEyN8lBBgBRoARjhGTY4Q59kX71ZbNGyQP4iSJkyROkjhJBBgBRoSWTEXxlhBPBZpCHks/xwtDAAAAAElFTkSuQmCC) center no-repeat;
+    background-size: 1rem;
+    right: 0;
+    top: 0
+}
+
+.ic_redclose {
+    width: 2.4rem;
+    height: 2.4rem;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAdBAMAAABPisE/AAAAIVBMVEUAAADeHCzeHCzeHCzeHCzeHCzeHCzeHCzeHCzeHCzeHCwOzTIJAAAACnRSTlMACc2+EWl/+FEbsww7cQAAAJlJREFUGNNFzzsKwmAQReEbMKKdjxUoqex+7KxCcAGpraxdgpVLcA2KCneVhgknM+13irlS3Yqb9ZJujbjuK839auGDr9raDWwXVachgN8rRZAsApgAJoAJRp6Cc3IE++AMDBMEc8u7f0/ldeZJPnfODD5mEK+txxVwYQXDmAkzExYBTAATbIIJdqqDCXrpUnLmR9Iid1cP/QE5zlGNaUtcXQAAAABJRU5ErkJggg==) center no-repeat;
+    background-size: 1.2rem;
+    right: .6rem;
+    top: .5rem
+}
+
+.loadMask {
+    width: 12rem;
+    height: 6.4rem;
+    border-radius: .3rem;
+    top: 48%;
+    left: 50%;
+    margin-top: -3.2rem;
+    margin-left: -6rem;
+    z-index: 101;
+    background-color: rgba(0, 0, 0, .8);
+    text-align: center
+}
+
+.loadMask img {
+    width: 3rem;
+    display: inline;
+    line-height: 4rem;
+    margin-top: 1.4rem
+}
+
+.change, .loading {
+    animation-iteration-count: infinite;
+    display: block
+}
+
+@-webkit-keyframes loading {
+    0% {
+        transform: rotate(0)
+    }
+    25% {
+        transform: rotate(90deg)
+    }
+    50% {
+        transform: rotate(180deg)
+    }
+    75% {
+        transform: rotate(270deg)
+    }
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.loading {
+    -webkit-animation-name: loading;
+    animation-name: loading;
+    -webkit-animation-duration: .6s;
+    animation-duration: .6s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both
+}
+
+.change {
+    -webkit-animation-name: change;
+    animation-name: change;
+    -webkit-animation-duration: .8s;
+    animation-duration: .8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-iteration-count: infinite
+}
+
+@-webkit-keyframes change {
+    0%, 60% {
+        -webkit-transform: rotateY(0)
+    }
+    20%, 80% {
+        -webkit-transform: rotateY(180deg)
+    }
+    100%, 40% {
+        -webkit-transform: rotateY(360deg)
+    }
+}
+
+@keyframes change {
+    0%, 60% {
+        transform: rotateY(0)
+    }
+    20%, 80% {
+        transform: rotateY(180deg)
+    }
+    100%, 40% {
+        transform: rotateY(360deg)
+    }
+}
+
+.scroller-transform {
+    transform: translate(0, 45px) translateZ(0) !important
+}
+
+.pulldownLoading {
+    position: relative;
+    width: 100%
+}
+
+.loader, .loader1, .loader2 {
+    position: absolute;
+    left: 50%
+}
+
+.pulldownLoading .loading1 {
+    width: 5.5rem;
+    margin: 1rem auto 0;
+    text-align: center
+}
+
+@-webkit-keyframes loading1 {
+    0%, 100% {
+        transform: scaleY(1);
+        -webkit-transform: scaleY(1)
+    }
+    50% {
+        transform: scaleY(.4);
+        -webkit-transform: scaleY(.4)
+    }
+}
+
+.loading1 i {
+    width: 4px;
+    border-radius: 2px;
+    height: 20px;
+    margin: 0 2px;
+    display: inline-block;
+    background: #ff2739
+}
+
+.loading1 i:nth-child(1) {
+    animation: loading1 .8s linear .1s infinite;
+    -webkit-animation: loading1 .8s linear .1s infinite
+}
+
+.loading1 i:nth-child(2) {
+    animation: loading1 .8s linear .3s infinite;
+    -webkit-animation: loading1 .8s linear .2s infinite
+}
+
+.loading1 i:nth-child(3) {
+    animation: loading1 .8s linear .5s infinite;
+    -webkit-animation: loading1 .8s linear .3s infinite
+}
+
+.loading1 i:nth-child(4) {
+    animation: loading1 .8s linear .7s infinite;
+    -webkit-animation: loading1 .8s linear .4s infinite
+}
+
+.loader1 {
+    top: 50%;
+    transform: translate(-35%, -50%);
+    -webkit-transform: translate(-35%, -50%)
+}
+
+.loader2 {
+    top: 65%;
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.loader {
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%)
+}
+
+.loading_3 {
+    position: relative
+}
+
+@-webkit-keyframes loading_3 {
+    0%, 100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+        opacity: 1
+    }
+    50% {
+        transform: scale(.5);
+        -webkit-transform: scale(.5);
+        opacity: .3
+    }
+}
+
+.loading_3 i {
+    display: block;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #ff2739;
+    position: absolute
+}
+
+.loading_3 i:nth-child(1) {
+    top: 22px;
+    left: 0;
+    animation: loading_3 .7s ease 0s infinite;
+    -webkit-animation: loading_3 .7s ease 0s infinite
+}
+
+.loading_3 i:nth-child(2) {
+    top: 15px;
+    left: 15px;
+    animation: loading_3 .7s ease -.12s infinite;
+    -webkit-animation: loading_3 .7s ease -.12s infinite
+}
+
+.loading_3 i:nth-child(3) {
+    top: 0;
+    left: 22px;
+    animation: loading_3 .7s ease -.24s infinite;
+    -webkit-animation: loading_3 .7s ease -.24s infinite
+}
+
+.loading_3 i:nth-child(4) {
+    top: -15px;
+    left: 15px;
+    animation: loading_3 .7s ease -.36s infinite;
+    -webkit-animation: loading_3 .7s ease -.36s infinite
+}
+
+.loading_3 i:nth-child(5) {
+    top: -22px;
+    left: 0;
+    animation: loading_3 .7s ease -.48s infinite;
+    -webkit-animation: loading_3 .7s ease -.48s infinite
+}
+
+.loading_3 i:nth-child(6) {
+    top: -15px;
+    left: -15px;
+    animation: loading_3 .7s ease -.6s infinite;
+    -webkit-animation: loading_3 .7s ease -.6s infinite
+}
+
+.loading_3 i:nth-child(7) {
+    top: 0;
+    left: -22px;
+    animation: loading_3 .7s ease -.72s infinite;
+    -webkit-animation: loading_3 .7s ease -.72s infinite
+}
+
+.loading_3 i:nth-child(8) {
+    top: 15px;
+    left: -15px;
+    animation: loading_3 .7s ease -.84s infinite;
+    -webkit-animation: loading_3 .7s ease -.84s infinite
+}
+
+.AppUpdateBox {
+    width: 18rem;
+    height: auto;
+    padding: 1rem;
+    background: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -8rem;
+    margin-left: -10rem;
+    box-shadow: 0 0 .2rem .2rem #999;
+    border-radius: .3rem;
+    z-index: 200
+}
+
+.updateTitle {
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    padding: .5rem;
+    font-weight: 600
+}
+
+.updateInfo p {
+    padding: .2rem .5rem;
+    line-height: 1.4rem;
+    color: #999
+}
+
+.AppUpdateBtnBox {
+    text-align: right;
+    margin-top: .8rem
+}
+
+.AppUpdateBtnBox input {
+    color: #999;
+    border: 0;
+    background: #fff;
+    width: 5rem;
+    height: 2rem
+}
+
+.AppUpdateBtnBox .goUpdate {
+    color: #f33
+}
+
+@media screen and (min-width: 240px) {
+    body, button, html, input, select, textarea {
+        font-size: 9px
+    }
+}
+
+@media screen and (min-width: 280px) {
+    body, button, html, input, select, textarea {
+        font-size: 11px
+    }
+}
+
+@media screen and (min-width: 320px) {
+    body, button, html, input, select, textarea {
+        font-size: 12px
+    }
+}
+
+@media screen and (min-width: 340px) {
+    body, button, html, input, select, textarea {
+        font-size: 13px
+    }
+}
+
+@media screen and (min-width: 354px) {
+    body, button, html, input, select, textarea {
+        font-size: 14px
+    }
+}
+
+@media screen and (min-width: 378px) {
+    body, button, html, input, select, textarea {
+        font-size: 15px
+    }
+}
+
+@media screen and (min-width: 413px) {
+    body, button, html, input, select, textarea {
+        font-size: 15.5px
+    }
+}
+
+@media screen and (min-width: 426px) {
+    body, button, html, input, select, textarea {
+        font-size: 16px
+    }
+}
+
+@media screen and (min-width: 450px) {
+    body, button, html, input, select, textarea {
+        font-size: 18px
+    }
+}
+
+@media screen and (min-width: 480px) {
+    body, button, html, input, select, textarea {
+        font-size: 19px
+    }
+}
+
+@media screen and (min-width: 540px) {
+    body, button, html, input, select, textarea {
+        font-size: 20.25px
+    }
+}
+
+@media screen and (min-width: 590px) {
+    body, button, html, input, select, textarea {
+        font-size: 22.13px
+    }
+}
+
+@media screen and (min-width: 600px) {
+    body, button, html, input, select, textarea {
+        font-size: 22.5px
+    }
+}
+
+@media screen and (min-width: 640px) {
+    body, button, html, input, select, textarea {
+        font-size: 24px
+    }
+}
+
+@media screen and (min-width: 720px) {
+    body, button, html, input, select, textarea {
+        font-size: 27px
+    }
+}
+
+@media screen and (min-width: 800px) {
+    body, button, html, input, select, textarea {
+        font-size: 30px
+    }
+}
+
+@media screen and (min-width: 874px) {
+    body, button, html, input, select, textarea {
+        font-size: 33px
+    }
+}

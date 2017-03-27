@@ -19,10 +19,46 @@ var chat = {
 		remains     : []
 	},
 	init : function (){
+
 		this.copyright();
 		this.off();
 		chat.data.storage = window.localStorage;
+		chat.data.storage.clear();
+		chat.data.storage.setItem("can_join",0);
 		this.ws();
+	},
+
+	getRoomUserVirtualMoney:function () {
+		return chat.data.storage.getItem("virtual_money");
+	},
+	getRoomMoney:function () {
+		return chat.data.storage.getItem("roomid_money");
+	},
+	canRob:function(){
+		if(chat.data.storage.getItem("can_join") == '1'){
+			return true;
+		}
+		return false;
+	},
+
+	checkRob:function (packet_id) {
+		var json = {"type": 35,"openid": config.openid,'roomid':'a','packet_id':packet_id};
+		chat.wsSend(JSON.stringify(json));
+		return false;
+	},
+
+	rob:function (packet_id) {
+		var json = {"type": 30,"openid": config.openid,'roomid':'a','packet_id':packet_id};
+		chat.wsSend(JSON.stringify(json));
+		return false;
+	},
+	doLoginFromOpenid:function(openid){
+		openid = $.trim(openid) ;
+		chat.data.type = 101; //登录标志
+		chat.data.openid = openid; //邮箱
+		var json = {"type": chat.data.type,"openid": openid,'roomid':'a'};
+		chat.wsSend(JSON.stringify(json));
+		return false;
 	},
 	doLogin : function( name , email ){
 		if(name == '' || email == ''){
@@ -105,17 +141,8 @@ var chat = {
 			//初始化房间
 			chat.print('wsopen',event);
 
-			chat.doLogin(config.user,config.email);
+			chat.doLoginFromOpenid(config.openid);
 
-			//判断是否已经登录过，如果登录过。自动登录。不需要再次输入昵称和邮箱
-			/*
-			var isLogin = chat.data.storage.getItem("dologin");
-			if( isLogin ) {
-				var name =  chat.data.storage.getItem("name");
-				var email =  chat.data.storage.getItem("email");
-				chat.doLogin( name , email );
-			}
-			*/
 			
 		}
 	},
@@ -126,6 +153,27 @@ var chat = {
 			var d = jQuery.parseJSON(event.data);
 			console.log(d);
 			switch(d.code){
+				case 101:
+					console.log(d.data);
+					if(d.data.mine){
+						chat.data.fd = d.data.fd;
+						chat.data.name = d.data.name;
+						chat.data.avatar = d.data.avatar;
+						chat.data.storage.setItem("dologin",1);
+						chat.data.storage.setItem("name",d.data.name);
+						chat.data.storage.setItem("email",chat.data.email);
+						chat.data.storage.setItem("can_join",d.data.can_join);
+						chat.data.storage.setItem("virtual_money",d.data.virtual_money);
+						chat.data.storage.setItem("roomid_money",d.data.roomid_money);
+						chat.data.storage.setItem("roomid",d.data.roomid);
+						page.userLoadSuccess();
+						//document.title = d.data.name + '-' + document.title;
+						chat.loginDiv(d.data);
+					}
+					/*chat.addChatLine('newlogin',d.data,d.data.roomid);
+					chat.addUserLine('user',d.data);
+					chat.displayError('chatErrorMessage_login',d.msg,1);*/
+					break;
 				case 1:
 					return ;
 					if(d.data.mine){
@@ -190,6 +238,7 @@ var chat = {
 					chat.changeUser(d.data);
 					chat.addUserLine('user',d.data);
 					break;
+
 				//发红包
 				case 1001:
 					packet.packet(d.params);
@@ -209,6 +258,18 @@ var chat = {
 				//下一个红包倒计时
 				case 1005:
 					packet.next_packet_last({});
+					break;
+				//用户领取成功
+				case 1101:
+					packet.robSuccess(d.data);
+					break;
+				//用户领取失败
+				case 1102:
+					packet.robFailed(d.data);
+					break;
+				//检测红包是否能被领取。
+				case 1135:
+					packet.robCheck(d.data);
 					break;
 				default :
 					chat.displayError('chatErrorMessage_logout',d.msg,1);

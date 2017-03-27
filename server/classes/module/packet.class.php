@@ -100,7 +100,7 @@ class packet extends message {
         rsort($result);
 
         foreach ($result as $i =>$rand_number){
-            if($i == 1 || $i == 4){
+            if($i == 0 || $i == 3){
                 $robot_place = rand(3,4);
             }else{
                 $robot_place = rand(1,2);
@@ -116,6 +116,10 @@ class packet extends message {
         return true;
     }
 
+
+    public static $user = false;
+    public static $packet = false;
+
     /**
      * 领取
      * @param $packet_id
@@ -126,18 +130,29 @@ class packet extends message {
         $time = connect::getTime();
         if(is_array($userid)){
             $user = $userid;
+            $userid = $user['id'];
         }else{
             $user = self::getUser($userid);
+            $userid = $user['id'];
         }
 
         $packet = self::getPacket($packet_id);
+        self::$packet = $packet;
+        self::$user = $user;
+
         $roomid = $packet['roomid'];
+
+        $use_number = self::getPayMonery($packet['roomid']);
+        if($user['virtual_money'] < $use_number){
+            self::addErrorMessage("对不起，您的金额不够",1010);
+            return false;
+        }
 
         //是否已经领取
         $count_sql = "select count(*) from ".connect::tablename("fortune_packet_info")." where status = 1 and user_id = $userid and  packet_id = ".$packet_id;
         $count = connect::count($count_sql);
         if($count > 0 ){
-            self::addErrorMessage("对不起，您已经领取",1001);
+            self::addErrorMessage("对不起，您已经领取",1011);
             return false;
         }
 
@@ -148,8 +163,7 @@ class packet extends message {
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }
-
-
+        
         connect::openCommit();
 
         // 用户类型
@@ -160,6 +174,7 @@ class packet extends message {
         }
 
         if(!connect::query($update_sql)){
+            connect::rollback();
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }
@@ -170,6 +185,13 @@ class packet extends message {
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }
+
+        /*$update_sql = "update ".connect::tablename("fortune_user")." set virtual_money = virtual_money - $use_number  where id = $userid";
+        if(!connect::query($update_sql)){
+            connect::rollback();
+            self::addErrorMessage("红包领取完了",1000);
+            return false;
+        }*/
 
         //领取成功
         if(!event::afterRobEvent(array(
@@ -185,6 +207,11 @@ class packet extends message {
         }
 
         connect::submitCommit();
+
+        //更新用户的信息金额
+        $number = self::getUserRobPacketNumber($packet_id,$userid);
+        $update_sql = "update ".connect::tablename("fortune_user")." set virtual_money = virtual_money +$number  where id = $userid";
+        connect::query($update_sql);
 
         return true;
     }
@@ -215,13 +242,41 @@ class packet extends message {
     }
 
     static function getUser($userid){
-        $sql = "select * from ".connect::tablename("fortune_user")." where id = ".$userid;
+        if(strlen($userid) > 15){
+            $sql = "select * from ".connect::tablename("fortune_user")." where openid ='$userid' ";
+        }else{
+            $sql = "select * from ".connect::tablename("fortune_user")." where id = ".$userid;
+        }
         return connect::select($sql,true);
     }
 
     static function getPacket($packet_id){
         $sql = "select * from ".connect::tablename("fortune_packet")." where id = ".$packet_id;
         return connect::select($sql,true);
+    }
+
+    /**
+     * 获取红包的已经领取信息
+     * @param $packet_id
+     * @return array
+     */
+    static function getPacketRob($packet_id){
+        $sql = "select fu.nickname,fu.img,pi.packet_number,pi.user_id,fu.openid from ".connect::tablename("fortune_packet_info")." as pi left join ".connect::tablename("fortune_user")." as fu on pi.user_id = fu.id where pi.status = 1 and  pi.packet_id = ".$packet_id . " order by pi.rob_at desc";
+        return connect::select($sql);
+    }
+
+    /**
+     * 获取红包领取的数量
+     * @param $packet_id
+     * @param $user_id
+     * @return bool
+     */
+    static function getUserRobPacketNumber($packet_id,$user_id){
+        $sql = "select packet_number from ".connect::tablename("fortune_packet_info")." where user_id =".$user_id." and packet_id = ".$packet_id;
+        if($ret =  connect::select($sql,true)){
+            return $ret['packet_number'];
+        }
+        return false;
     }
 
     static function getPayMonery($roomid){
