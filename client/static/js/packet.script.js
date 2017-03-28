@@ -16,8 +16,10 @@ var packet = {
 
     event:function () {
 
+     
         //事件绑定
         $(document).on("click",'.packet',function (e) {
+
             e.stopPropagation();
             if(!chat.canRob()){
                 page.showToBuy();
