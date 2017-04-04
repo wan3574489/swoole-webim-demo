@@ -4,12 +4,12 @@
 /**
  * 创建一个红包
  */
-function createPacket(){
+function createPacket($roomid){
     global $create_timer;
     connect::getTime();
     connect::resetTime();
 
-    $roomid = 'a';
+    /*$roomid = 'a';*/
     if(!hasPacket($roomid)){
         if($rebootid = getRandReboot([])){
             if($a =  packet::create($roomid,$rebootid)){
@@ -20,7 +20,9 @@ function createPacket(){
         }
     }
 
-    swoole_timer_after($create_timer,"createPacket");
+    \swoole_timer_after($create_timer,function() use ($roomid){
+        createPacket($roomid);
+    });
 }
 
 /**
@@ -28,10 +30,10 @@ function createPacket(){
  * @param $roomid
  * @return bool
  */
-function robPacket(){
+function robPacket($roomid){
     global $rob_timer;
 
-    $roomid = 'a';
+    /*$roomid = 'a';*/
     connect::getTime();
     connect::resetTime();
 
@@ -40,7 +42,9 @@ function robPacket(){
         if($id = getRandReboot('')){
             if(packet::rob($has,$id)){
                 melog("自动领取红包成功:红包id{$has},机器人{$id}");
-                \swoole_timer_after($rob_timer+2000,"robPacket");
+                \swoole_timer_after($rob_timer+2000,function() use ($roomid){
+                    robPacket($roomid);
+                });
                 return ;
             }else{
                 melog("自动领取红包失败:".packet::getErrorMessage());
@@ -48,7 +52,9 @@ function robPacket(){
         }
     }
 
-    swoole_timer_after($rob_timer,"robPacket");
+    swoole_timer_after($rob_timer,function() use ($roomid){
+        robPacket($roomid);
+    });
 
 }
 

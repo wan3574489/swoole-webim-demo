@@ -1,6 +1,9 @@
 <?php
 class File {
-	private static $instance;
+	/**
+	 * @var self
+	 */
+	public static $instance;
 	protected $online_dir;
     protected $history = array();
     protected $history_max_size = 100;

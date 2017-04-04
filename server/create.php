@@ -16,7 +16,7 @@ require_once "classes/Chat.class.php";
 require_once "classes/hsw.class.php";
 require_once "classes/cron.function.php";
 
-$create_timer = 1000;
+//$create_timer = 1000;
 
-swoole_timer_after($create_timer,"createPacket");
+//swoole_timer_after($create_timer,"createPacket");
 

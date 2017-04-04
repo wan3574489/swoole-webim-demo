@@ -4,6 +4,8 @@ class hsw {
 
     private $isClose = array();
 
+	private $roomids = array();
+
 	public function __construct(){
 		File::init();
 
@@ -52,25 +54,30 @@ class hsw {
             return false;
         }
 
-        swoole_timer_after($time, function() use ($the,$fd,$time) {
+        \swoole_timer_after($time, function() use ($the,$fd,$time) {
 
-            $select_time = $this->getPushTime($fd);
-			//$__sql = "";
+			$roomid_key = "user-roomid-".$fd;
+			$roomid = File::$instance->client->get($roomid_key);
+			//var_dump($roomid);
 
-			$end_time = connect::get_millisecond();
-            $__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  time <= $end_time order by time asc";
-           // $__sql = "select data from ".connect::tablename("fortune_event")." where id = 49159 ";
-			//echo $__sql."\n";*/
-			//echo $__sql."\n";
+			if($roomid>0){
+				$select_time = $this->getPushTime($fd);
+				//$__sql = "";
 
-            if($ret = connect::select($__sql)){
-                foreach($ret as $r){
-					$data = json_decode($r['data'],true);
-					$data['fd'] = $fd;
-                    $this->serv->task( json_encode($data) );
-                }
-            }
-			$this->addPushTime($fd,$end_time);
+				$end_time = connect::get_millisecond();
+				$__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  roomid = $roomid and time <= $end_time order by time asc";
+
+				if($ret = connect::select($__sql)){
+					foreach($ret as $r){
+						$data = json_decode($r['data'],true);
+						$data['fd'] = $fd;
+						$this->serv->task( json_encode($data) );
+					}
+				}
+				$this->addPushTime($fd,$end_time);
+			}
+
+
             $the->afterPushMessage($time,$fd);
         });
     }

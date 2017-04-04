@@ -86,10 +86,10 @@ class packet extends message {
         $result = array();
         for($i =1;$i<=$max_number;$i++){
             if($i == 4){
-                $rand_number = ($packet_number*100) - $residue_number;
+                $rand_number = $residue_number;
             }else{
                 $rand_number = rand(1,$residue_number);
-                if(rand(0,1) == 1){
+                if(rand(0,4) > 1){
                     $rand_number = rand(1,$rand_number);
                 }
             }
@@ -280,7 +280,7 @@ class packet extends message {
     }
 
     static function getPayMonery($roomid){
-            return 200;
+            return 10;
     }
 
 }

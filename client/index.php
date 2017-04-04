@@ -148,12 +148,13 @@ if(!isset($_GET['openid'])){
 <div class="welfareRule hide">
     <img src="/static/images/rule_tip_bg.png" alt="">
     <div class="welfareRuleContent"><p>◆玩法说明◆</p>
-        <p style="color: #fdd384">200豆/4包，抢最小的发下一包！</p>
+        <p style="color: #fdd384">10元钱/4包，抢最小的发下一包！</p>
         <p>◆游戏说明◆</p>
-        <p>1.为保障游戏公正公平，玩家帐户快乐豆必须大于200豆，为避免用户逃包，由系统代为发包；</p>
+        <p>1.为保障游戏公正公平，玩家帐户余额必须大于10元钱，为避免用户逃包，由系统代为发包；</p>
         <p>2.抢到的红包自动存入账户，可随时兑换商品。</p>
         <p style="color: #fdd384">3.本游戏由玩家自发自愿参加，自负盈亏，平台不收取任何费用，参与游戏即视为同意本条例；</p>
-        <p>4.游戏中如遇问题，请联系微信客服kuaidianlife-01(工作日)</p></div>
+       <!-- <p>4.游戏中如遇问题，请联系微信客服kuaidianlife-01(工作日)</p>-->
+    </div>
     <div class="ruleBtn"><input type="button" value="我同意" class="knowBtn"></div>
 </div>
 
@@ -183,7 +184,7 @@ if(!isset($_GET['openid'])){
 <div class="redpackNotice hide">
     <div class="redpackNotice_title">发包提示</div>
     <div class="redpackNoticeContent"><p>下一包将由平台自动帮你发放</p>
-        <p>为保障游戏公正公平， <em>玩家帐户快乐豆必须大于<span>100</span>豆</em>，为避免用户逃包，由系统代为发包。</p></div>
+        <p>为保障游戏公正公平， <em>玩家帐户余额必须大于<span>10</span>元</em>，为避免用户逃包，由系统代为发包。</p></div>
     <div class="no_notice"><span></span> 我知道了，不再提醒</div>
     <i class="gray_close"></i>
 </div>
@@ -193,11 +194,11 @@ if(!isset($_GET['openid'])){
     <div class="title"></div>
     <i class="dialog-close"></i>
     <div class="kldBox">
-        <div class="mykld">快乐豆数量：<em>--</em></div>
-        <span>快乐豆明细</span></div>
+        <div class="mykld">余额数量：<em>--</em></div>
+        <span>余额明细</span></div>
     <div class="kldNumber flex-wrap">
         <div class="kld-reduce"></div>
-        <div class="kld-number flex-con-1" data="100"><span><em>100</em>豆</span></div>
+        <div class="kld-number flex-con-1" data="100"><span><em>10</em>元</span></div>
         <div class="kld-add"></div>
     </div>
     <ul class="payWay flex-wrap">
@@ -205,16 +206,16 @@ if(!isset($_GET['openid'])){
         <li class="flex-con-1"><i paytype="2"></i>微信支付</li>
         <li class="flex-con-1"><i paytype="1"></i>支付宝支付</li>
     </ul>
-    <p>存入的快乐豆直接到账帐户，可随时兑换商品。</p><input type="button" class="kld-pay" value="立即存入"></section>
+    <p>存入的余额直接到账帐户，可随时兑换商品。</p><input type="button" class="kld-pay" value="立即存入"></section>
 
 <!--虚拟货币不足-->
 <div class="toBuy hide">
     <img src="/static/images/ic_tip_bg.png" alt="" class="ic_tip_bg">
     <div class="ic_rmb">
         <img src="/static/images/ic_KldNotImg.png" alt=""></div>
-    <div class="toBuy_title">您的快乐豆不足，请充值</div>
-    <div class="toBuy_num">快乐豆：--个</div>
-    <p>Tips：为保障游戏公正公平，避免用户逃包,<em>快乐豆必须大于<span class="beansNum">100</span>豆</em>，且由系统代为发包。</p><input type="button"
+    <div class="toBuy_title">您的余额不足，请充值</div>
+    <div class="toBuy_num">余额：--元</div>
+    <p>Tips：为保障游戏公正公平，避免用户逃包,<em>余额必须大于<span class="beansNum">10</span>元</em>，且由系统代为发包。</p><input type="button"
                                                                                                     value="充点快乐豆玩玩"
                                                                                                     class="buyBtn"> <i
         class="ic_yuan_del"></i></div>
@@ -230,12 +231,12 @@ if(!isset($_GET['openid'])){
                 <div class="redpackRecordMain">
                     <div class="redpackRecord_head_img"><img src="" alt=""></div>
                     <div class="redRecordName">--</div>
-                    <div class="redRecordtext">共收到的快乐豆数量</div>
-                    <div class="redtotal"><em>--</em>豆</div>
+                    <div class="redRecordtext">共收到的余额数量</div>
+                    <div class="redtotal"><em>--</em>元</div>
                     <div class="flex-wrap robNum">
                         <div class="robBox">
                             <div class="num">--</div>
-                            <div class="robText">抢到的快乐豆</div>
+                            <div class="robText">抢到的余额</div>
                         </div>
                         <div class="robBox">
                             <div class="num1">--</div>
@@ -259,7 +260,7 @@ if(!isset($_GET['openid'])){
         <div class="openBoxList_name">
             <span><%=nickname%></span>
         </div>
-        <div class="openBoxList_num"><em><%=packet_number%></em>豆</div>
+        <div class="openBoxList_num"><em><%=packet_number%></em>元</div>
     </div>
 </script>
 
@@ -267,8 +268,8 @@ if(!isset($_GET['openid'])){
 <article class="redpackResult hide  redpackResult-con" >
     <div class="openEndTitle"><span>关闭</span>
         <div class="openEndTitleMain">
-            <div class="openEndh1">豆豆接龙</div>
-            <div class="openEndh2">快乐豆红包</div>
+            <div class="openEndh1">红包接龙</div>
+            <div class="openEndh2">现金红包</div>
         </div>
     </div>
     <div id="openWraper" style="height: 611px;overflow-x: scroll;margin-right: -14px;">
@@ -281,7 +282,7 @@ if(!isset($_GET['openid'])){
                     <div class="openEndname">--</div>
                     <div class="openlate">
                         <div class="openEndname2">恭喜发财，大吉大利！</div>
-                        <div class="openEndNum"><em>0.0</em>豆</div>
+                        <div class="openEndNum"><em>0.0</em>元</div>
                         <div class="openEndnotice">已存入帐户，可用于兑换</div>
                     </div>
                     <div class="late hide">手慢了，红包派完了!</div>
@@ -340,6 +341,7 @@ if(!isset($_GET['openid'])){
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>
+<script src="./static/js/vconsole.min.js"></script>
 <script src="./static/js/face.js?v=3345"></script>
 <script src="./static/js/create.div.js?v=<?php echo time();?>"></script>
 <script src="./static/js/packet.script.js?v=<?php echo time();?>"></script>
