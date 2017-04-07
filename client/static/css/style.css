@@ -1126,19 +1126,20 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     float: left;
     clear: both;
     padding: 5px 11px;
-    border: 1px solid rgb(225, 224, 228);
+   /* border: 1px solid rgb(225, 224, 228);*/
     border-radius: 6px;
-    background-color: rgb(255, 255, 255);
+    /*background-color: rgb(255, 255, 255);*/
     line-height: 21px;
     /* width: auto; */
     /* max-width: 60vw; */
     overflow: hidden;
     transition: background-color 0.25s ease 0s;
-    background-image: url(/static/images/timg.jpg);
+    background-image: url(/static/images/pack.png);
     width: 240px;
     height: 85px;
     background-size: cover;
     background-repeat: no-repeat;
+    margin-left: -2px;
 }
 .conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area .msg-red-packet{
 

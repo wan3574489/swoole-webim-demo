@@ -104,6 +104,7 @@ if(!isset($_GET['openid'])){
                     <div class="msg-bubble-area">
                         <div class="msg-red-packet">
                             <div class="msg-packet-bubble">
+                                <!--<img src="static/images/pack.png">-->
                                 <!--<img src="/static/images/timg.jpg">-->
                             </div>
                         </div>
