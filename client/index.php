@@ -1,7 +1,9 @@
 <?php
-if(!isset($_GET['openid'])){
-    exit("1");
+include_once __DIR__."/common.php";
+if(!$user = getCurrentUserInfo()){
+    page_404();
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -196,18 +198,19 @@ if(!isset($_GET['openid'])){
     <i class="dialog-close"></i>
     <div class="kldBox">
         <div class="mykld">余额数量：<em>--</em></div>
-        <span>余额明细</span></div>
+       <!-- <span>余额明细</span>-->
+    </div>
     <div class="kldNumber flex-wrap">
         <div class="kld-reduce"></div>
-        <div class="kld-number flex-con-1" data="100"><span><em>10</em>元</span></div>
+        <div class="kld-number flex-con-1" data="10"><span><em>10</em>元</span></div>
         <div class="kld-add"></div>
     </div>
-    <ul class="payWay flex-wrap">
+    <!--<ul class="payWay flex-wrap">
         <li class="flex-con-1"><i class="active" paytype="4"></i>余额支付</li>
         <li class="flex-con-1"><i paytype="2"></i>微信支付</li>
         <li class="flex-con-1"><i paytype="1"></i>支付宝支付</li>
-    </ul>
-    <p>存入的余额直接到账帐户，可随时兑换商品。</p><input type="button" class="kld-pay" value="立即存入"></section>
+    </ul>-->
+    <p>存入的余额直接到账帐户，可随时兑换。</p><input type="button" class="kld-pay" value="立即存入"></section>
 
 <!--虚拟货币不足-->
 <div class="toBuy hide">
@@ -324,6 +327,15 @@ if(!isset($_GET['openid'])){
                         </div>
                     </div>
                 </div>
+
+            </div>
+
+            <div id="menu-pannel-footer">
+                <p>
+                    <span id="money">余额:<i>0.00</i>元</span>
+                    <span id="withdraw">提现</span>
+                    <span id="recharge">充值</span>
+                </p>
             </div>
         </div>
     </div>
@@ -336,9 +348,8 @@ if(!isset($_GET['openid'])){
 </div>
 <script src="./static/js/init.js"></script>
 <script language="JavaScript">
-    //config.user = "名字<?php echo rand(10000000, 99999999);?>";
-    //config.email = "<?php echo rand(10000000, 99999999);?>@qq.com";
-    config.openid  = "<?php echo $_GET['openid'];?>";
+    config.openid  = "<?php echo $user['openid'];?>";
+    config.money = <?php echo number_format($user['virtual_money'],2);?>
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>
@@ -351,6 +362,19 @@ if(!isset($_GET['openid'])){
 <script src="./static/js/functions.js?v=<?php echo time();?>"></script>
 <!--<script src="./static/js/xlyjs.js?v=215"></script>-->
 <script>
+
+    $(".kld-pay").click(function(){
+        var number = $(".getKld .kld-number em").html();
+        number = parseInt(number);
+        if(number <10){
+            alert("最低充值10元!");
+            return ;
+        }
+
+        window.location.href = "http://wchat.codeception.cn/app/index.php?i=15&c=entry&do=recharge&m=wwe_health_care&money="+number;
+        return;
+    });
+
     /*setInterval(function () {
      chat.test_sendMessage("你好，中文");
      },2000);*/

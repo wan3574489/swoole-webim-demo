@@ -125,6 +125,7 @@ class Chat {
 	 * 获取空闲的房间id
 	 */
 	public static function getFreeRoomid(){
+		
 		for($i = 1;$i<=100;$i++){
 			$key = "room-count-".$i;
 			if(!$num = File::$instance->client->get($key)){
@@ -136,7 +137,7 @@ class Chat {
 				return $i;
 			}
 		}
-
+		return rand(1,100);
 	}
 
 	public static function doLoginOpenid($data){
@@ -144,7 +145,7 @@ class Chat {
 		$pushMsg['data']['mine'] = 1;
 
 		//房间分配
-		$pushMsg['data']['roomid'] = self::getFreeRoomid();
+		$data['roomid'] = $pushMsg['data']['roomid'] = self::getFreeRoomid();
 		$pushMsg['data']['roomid_money'] = packet::getPayMonery($data['roomid']);
 		$pushMsg['data']['fd'] = $data['fd'];
 		$_sql = "select * from ".connect::tablename('fortune_user')." where openid = '".$data['openid']."'";
@@ -155,8 +156,10 @@ class Chat {
 		$pushMsg['data']['can_join'] = $user['virtual_money'] < packet::getPayMonery($data['roomid'])?0:1;
 		$data['params']['email'] = $data['openid']."@qq.com";
 		$pushMsg['data']['time'] = date("H:i",time());
+
 		self::login($data['roomid'],$data['fd'],$data['params']['name'],$data['params']['email'],$pushMsg['data']['avatar']);
-		File::$instance->client->set("user-roomid-".$data['fd'],$data['fd']);
+		File::$instance->client->set("user-roomid-".$data['fd'],$pushMsg['data']['roomid']);
+		
 		unset( $data );
 		/*$this->roomids[$fd] = $pushMsg['data']['roomid'];*/
 		return $pushMsg;

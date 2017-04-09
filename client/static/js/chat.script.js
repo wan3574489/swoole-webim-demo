@@ -18,6 +18,8 @@ var chat = {
 		crd         : 'a', //当前房间ID
 		remains     : []
 	},
+	isLogin:false,
+
 	init : function (){
 
 		this.copyright();
@@ -29,13 +31,13 @@ var chat = {
 	},
 
 	getRoomUserVirtualMoney:function () {
-		return chat.data.storage.getItem("virtual_money");
+		return config.money;
 	},
 	getRoomMoney:function () {
 		return chat.data.storage.getItem("roomid_money");
 	},
 	canRob:function(){
-		if(chat.data.storage.getItem("can_join") == '1'){
+		if(config.money>=this.getRoomMoney()){
 			return true;
 		}
 		return false;
@@ -219,7 +221,10 @@ var chat = {
 					chat.displayError('chatErrorMessage_logout',d.msg,1);
 					break;*/
 				case 4: //页面初始化
-					packet.initRoom(d.data);
+					if(chat.isLogin==false){
+						packet.initRoom(d.data);
+						chat.isLogin = true;
+					}
 					break;
 				case 5:
 					if(d.data.mine){

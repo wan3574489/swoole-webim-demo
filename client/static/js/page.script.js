@@ -11,6 +11,14 @@ var page = {
     init:function () {
 
         this.showRule();
+        this.changeMoney(config.money);
+
+        setInterval(function(){
+            $.post("/action.php?openid="+config.openid,{"action":'getMoney'},function(e){
+                config.money = e.data;
+                page.changeMoney(config.money);
+            },'json')
+        },2000);
 
         this.event();
 
@@ -138,7 +146,7 @@ var page = {
         $(".redpackResult .openBox ").empty();
 
         $(".redpackResult #openWraper ").height("666");
-        $(".redpackResult #openScroller ").height("667");
+        $(".redpackResult #openScroller ").height("700");
 
         
         var avater = false;
@@ -204,6 +212,14 @@ var page = {
 
         $(".redpackResult-con").show();
     },
+
+    changeMoney:function (num) {
+        num = parseFloat(num);
+        num = num.toFixed(2);
+
+        $("#money i ").html(num);
+    },
+
     /**
      * 用户信息加载完成后调用
      */
@@ -244,7 +260,7 @@ var page = {
         /**
          * 充点钱去看看
          */
-        $(".toBuy .buyBtn").click(function () {
+        $(".toBuy .buyBtn,#recharge").click(function () {
             $(".toBuy,.mask2").hide();
             //
             page.showRecharge();
@@ -275,6 +291,10 @@ var page = {
             var number_step = parseInt($(".kld-number").attr("data"));
             var r = kld_number + number_step;
             $(" .kldNumber .kld-number em").html(r);
+        });
+
+        $("#withdraw").click(function(){
+            window.location.href = 'http://chat.codeception.cn/withdraw.php?openid='+config.openid;
         });
     }
 }

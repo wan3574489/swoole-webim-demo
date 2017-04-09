@@ -1,10 +1,17 @@
+<?php
+    include_once __DIR__."/common.php";
+    if(!$user = getCurrentUserInfo()){
+        page_404();
+    }
+
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
-    <title>测试</title>
+    <title>红包提现</title>
     <link href="style/withdraw.css" rel="stylesheet">
 </head>
 
@@ -58,27 +65,27 @@
                 <img src="image/icon_rmb.png" width="22" height="20">
             </div>
             <div class="layout-column  vertical-center layout-column-3">
-                <input type="text" placeholder="请输入提款金额 (最低10元起提)" class="input-1">
+                <input type="text" id="money" placeholder="请输入提款金额 (最低10元起提)" class="input-1">
             </div>
         </div>
         <div class="layout-line layout-content border-top-1 height-1">
             <div class="layout-column layout-column-2 font-right-1">余额:</div>
-            <div class="layout-column ">10000.00元</div>
-            <div class="layout-column layout-column-2 right red">全部提款</div>
+            <div class="layout-column "><?php echo $user['virtual_money'];?>元</div>
+            <div class="layout-column layout-column-2 right red" id="withdrawall">全部提款</div>
         </div>
     </div>
 
     <!--区块3-->
     <div class="layout layout-3">
         <div class="layout-line text-center ">
-            <p>(今日可提取<span class="oring">20000</span>元|剩余<span class="oring">10</span>次)</p>
+            <p>(今日可提取<span class="oring"><?php echo 20000-$user['today_withdraw_money'];?></span>元|剩余<span class="oring"><?php  echo 10 - $user['today_withdraw'];?></span>次)</p>
         </div>
     </div>
 
     <!--区块4-->
     <div class="layout">
         <div class="layout-line">
-           <button class="button-1">按钮文字</button>
+           <button id="submit" class="button-1" >确定提现</button>
         </div>
     </div>
 
@@ -87,6 +94,66 @@
 <script>
 
     $(document).ready(function () {
+        var oldmoney = <?php echo $user['virtual_money'];?>;
+        var number = <?php echo $user['today_withdraw'];?>;
+        var openid = '<?php echo $user['openid'];?>';
+        if(number >=10 || oldmoney < 10 ){
+            $("#submit").css("background-color",'#c1c2c1');
+        }else{
+
+            function tx(numer){
+                var par = {};
+                if(numer=='all'){
+                    par['action'] = 'txall';
+                }else{
+                    par['action'] = 'tx';
+                    par['money'] = numer;
+                }
+
+                $.post("/action.php?openid=<?php echo $_GET['openid'];?>",par,function(d){
+                        console.log(d);
+                    if(d.status == 1){
+                        alert('提现成功!');
+                        window.location.href=window.location.href;
+                        return true;
+                    }else{
+                        alert(d.data);
+                        return false;
+                    }
+                },'json');
+            }
+
+            //提交
+            $("#submit").click(function(){
+                var money = $("#money").val();
+                if(money ==''){
+                    alert("请输入要提现的金额!");
+                    return ;
+                }
+                money = parseFloat(money);
+                if(money<10){
+                    alert("最少提现10元!");
+                    return false;
+                }
+                if(money>oldmoney){
+                    alert("您最多提款"+oldmoney+"元!");
+                    return false;
+                }
+                if(money>20000){
+                    alert("您最多提款20000元!");
+                    return false;
+                }
+                tx(money);
+
+            });
+
+            $("#withdrawall").click(function () {
+                    if(window.confirm("确定提现全部金额吗?")){
+                        tx('all');
+                    }
+            });
+        }
+
         $("#shade,#popup-1").show();
         $(".popup .exit,#iknow").click(function () {
             $("#shade,#popup-1").hide();

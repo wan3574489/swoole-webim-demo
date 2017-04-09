@@ -4,8 +4,7 @@
 /**
  * 创建一个红包
  */
-function createPacket($roomid){
-    global $create_timer;
+function createPacket($roomid,$create_timer){
     connect::getTime();
     connect::resetTime();
 
@@ -20,8 +19,8 @@ function createPacket($roomid){
         }
     }
 
-    \swoole_timer_after($create_timer,function() use ($roomid){
-        createPacket($roomid);
+    \swoole_timer_after($create_timer,function() use ($roomid,$create_timer){
+        createPacket($roomid,$create_timer);
     });
 }
 
@@ -30,20 +29,18 @@ function createPacket($roomid){
  * @param $roomid
  * @return bool
  */
-function robPacket($roomid){
-    global $rob_timer;
+function robPacket($roomid,$rob_timer){
 
     /*$roomid = 'a';*/
     connect::getTime();
     connect::resetTime();
-
     $has = hasCanRobPacket($roomid);
     if($has !== false){
         if($id = getRandReboot('')){
             if(packet::rob($has,$id)){
                 melog("自动领取红包成功:红包id{$has},机器人{$id}");
-                \swoole_timer_after($rob_timer+2000,function() use ($roomid){
-                    robPacket($roomid);
+                \swoole_timer_after($rob_timer+2000,function() use ($roomid,$rob_timer){
+                    robPacket($roomid,$rob_timer);
                 });
                 return ;
             }else{
@@ -52,8 +49,8 @@ function robPacket($roomid){
         }
     }
 
-    swoole_timer_after($rob_timer,function() use ($roomid){
-        robPacket($roomid);
+    swoole_timer_after($rob_timer,function() use ($roomid,$rob_timer){
+        robPacket($roomid,$rob_timer);
     });
 
 }
@@ -67,6 +64,7 @@ function hasCanRobPacket($roomid){
     //10秒中没有领取完就领取一次
     $begin_time   = $end_time-10000*100;
     $sql = 'select packet_id from '.connect::tablename("fortune_packet_info") . " where roomid  = '{$roomid}' and /*create_at >= $begin_time and create_at <= $end_time and*/ status = 0 limit 1";
+    /*echo $sql."\n";*/
     if($has = connect::select($sql,true)){
         return $has['packet_id'];
     }

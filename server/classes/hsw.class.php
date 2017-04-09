@@ -32,6 +32,9 @@ class hsw {
 
         $this->isClose[$request->fd] = 0;
 
+		$roomid_key = "user-roomid-".$request->fd;
+		File::$instance->client->set($roomid_key,0);
+		
         $this->afterPushMessage(2000,$request->fd);
 	}
 
@@ -58,7 +61,7 @@ class hsw {
 
 			$roomid_key = "user-roomid-".$fd;
 			$roomid = File::$instance->client->get($roomid_key);
-			//var_dump($roomid);
+			var_dump($fd.":".$roomid);
 
 			if($roomid>0){
 				$select_time = $this->getPushTime($fd);
@@ -312,6 +315,13 @@ class hsw {
 	public function onClose( $serv , $fd ){
 
         $this->isClose[$fd] = 1;
+
+		$roomid_key = "user-roomid-".$fd;
+		$roomid = File::$instance->client->get($roomid_key);
+		if($roomid >0){
+			$key = "room-count-".$roomid;
+			File::$instance->client->decr($key);
+		}
 
 		$pushMsg = array('code'=>0,'msg'=>'','data'=>array());
 		//获取用户信息

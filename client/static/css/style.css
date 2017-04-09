@@ -409,8 +409,10 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     display: flex;
     flex-flow: row nowrap;
     position: relative;
-    height: 100%;
+    height: 97%;
     min-width: 0px;
+    margin-top: 26px;
+
 }
 
 #sub-menu-pannel {
@@ -3411,6 +3413,33 @@ body .hide {
 
 .packet{
     cursor: pointer;
+}
+
+#menu-pannel-footer{
+    position: absolute;
+    top: 0px;
+    height: 32px;
+    line-height: 32px;
+    background-color: #2a2522;
+    width: 97%;
+    color: white;
+    text-align: right;
+    padding-right: 3%;
+}
+
+#menu-pannel-footer span {
+    font-weight: bolder;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+#recharge{
+    color: #f36a6a;
+}
+
+#withdraw{
+    color: #f36a6a;
 }
 
 @media screen and (min-width: 240px) {
