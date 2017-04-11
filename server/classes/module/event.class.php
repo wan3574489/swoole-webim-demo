@@ -78,21 +78,24 @@ class event
      * @param $data
      */
     static function next_packet_which_sendEvent($params){
-        $data = array(
-            'task'      =>'which_send_packet',
-            'code'      => 1003,
-            'data'    => array(
-                'code'      => 1003,
-                'payer_name' => $params['pay_user']['nickname'],
-                'payer_avater'=>$params['pay_user']['img']
-            ),
-            'roomid'=>$params['roomid']
-        );
 
-        self::insertEvent($params['roomid'],$data);
+        \swoole_timer_after(1000,function() use($params){
+            $data = array(
+                'task'      =>'which_send_packet',
+                'code'      => 1003,
+                'data'    => array(
+                    'code'      => 1003,
+                    'payer_name' => $params['pay_user']['nickname'],
+                    'payer_avater'=>$params['pay_user']['img']
+                ),
+                'roomid'=>$params['roomid']
+            );
+
+            self::insertEvent($params['roomid'],$data);
+        });
 
         //下一个红包即将发出
-        \swoole_timer_after(1000, function() use($params){
+        \swoole_timer_after(2000, function() use($params){
             connect::resetTime();
             $data = array(
                 'task'      =>'system_prompt_next_packet',
@@ -108,7 +111,7 @@ class event
         });
 
         //五秒倒计时
-        \swoole_timer_after(1500, function() use($params){
+        \swoole_timer_after(3000, function() use($params){
             connect::resetTime();
 
             $data = array(
@@ -124,7 +127,7 @@ class event
         });
 
         //五秒后插入红包数据
-        \swoole_timer_after(7000, function() use($params){
+        \swoole_timer_after(8010, function() use($params){
             connect::resetTime();
             //
             packet::create($params['roomid'],$params['pay_user']['id']);

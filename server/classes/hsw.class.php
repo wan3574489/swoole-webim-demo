@@ -35,7 +35,7 @@ class hsw {
 		$roomid_key = "user-roomid-".$request->fd;
 		File::$instance->client->set($roomid_key,0);
 		
-        $this->afterPushMessage(2000,$request->fd);
+        $this->afterPushMessage(1000,$request->fd);
 	}
 
 	private $pushTime = false;

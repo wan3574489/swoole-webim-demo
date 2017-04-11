@@ -77,8 +77,8 @@ class Chat {
 		$pushMsg['code'] = 4;
 		$pushMsg['msg'] = 'success';
 		$pushMsg['data']['mine'] = 0;
-		$pushMsg['data']['rooms'] = self::getRooms();
-		$pushMsg['data']['users'] = self::getOnlineUsers();
+		/*$pushMsg['data']['rooms'] = self::getRooms();
+		$pushMsg['data']['users'] = self::getOnlineUsers();*/
 		unset( $data );
 		return $pushMsg;
 	}
@@ -126,13 +126,13 @@ class Chat {
 	 */
 	public static function getFreeRoomid(){
 		
-		for($i = 1;$i<=100;$i++){
+		for($i = 1;$i<=10;$i++){
 			$key = "room-count-".$i;
 			if(!$num = File::$instance->client->get($key)){
 				$num = 0;
 			}
 
-			if($num <=5){
+			if($num <=200){
 				File::$instance->client->set($key,$num+1);
 				return $i;
 			}

@@ -20,7 +20,7 @@ require_once "classes/cron.function.php";
     public $mpid=0;
     public $works=[];
     public $max_precess=5;
-    public $process_number = 20;
+    public $process_number = 2;
     public $new_index=0;
 
     public function __construct(){
