@@ -1559,7 +1559,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     box-sizing: border-box;
     background-size: cover;
     background-clip: content-box;
-    border-radius: 50%;
+   /* border-radius: 50%;*/
 }
 
 .user-avatar.normal .avatar-text {
@@ -1662,7 +1662,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     box-sizing: border-box;
     background-size: cover;
     background-clip: content-box;
-    border-radius: 50%;
+   /* border-radius: 50%;*/
 }
 
 .avatar.single .avatar-text, .avatar .avatar-text, .avatar.single-chat .avatar-text {

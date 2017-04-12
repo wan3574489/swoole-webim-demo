@@ -5,7 +5,7 @@ var packet = {
      * @param data
      */
     initRoom:function (data) {
-        data.system_avatar = "/static/images/avatar/f1/f_6.jpg";
+        data.system_avatar = "/static/images/system_avatar.png";
         var html = template('system_init', data);
         $("#chatLineHolder-a").append(html);
         chat.scrollDiv('chat-lists');
@@ -121,7 +121,7 @@ var packet = {
      * @param data
      */
     who_send_next_packet:function(data){
-        data.system_avatar = "/static/images/avatar/f1/f_6.jpg";
+        data.system_avatar = "/static/images/system_avatar.png";
         var html = template('system_prompt_next_packet', data);
         $("#chatLineHolder-a").append(html);
         chat.scrollDiv('chat-lists');
@@ -133,7 +133,7 @@ var packet = {
      * @param data
      */
     next_packet_last:function (data) {
-        data.system_avatar = "/static/images/avatar/f1/f_6.jpg";
+        data.system_avatar = "/static/images/system_avatar.png";
         data.number = this.packet_number;
         var html = template('system_prompt_next_packet_done', data);
         $("#chatLineHolder-a").append(html);
