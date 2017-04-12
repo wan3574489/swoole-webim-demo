@@ -191,6 +191,13 @@ class packet extends message {
             return false;
         }
 
+        $_me_packet_sql = " select packet_number from ".connect::tablename("fortune_packet_info")." where packet_id = ".$packet_id." and user_id=".$userid." limit 1";
+        if(!$mePacket = connect::select($_me_packet_sql,true)){
+            connect::rollback();
+            self::addErrorMessage("红包领取完了",1000);
+            return false;
+        }
+
         /*$update_sql = "update ".connect::tablename("fortune_user")." set virtual_money = virtual_money - $use_number  where id = $userid";
         if(!connect::query($update_sql)){
             connect::rollback();
@@ -204,6 +211,7 @@ class packet extends message {
             'packet'   =>$packet,
             'userid'   => $userid,
             'roomid'   =>$roomid,
+            'money'     =>$mePacket['packet_number'],
             'user' =>$user,
             'pay_user'=> self::getUser($packet['user_id'])
         ))){

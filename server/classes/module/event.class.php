@@ -47,7 +47,8 @@ class event
                 'payer_name' => $params['pay_user']['nickname'],
                 'avatar' => $params['user']['img'],
                 'userid' =>$params['userid'],
-                'roomid'=>$params['roomid']
+                'roomid'=>$params['roomid'],
+                'money'     =>$params['money'],
             ),
             'roomid'=>$params['roomid']
         );

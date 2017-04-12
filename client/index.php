@@ -123,9 +123,10 @@ if(!$user = getCurrentUserInfo()){
         <div class="chat-content-out">
             <span><img src="static/images/red_packet.jpg" height="20"></span>
             <span class="over-hiden"><%=geter_name%></span>
-            <span>领取了</span>
-            <span class="over-hiden"><%=payer_name%></span>
-            <span class="color-red">红包</span>
+            <span>抢到</span>
+            <!--<span class="over-hiden"><%=payer_name%></span>-->
+            <span class="color-red"><%=money%>元</span>
+            <!--<span class="color-red">红包</span>-->
         </div>
     </div>
 </script>
