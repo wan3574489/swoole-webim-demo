@@ -149,13 +149,14 @@ if(!$user = getCurrentUserInfo()){
 
 <!--游戏规则-->
 <div class="welfareRule hide">
-    <img src="/static/images/rule_tip_bg.png" alt="">
-    <div class="welfareRuleContent"><p>◆玩法说明◆</p>
-        <p style="color: #fdd384">10元钱/4包，抢最小的发下一包！</p>
-        <p>◆游戏说明◆</p>
+    <div class="welfareRuleHeader">游戏规则</div>
+    <div class="welfareRuleContent ">
+        <p class="red">◆玩法说明◆</p>
+        <p>每次发10元随机红包，4人抢，抢到最小包的玩家继续发</p>
+        <p class="red">◆游戏规则◆</p>
         <p>1.为保障游戏公正公平，玩家帐户余额必须大于10元钱，为避免用户逃包，由系统代为发包；</p>
         <p>2.抢到的红包自动存入账户，可随时兑换商品。</p>
-        <p style="color: #fdd384">3.本游戏由玩家自发自愿参加，自负盈亏，平台不收取任何费用，参与游戏即视为同意本条例；</p>
+        <p >3.本游戏由玩家自发自愿参加，自负盈亏，平台不收取任何费用，参与游戏即视为同意本条例；</p>
        <!-- <p>4.游戏中如遇问题，请联系微信客服kuaidianlife-01(工作日)</p>-->
     </div>
     <div class="ruleBtn"><input type="button" value="我同意" class="knowBtn"></div>
@@ -194,10 +195,10 @@ if(!$user = getCurrentUserInfo()){
 
 <!--充值虚拟货币-->
 <section class="dialog getKld hide">
-    <div class="title"></div>
+    <div class="title">存入现金</div>
     <i class="dialog-close"></i>
     <div class="kldBox">
-        <div class="mykld">余额数量：<em>--</em></div>
+        <div class="mykld">余额(元)：<em>--</em></div>
        <!-- <span>余额明细</span>-->
     </div>
     <div class="kldNumber flex-wrap">
@@ -205,24 +206,23 @@ if(!$user = getCurrentUserInfo()){
         <div class="kld-number flex-con-1" data="10"><span><em>10</em>元</span></div>
         <div class="kld-add"></div>
     </div>
-    <!--<ul class="payWay flex-wrap">
-        <li class="flex-con-1"><i class="active" paytype="4"></i>余额支付</li>
-        <li class="flex-con-1"><i paytype="2"></i>微信支付</li>
-        <li class="flex-con-1"><i paytype="1"></i>支付宝支付</li>
-    </ul>-->
-    <p>存入的余额直接到账帐户，可随时兑换。</p><input type="button" class="kld-pay" value="立即存入"></section>
+    <p>存入帐户余额，可用于抢红包。</p>
+    <p class="red">(实时提现，实时到账)</p>
+
+    <input type="button" class="kld-pay" value="立即存入"></section>
 
 <!--虚拟货币不足-->
 <div class="toBuy hide">
-    <img src="/static/images/ic_tip_bg.png" alt="" class="ic_tip_bg">
+   <!-- <img src="/static/images/ic_tip_bg.png" alt="" class="ic_tip_bg">-->
     <div class="ic_rmb">
-        <img src="/static/images/ic_KldNotImg.png" alt=""></div>
-    <div class="toBuy_title">您的余额不足，请充值</div>
-    <div class="toBuy_num">余额：--元</div>
-    <p>Tips：为保障游戏公正公平，避免用户逃包,<em>余额必须大于<span class="beansNum">10</span>元</em>，且由系统代为发包。</p><input type="button"
-                                                                                                    value="充点快乐豆玩玩"
-                                                                                                    class="buyBtn"> <i
-        class="ic_yuan_del"></i></div>
+        <img src="/static/images/icon_2.png" alt=""></div>
+    <p>为避免用户逃包,本群由系统代发红包</p>
+    <p>玩家账户余额必须大于10元</p>
+    <div class="toBuy_title">您的余额不足</div>
+    <div class="toBuy_num">账户余额余额：<span class="red">--</span>元</div>
+
+    <input type="button" value="充点小钱玩玩" class="buyBtn"> <i class="ic_yuan_del"></i>
+</div>
 
 <!--抢到的红包记录-->
 <article class="redpackRecord hide">
@@ -331,11 +331,16 @@ if(!$user = getCurrentUserInfo()){
             </div>
 
             <div id="menu-pannel-footer">
-                <p>
-                    <span id="money">余额:<i>0.00</i>元</span>
+                <div class="left-1">
+                    <span id="yuer">账户余额(元)</span>
+                    <span id="money"><i>0.00</i><img id="recharge" src="static/images/icon_4.png"></span>
+
+                </div>
+                <div class="right-1">
                     <span id="withdraw">提现</span>
-                    <span id="recharge">充值</span>
-                </p>
+                    <span id="show_rule">游戏规则</span>
+                    <!--<span id="recharge">充值</span>-->
+                </div>
             </div>
         </div>
     </div>
@@ -353,8 +358,8 @@ if(!$user = getCurrentUserInfo()){
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>
-<script src="./static/js/vconsole.min.js"></script>
-<script src="./static/js/face.js?v=3345"></script>
+<!--<script src="./static/js/vconsole.min.js"></script>
+--><script src="./static/js/face.js?v=3345"></script>
 <script src="./static/js/create.div.js?v=<?php echo time();?>"></script>
 <script src="./static/js/packet.script.js?v=<?php echo time();?>"></script>
 <script src="./static/js/page.script.js?<?php echo time();?>"></script>

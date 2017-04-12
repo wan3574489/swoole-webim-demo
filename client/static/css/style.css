@@ -409,9 +409,9 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     display: flex;
     flex-flow: row nowrap;
     position: relative;
-    height: 97%;
+    /*height: 97%;*/
     min-width: 0px;
-    margin-top: 26px;
+    margin-bottom: 50px;
 
 }
 
@@ -2349,10 +2349,13 @@ body .hide {
         left: 50%;
         z-index: 101
 }
+.red {
+    color: #ef2814;
+}
 
 .welfareRule {
     width: 20.2rem;
-    background: #302627;
+    background: #f9f9f9;
     margin-left: -10.1rem;
     margin-top: -13.7rem;
     border-radius: .5rem;
@@ -2360,9 +2363,24 @@ body .hide {
     box-sizing: border-box
 }
 
+.welfareRuleHeader{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+.welfareRuleContent{
+    color: #000000;
+}
+.welfareRuleContent .red{
+    font-size: 14px;
+}
+
 .welfareRuleContent p {
-    font-size: 1.15rem;
-    color: #fff;
+  /*  font-size: 1.15rem;*/
     line-height: 1.4rem;
     text-align: justify;
     margin-top: .35rem
@@ -2381,7 +2399,7 @@ body .hide {
     height: 3.14rem;
     border: 0;
     border-radius: .5rem;
-    background: #d43a39;
+    background: #4fc655;
     color: #fff;
     font-size: 1.35rem;
     margin: 1.15rem auto 0
@@ -2609,8 +2627,13 @@ body .hide {
     background: url(/static/images/tobuy_bg.png) top no-repeat;
     background-size: 100%;
     position: absolute;
-    top: -4rem;
-    left: .925rem
+    top: -3rem;
+    left: .925rem;
+    line-height: 9rem;
+    color: #333333;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
 }
 
 .getKld .kldBox {
@@ -2618,7 +2641,8 @@ body .hide {
     margin: 0 auto;
     position: relative;
     line-height: 1.6rem;
-    color: #ecdbdb
+    color: #ecdbdb;
+    padding-top: 28px;
 }
 
 .kldBox span {
@@ -2629,7 +2653,10 @@ body .hide {
 }
 
 .mykld {
-    line-height: 2rem
+    line-height: 2rem;
+    text-align: center;
+    font-size: 16px;
+    color: #333333;
 }
 
 .mykld em {
@@ -2640,7 +2667,7 @@ body .hide {
     width: 20.8rem;
     height: 3.5rem;
     margin: 1.4rem auto .8rem;
-    background: #201718;
+    background: #ededed;
     border-radius: .35rem;
     position: relative
 }
@@ -2651,13 +2678,13 @@ body .hide {
 }
 
 .kld-reduce {
-    background: url(/static/images/ic_kld_reduce.png) center no-repeat #641e1e;
+    background: url(/static/images/ic_kld_reduce.png) center no-repeat #ffd42a;
     background-size: 36%;
     border-radius: .35rem 0 0 .35rem
 }
 
 .kld-add {
-    background: url(/static/images/ic_kld_add.png) center no-repeat #cd3938;
+    background: url(/static/images/ic_kld_add.png) center no-repeat #ffd42a;
     background-size: 36%;
     border-radius: 0 .35rem .35rem 0
 }
@@ -2717,7 +2744,7 @@ body .hide {
     display: block;
     width: 20.4rem;
     height: 3.14rem;
-    background: #d43a39;
+    background: #4fc655;
     color: #fff;
     margin: 2rem auto 1rem;
     border: 0;
@@ -2747,9 +2774,12 @@ body .hide {
 }
 
 .getKld p {
-    color: #997a7d;
+    color: #333333;
     font-size: 1rem;
     text-align: center
+}
+.getKld .red{
+    color: #f72727 !important;
 }
 
 .backBagCard, .dialog {
@@ -2766,7 +2796,7 @@ body .hide {
 .dialog {
     width: 22.85rem;
     height: 25rem;
-    background: #302627;
+    background: #ffffff;
     margin-left: -11.425rem;
     margin-top: -12.5rem;
     border-radius: .34rem;
@@ -2779,13 +2809,13 @@ body .hide {
 }
 
 .kld-reduce {
-    background: url(/static/images/ic_kld_reduce.png) center no-repeat #641e1e;
+    background: url(/static/images/ic_kld_reduce.png) center no-repeat #ffd42a;
     background-size: 36%;
     border-radius: .35rem 0 0 .35rem
 }
 
 .kld-add {
-    background: url(/static/images/ic_kld_add.png) center no-repeat #cd3938;
+    background: url(/static/images/ic_kld_add.png) center no-repeat #ffd42a;
     background-size: 36%;
     border-radius: 0 .35rem .35rem 0
 }
@@ -2804,7 +2834,7 @@ body .hide {
 .kld-number {
     text-align: center;
     line-height: 3.62rem;
-    color: #ecdbdb;
+    color: #333333;
     font-size: 1.54rem
 }
 
@@ -2859,7 +2889,7 @@ body .hide {
 .toBuy {
     position: absolute;
     width: 20.6rem;
-    background: #302627;
+    background: #ffffff;
     top: 50%;
     left: 50%;
     margin-left: -10.3rem;
@@ -2877,7 +2907,7 @@ body .hide {
 }
 
 .toBuy_title {
-    color: #fff;
+    color: #e03333;
     font-size: 1.35rem;
     text-align: center;
     line-height: 2rem
@@ -2886,21 +2916,21 @@ body .hide {
 .toBuy_num {
     font-size: 1.15rem;
     text-align: center;
-    color: #999;
-    background: #1f1616;
+    color: #333333;
     border-radius: 1rem;
     max-width: 13rem;
     margin: .5rem auto 1.5rem;
     padding: .2rem .3rem;
     box-sizing: border-box;
-    height: 1.9rem
+    height: 1.9rem;
 }
 
 .toBuy p {
     color: #997a7d;
     text-align: justify;
     font-size: 1rem;
-    line-height: 1.3rem
+    line-height: 1.3rem;
+    text-align: center;
 }
 
 .toBuy p em {
@@ -2912,11 +2942,11 @@ body .hide {
     border: 0;
     width: 17.8rem;
     height: 3.5rem;
-    background: #d43a39;
+    background: #ffd42a;
     margin: 1rem auto 0;
-    color: #fff;
+    color: red;
     border-radius: .5rem;
-    font-size: 1.35rem
+    font-size: 1.35rem;
 }
 
 .ic_yuan_del {
@@ -3417,14 +3447,14 @@ body .hide {
 
 #menu-pannel-footer{
     position: absolute;
-    top: 0px;
-    height: 32px;
-    line-height: 32px;
-    background-color: #2a2522;
+    height: 50px;
+    line-height: 50px;
+    background-color: #302f34;
     width: 97%;
     color: white;
     text-align: right;
     padding-right: 3%;
+    bottom: 0px;
 }
 
 #menu-pannel-footer span {
@@ -3433,13 +3463,51 @@ body .hide {
     font-size: 16px;
     margin-right: 10px;
 }
+#menu-pannel-footer .left-1{
+    float: left;
+    height: 100%;
+}
+#menu-pannel-footer .left-1 span{
+    font-size: 12px;
+    display: inline;
+    float: left;
+    height: 20px;
+    margin: 0;
+    line-height: 20px;
+    width: 71%;
+}
+
+#yuer{
+    padding-left: 20px;
+
+    text-align: left;
+}
+#menu-pannel-footer .left-1 #money i {
+    color: yellow;
+}
+#menu-pannel-footer .right-1{
+
+}
+#menu-pannel-footer .right-1 span{
+
+}
 
 #recharge{
-    color: #f36a6a;
+    /*color: #f36a6a;*/
+    display: block;
+    float: right;
+    width: 20px;
+    padding-left: 6px;
 }
 
 #withdraw{
-    color: #f36a6a;
+    font-size: 15px;
+    color: #d4d0d0;
+    text-decoration: underline;
+}
+#show_rule{
+    font-size: 15px;
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 240px) {

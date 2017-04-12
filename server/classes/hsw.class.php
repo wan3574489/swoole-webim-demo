@@ -194,6 +194,10 @@ class hsw {
 		$pushMsg = array('code'=>0,'msg'=>'','data'=>array());
 		$data = json_decode($data,true);
 
+        if(isset($this->isClose[ $data['fd']]) && ($this->isClose[ $data['fd']] == 1) ){
+            return "isClose";
+        }
+
 		//print_r($data);
 		switch( $data['task'] ){
 			case "check_rob":

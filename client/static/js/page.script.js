@@ -296,5 +296,9 @@ var page = {
         $("#withdraw").click(function(){
             window.location.href = 'http://chat.codeception.cn/withdraw.php?openid='+config.openid;
         });
+        
+        $("#show_rule").click(function () {
+            page.showRule();
+        });
     }
 }

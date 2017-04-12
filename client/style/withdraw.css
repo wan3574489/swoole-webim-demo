@@ -77,8 +77,12 @@ body {
   z-index: 100000000;
   margin: auto;
   background-color: white;
-  width: 70%;
-  height: 400px; }
+  /*width: 70%;*/
+ /* height: 400px;*/
+  /* width: 70%; */
+  height: 380px;
+  width: 20.2rem;
+}
   .popup .popup-header {
     height: 1.875rem;
     line-height: 1.875rem; }
@@ -106,9 +110,9 @@ body {
 .layout .layout-line:after {
   clear: both; }
 .layout .layout-column-2 {
-  width: 3.6rem; }
+  width: 5rem; }
 .layout .layout-column-3 {
-  width: 80%; }
+  width: 60%; }
 .layout .layout-header {
   height: 2.5rem;
   line-height: 3.2rem;

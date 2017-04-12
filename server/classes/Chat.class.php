@@ -157,7 +157,7 @@ class Chat {
 		$data['params']['email'] = $data['openid']."@qq.com";
 		$pushMsg['data']['time'] = date("H:i",time());
 
-		self::login($data['roomid'],$data['fd'],$data['params']['name'],$data['params']['email'],$pushMsg['data']['avatar']);
+		self::login($data['roomid'],$data['fd'],$user['nickname'],$data['params']['email'],$pushMsg['data']['avatar']);
 		File::$instance->client->set("user-roomid-".$data['fd'],$pushMsg['data']['roomid']);
 		
 		unset( $data );

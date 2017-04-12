@@ -1,29 +1,41 @@
 <?php
 
-
- function createSmallPacket($roomid,$packet_id,$packet_number){
-    $time = time();
-     $residue_number = $packet_number*100;
+function a(){
+    $randMaxNumber = 633;
+    $residue_number = 10*100;
     $max_number = 4;
     $result = array();
+    
     for($i =1;$i<=$max_number;$i++){
+        $currentRandMaxNumber = $residue_number>$randMaxNumber?$randMaxNumber:$residue_number;
+
         if($i == 4){
-            $rand_number =  $residue_number;
+            $rand_number = $residue_number;
         }else{
-            $rand_number = rand(1,$residue_number);
-            if(rand(0,4) > 1){
-                $rand_number = rand(1,$rand_number);
-            }
+            $rand_number = rand(1,$currentRandMaxNumber);
         }
+
+        if($rand_number == 0){
+            $rand_number = 1;
+            $result[0] = $result[0] -1;
+        }
+
         //
-         $residue_number = $residue_number - $rand_number;
+        $residue_number = $residue_number - $rand_number;
         $result[] = $rand_number;
     }
     rsort($result);
 
-     print_r($result);
+    return $result;
 }
-
-createSmallPacket(1,1,10);
-
+for($i =0;$i<=10000;$i++){
+    $result = a();
+    $o = 0;
+    foreach($result as $i){
+        $o = $i+$o;
+    }
+    if($o != 1000){
+        echo 'NO';
+    }
+}
 exit;

@@ -1,4 +1,5 @@
 <?php
+
 include_once __DIR__."/common.php";
 
 if(!isset($_GET['action'])){
@@ -6,6 +7,7 @@ if(!isset($_GET['action'])){
 }else{
     $action = $_GET['action'];
 }
+
 
 switch($action){
     case "getMoney":
@@ -19,6 +21,8 @@ switch($action){
             page_404();
         }
         $money = $_POST['money'];
+        $aliPayAccount = $_POST['aliPayAccount'];
+
         $money = round($money ,2);
         if($user['today_withdraw'] >=10){
             showJson(0,"今日已经提现10次，无法再提现了!");
@@ -32,7 +36,11 @@ switch($action){
         if($money>20000){
             showJson(0,"您最多提现20000元");
         }
-        if($ret = tx($money,$user['openid'])){
+        if(empty($aliPayAccount)){
+            showJson(0,"请输入您的支付宝账号。");
+        }
+
+        if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
             showJson(1,$ret);
         }
         showJson(0,"系统异常，请刷新重新试!");
@@ -52,7 +60,11 @@ switch($action){
         if($money>20000){
             showJson(0,"您最多提现20000元");
         }
-        if($ret = tx($money,$user['openid'])){
+        if(empty($aliPayAccount)){
+            showJson(0,"请输入您的支付宝账号。");
+        }
+
+        if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
             showJson(1,$ret);
         }
         showJson(0,"系统异常，请刷新重新试!");

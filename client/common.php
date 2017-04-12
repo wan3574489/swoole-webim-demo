@@ -48,6 +48,43 @@ function getCurrentUserInfo($filed="*")
     return false;
 }
 
+function tx_alipay($money,$openid,$aliPayAccount){
+    if(!class_exists("AopClient")){
+        include_once __DIR__."/classes/alipay/AopSdk.php";
+    }
+    $c = new AopClient;
+    $c->gatewayUrl = "https://openapi.alipay.com/gateway.do";
+    $c->appId = "2017041106642794";
+    $c->apiVersion = '1.0';
+    $c->format = "json";
+    $c->charset= "GBK";
+    $c->signType= "RSA2";
+    //实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名
+    $request = new AlipayFundTransToaccountTransferRequest ();
+    $out_biz_no = time();
+
+    $request->setBizContent("{" .
+        "    \"out_biz_no\":\"$out_biz_no\"," .
+        "    \"payee_type\":\"ALIPAY_LOGONID\"," .
+        "    \"payee_account\":\"$aliPayAccount\"," .
+        "    \"amount\":\"$money\"," .
+     /*   "    \"payer_show_name\":\"提现\"," .*/
+        "    \"remark\":\"提现\"" .
+        "  }");
+    $result = $c->execute ( $request);
+
+    $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
+    $resultCode = $result->$responseNode->code;
+/*    echo $resultCode;
+    print_r($result->$responseNode);*/
+    if(!empty($resultCode)&&$resultCode == 10000){
+       return true;
+    } else {
+        return $result->$responseNode->sub_msg;
+    }
+
+}
+
 function tx($money,$openid)
 {
     if(!class_exists('Wechat')){

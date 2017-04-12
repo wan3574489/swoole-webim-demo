@@ -12,7 +12,7 @@
     <meta name="screen-orientation" content="portrait">
     <meta name="x5-orientation" content="portrait">
     <title>红包提现</title>
-    <link href="style/withdraw.css" rel="stylesheet">
+    <link href="style/withdraw.css?t=<?php echo time();?>" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +49,7 @@
                 <img src="image/icon_wchat_1.png" width="41" height="40">
             </div>
             <div class="layout-column layout-column-6 font-border-1">
-                <p>直接转入 微信账户</p>
+                <p>直接转入 支付宝账户</p>
             </div>
             <div class="layout-column layout-column-2 vertical-center right">
                 <img src="image/chose.png" width="20" height="20">
@@ -68,6 +68,15 @@
                 <input type="text" id="money" placeholder="请输入提款金额 (最低10元起提)" class="input-1">
             </div>
         </div>
+        <div class="layout-line layout-content" style=" border-top: solid 1px #cacaca;">
+            <div class="layout-column layout-column-2 vertical-center"  >
+                支付宝账号:
+            </div>
+            <div class="layout-column  vertical-center layout-column-3">
+                <input type="text"  id="aliPayAccount" placeholder="请输入您的支付宝账号" class="input-1">
+            </div>
+        </div>
+
         <div class="layout-line layout-content border-top-1 height-1">
             <div class="layout-column layout-column-2 font-right-1">余额:</div>
             <div class="layout-column "><?php echo $user['virtual_money'];?>元</div>
@@ -110,17 +119,28 @@
                     par['money'] = numer;
                 }
 
-                $.post("/action.php?openid=<?php echo $_GET['openid'];?>",par,function(d){
+                var aliPayAccount = $("#aliPayAccount").val();
+                aliPayAccount = aliPayAccount.trim();
+                if(aliPayAccount.length <=0){
+                    alert("请填写您的支付宝账号!");
+                    return ;
+                }
+                par['aliPayAccount'] = aliPayAccount;
+
+                if(window.confirm("确定["+aliPayAccount+"]是提现的支付宝账户吗?")){
+                    $.post("/action.php?openid=<?php echo $_GET['openid'];?>",par,function(d){
                         console.log(d);
-                    if(d.status == 1){
-                        alert('提现成功!');
-                        window.location.href=window.location.href;
-                        return true;
-                    }else{
-                        alert(d.data);
-                        return false;
-                    }
-                },'json');
+                        if(d.status == 1){
+                            alert('提现成功!');
+                            window.location.href=window.location.href;
+                            return true;
+                        }else{
+                            alert(d.data);
+                            return false;
+                        }
+                    },'json');
+                }
+
             }
 
             //提交
@@ -143,6 +163,7 @@
                     alert("您最多提款20000元!");
                     return false;
                 }
+
                 tx(money);
 
             });
