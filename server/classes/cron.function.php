@@ -24,6 +24,16 @@ function createPacket($roomid,$create_timer){
     });
 }
 
+function cleanPacket(){
+    connect::query("INSERT into jnp_fortune_event_history select * from jnp_fortune_event  ");
+    connect::query(" delete from jnp_fortune_event ");
+    connect::query("INSERT into jnp_fortune_packet_info_history select * from jnp_fortune_packet_info ");
+    connect::query("  delete from jnp_fortune_packet_info  ");
+    connect::query(" INSERT into jnp_fortune_packet_history select * from jnp_fortune_packet ");
+    connect::query("delete from jnp_fortune_packet ");
+}
+
+
 /**
  * 机器人自动领取红包
  * @param $roomid

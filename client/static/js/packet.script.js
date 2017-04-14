@@ -170,6 +170,7 @@ var packet = {
      */
     user_rob_packet:function (data) {
         var html = template('system_user_rob_packet_info', data);
+
         $("#chatLineHolder-a").append(html);
         chat.scrollDiv('chat-lists');
     },

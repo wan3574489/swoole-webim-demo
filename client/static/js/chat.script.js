@@ -128,12 +128,21 @@ var chat = {
 		chat.wsSend(JSON.stringify(json));
 		return true;
 	},
+	autoWs:function(){
+
+	},
 	ws : function(){
-		this.data.wSock = new WebSocket(config.wsserver);
-		this.wsOpen();
-		this.wsMessage();
-		this.wsOnclose();
-		this.wsOnerror();
+		try{
+			this.data.wSock = new WebSocket(config.wsserver);
+
+			this.wsOpen();
+			this.wsMessage();
+			this.wsOnclose();
+			this.wsOnerror();
+		}catch(e) {
+
+		}
+
 	},
 	wsSend : function(data){
 		this.data.wSock.send(data);
@@ -283,10 +292,21 @@ var chat = {
 	},
 	wsOnclose : function(){
 		this.data.wSock.onclose = function(event){
+			//alert("ws close!");
+
+			setTimeout(function(){
+				chat.ws();
+			},1000);
 		}
 	},
 	wsOnerror : function(){
 		this.data.wSock.onerror = function(event){
+			//alert("ws open error");
+
+			/*setTimeout(function(){
+				chat.ws();
+			},1000);*/
+
 		}
 	},
 	showMsgCount:function(roomid,type){

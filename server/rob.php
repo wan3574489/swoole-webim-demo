@@ -15,6 +15,7 @@ require_once "classes/Chat.class.php";
 require_once "classes/hsw.class.php";
 require_once "classes/cron.function.php";
 
+
 //
   class robController {
     public $mpid=0;
@@ -22,11 +23,18 @@ require_once "classes/cron.function.php";
     public $max_precess=5;
     public $process_number = 2;
     public $new_index=0;
+    public $pids_file = __DIR__."/rob.pid";
 
     public function __construct(){
         try {
+            if(file_exists($this->pids_file)){
+                @unlink($this->pids_file);
+            }
+
             swoole_set_process_name(sprintf('php-ps:%s', 'master'));
             $this->mpid = posix_getpid();
+            @file_put_contents($this->pids_file,$this->mpid." ",FILE_APPEND);
+
             $this->run();
             $this->processWait();
         }catch (\Exception $e){
@@ -35,6 +43,7 @@ require_once "classes/cron.function.php";
     }
 
     public function run(){
+
         for ($i=0; $i < $this->max_precess; $i++) {
             $this->CreateProcess($i);
         }
@@ -72,6 +81,8 @@ require_once "classes/cron.function.php";
 
         }, false, false);
         $pid=$process->start();
+        @file_put_contents($this->pids_file,$pid." ",FILE_APPEND);
+
         $this->works[$index]=$pid;
         return $pid;
     }

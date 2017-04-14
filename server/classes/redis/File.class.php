@@ -84,12 +84,12 @@ class File {
 	 * 获取所有房间的在线用户
 	 */
 	public static function getOnlineUsers(){
-		global $rooms;
+		/*global $rooms;
 		$online_users = array();
 		foreach($rooms as $_k => $_v){
 			$online_users[$_k] = array_slice(self::getRoomUsers($_k), 2);
 		}
-        return $online_users;
+        return $online_users;*/
     }
 	
 	public static function getUsersByRoom($roomid){

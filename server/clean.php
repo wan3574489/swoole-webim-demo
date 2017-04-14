@@ -13,8 +13,6 @@ require_once "classes/".STORAGE."/ChatUser.class.php";
 require_once "classes/".STORAGE."/ChatLine.class.php";
 require_once "classes/Chat.class.php";
 require_once "classes/hsw.class.php";
+require_once "classes/cron.function.php";
 
-@file_put_contents(__DIR__."/hsw_server.pid",posix_getpid());
-
-$server = new hsw();
-
+cleanPacket();

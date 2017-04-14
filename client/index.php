@@ -359,8 +359,8 @@ if(!$user = getCurrentUserInfo()){
 </script>
 <script src="./static/js/jquery.min.js"></script>
 <script src="./static/js/template-native.js"></script>
-<!--<script src="./static/js/vconsole.min.js"></script>
---><script src="./static/js/face.js?v=3345"></script>
+<!--<script src="./static/js/vconsole.min.js"></script>-->
+<script src="./static/js/face.js?v=3345"></script>
 <script src="./static/js/create.div.js?v=<?php echo time();?>"></script>
 <script src="./static/js/packet.script.js?v=<?php echo time();?>"></script>
 <script src="./static/js/page.script.js?<?php echo time();?>"></script>
@@ -381,6 +381,9 @@ if(!$user = getCurrentUserInfo()){
         return;
     });
 
+    /*window.onerror= function (msg,url,l) {
+         alert(msg);
+    };*/
     /*setInterval(function () {
      chat.test_sendMessage("你好，中文");
      },2000);*/

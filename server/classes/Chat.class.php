@@ -23,7 +23,7 @@ class Chat {
 			'avatar'	=> $avatar
 		));
 		if(!$user->save()){
-			throw new Exception('This nick is in use.');
+			//throw new Exception('This nick is in use.');
 		}
 	}
 	/**

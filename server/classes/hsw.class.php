@@ -66,7 +66,10 @@ class hsw {
 			if($roomid>0){
 				$select_time = $this->getPushTime($fd);
 				//$__sql = "";
-
+				if($select_time<=0){
+					$select_time = connect::get_millisecond();
+					sleep(1);
+				}
 				$end_time = connect::get_millisecond();
 				$__sql = "select data from ".connect::tablename("fortune_event")." where time > $select_time and  roomid = $roomid and time <= $end_time order by time asc";
 
@@ -76,6 +79,8 @@ class hsw {
 						$data['fd'] = $fd;
 						$this->serv->task( json_encode($data) );
 					}
+				}else{
+					echo "[$__sql]没有查询到记录!\n";
 				}
 				$this->addPushTime($fd,$end_time);
 			}
