@@ -9,15 +9,20 @@ function createPacket($roomid,$create_timer){
     connect::resetTime();
 
     /*$roomid = 'a';*/
-    if(!hasPacket($roomid)){
-        if($rebootid = getRandReboot([])){
-            if($a =  packet::create($roomid,$rebootid)){
-                melog("创建红包成功,红包编号:$a,创建人:$rebootid");
-            }else{
-                melog("创建红包失败:".packet::getErrorMessage());
+    try{
+        if(!hasPacket($roomid)){
+            if($rebootid = getRandReboot([])){
+                if($a =  packet::create($roomid,$rebootid)){
+                    melog("创建红包成功,红包编号:$a,创建人:$rebootid");
+                }else{
+                    melog("创建红包失败:".packet::getErrorMessage());
+                }
             }
         }
+    }catch(Exception $e){
+
     }
+
 
     \swoole_timer_after($create_timer,function() use ($roomid,$create_timer){
         createPacket($roomid,$create_timer);

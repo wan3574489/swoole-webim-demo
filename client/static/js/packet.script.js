@@ -21,7 +21,9 @@ var packet = {
         $(document).on("click",'.packet',function (e) {
 
             e.stopPropagation();
+
             if(!chat.canRob()){
+                console.log("YES");
                 page.showToBuy();
                 return false;
             }

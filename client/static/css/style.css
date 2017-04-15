@@ -36,7 +36,8 @@ html, body {
     color: rgb(34, 34, 34);
     font-size: 14px;
     line-height: 1.3em;
-    font-family: "冬青黑体简体中文", "Tahoma", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji" ! important;
+    font-family:  "Microsoft YaHei","冬青黑体简体中文", "Tahoma", "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji" ! important;
+    background-color: #313034;
 }
 
 html {
@@ -47,7 +48,7 @@ html {
 
 body {
     box-sizing: border-box;
-    color: #cb8c2c;
+    color: #666666;
 
 }
 
@@ -411,7 +412,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     position: relative;
     /*height: 97%;*/
     min-width: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 60px;
 
 }
 
@@ -895,7 +896,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 .conv-detail-pannel .content-pannel-body .chat-status {
     /*margin: 16px auto;*/
     text-align: center;
-    color: rgb(189, 190, 191);
+    color: #f14d4a;
     font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -916,6 +917,8 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     background-color: rgb(189, 190, 191);
     margin: 0 auto;
     max-width: 75vw;
+    display: inline-block;
+    padding: 0 10px;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-rob-packet .chat-content-out span img{
@@ -931,13 +934,18 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     border: solid 1px rgb(226, 226, 226);
 }
 
+.org-3{
+    color: #f0ac3d;
+}
+
 .chat-next-packet .chat-content-out div{
     float: left;
 }
 .chat-next-packet .chat-content-out div img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    /* border-radius: 50%; */
+    border: white 3px solid;
 }
 .chat-next-packet .chat-content-out .chat-content-avatar{
     margin-top: 5px;
@@ -971,7 +979,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 .over-hiden{
-    width: 54px;
+    max-width: 100px;
     white-space: nowrap;
     text-overflow: ellipsis;
 }
@@ -1062,7 +1070,11 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     padding-left: 5px;
     font-size: 12px;
     margin-bottom: 4px;
-    color: #cb8c2c;
+    color: #c4c4c4;
+}
+
+.red-3{
+    color: #f14d4a !important;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-item.not-me .msg-bubble-area {
@@ -1128,15 +1140,12 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     float: left;
     clear: both;
     padding: 5px 11px;
-   /* border: 1px solid rgb(225, 224, 228);*/
     border-radius: 6px;
-    /*background-color: rgb(255, 255, 255);*/
+    background-color: rgb(248, 251, 255);
     line-height: 21px;
-    /* width: auto; */
-    /* max-width: 60vw; */
     overflow: hidden;
     transition: background-color 0.25s ease 0s;
-    background-image: url(/static/images/pack.png);
+    background-image: url(/static/images/pack.png?3);
     width: 240px;
     height: 85px;
     background-size: cover;
@@ -2365,18 +2374,23 @@ body .hide {
 
 .welfareRuleHeader{
     width: 100%;
-    height: 35px;
-    line-height: 35px;
+    height: 53px;
+    line-height: 53px;
     text-align: center;
     color: black;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bolder;
 }
 .welfareRuleContent{
-    color: #000000;
+    color: #666666;
 }
 .welfareRuleContent .red{
     font-size: 14px;
+}
+
+.red-5{
+color: #ff0000 ;
+    font-weight: bolder;
 }
 
 .welfareRuleContent p {
@@ -2398,8 +2412,8 @@ body .hide {
     width: 17.1rem;
     height: 3.14rem;
     border: 0;
-    border-radius: .5rem;
-    background: #4fc655;
+    border-radius: 0.5rem;
+    background: #ff6600;
     color: #fff;
     font-size: 1.35rem;
     margin: 1.15rem auto 0
@@ -2415,7 +2429,9 @@ body .hide {
     left: 50%;
     margin-left: -10.1rem;
     background: #d84e43;
-    border-radius: .5rem;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+
     width: 20.2rem;
     z-index: 101
 }
@@ -2543,7 +2559,8 @@ body .hide {
     background: #fff;
     margin-left: -10.1rem;
     margin-top: -7.9rem;
-    border-radius: .5rem
+    border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
 }
 
 .redpackNotice_title {
@@ -2592,6 +2609,7 @@ body .hide {
     display: inline-block;
     border: .1rem solid #D9D9D9;
     border-radius: 1rem;
+    -moz-border-radius: 1rem;
     position: relative;
     top: -.1rem
 }
@@ -2668,7 +2686,8 @@ body .hide {
     height: 3.5rem;
     margin: 1.4rem auto .8rem;
     background: #ededed;
-    border-radius: .35rem;
+    border-radius: 0.35rem;
+    -moz-border-radius: 0.35rem;
     position: relative
 }
 
@@ -3350,6 +3369,7 @@ body .hide {
 
 #openScroller {
     background: #fff;
+    margin-bottom: 50px;
 }
 
 .loadMask {
@@ -3447,9 +3467,9 @@ body .hide {
 
 #menu-pannel-footer{
     position: absolute;
-    height: 50px;
-    line-height: 50px;
-    background-color: #302f34;
+    height: 60px;
+    line-height: 60px;
+    background-color: #313034;
     width: 97%;
     color: white;
     text-align: right;
@@ -3471,10 +3491,11 @@ body .hide {
     font-size: 12px;
     display: inline;
     float: left;
-    height: 20px;
+    height: 24px;
     margin: 0;
-    line-height: 20px;
-    width: 71%;
+    line-height: 24px;
+    width: 60%;
+    color: #848484;
 }
 
 #yuer{
@@ -3484,6 +3505,15 @@ body .hide {
 }
 #menu-pannel-footer .left-1 #money i {
     color: yellow;
+    float: left;
+    padding-left: 7px;
+}
+
+#menu-pannel-footer .left-1 #money{
+    background-color: #000000;
+    border-radius: 15px;
+    margin-left: 15px;
+    padding-top: 2px;
 }
 #menu-pannel-footer .right-1{
 
@@ -3496,11 +3526,11 @@ body .hide {
 }
 
 #recharge{
-    /*color: #f36a6a;*/
     display: block;
     float: right;
     width: 20px;
-    padding-left: 6px;
+    height: 20px;
+    padding-right: 2px;
 }
 
 #withdraw{

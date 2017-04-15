@@ -94,9 +94,10 @@ class packet extends message {
                 $rand_number = rand(1,$currentRandMaxNumber);
             }
 
-            if($rand_number == 0){
+            if($rand_number <= 0){
+                $_temp = $rand_number-1;
                 $rand_number = 1;
-                $result[0] = $result[0] -1;
+                $result[0] = $result[0] - $_temp;
             }
             //
             $residue_number = $residue_number - $rand_number;

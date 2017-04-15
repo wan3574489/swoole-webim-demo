@@ -212,6 +212,7 @@ class hsw {
 				$user = packet::getUser($openid);
 				$packet = packet::getPacket($packet_id);
 
+				//print_r($user['virtual_money']);
 				if($user['virtual_money'] < packet::getPayMonery($packet['roomid'])){
 					$no_money = 0;
 				}else{

@@ -71,7 +71,7 @@ function tx_alipay($money,$openid,$aliPayAccount){
      /*   "    \"payer_show_name\":\"提现\"," .*/
         "    \"remark\":\"提现\"" .
         "  }");
-    $result = $c->execute ( $request);
+    $result = $c->execute( $request);
 
     $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
     $resultCode = $result->$responseNode->code;

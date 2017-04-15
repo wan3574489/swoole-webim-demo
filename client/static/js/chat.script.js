@@ -37,6 +37,9 @@ var chat = {
 		return chat.data.storage.getItem("roomid_money");
 	},
 	canRob:function(){
+		console.log(config.money);
+		console.log(this.getRoomMoney());
+
 		if(config.money>=this.getRoomMoney()){
 			return true;
 		}
