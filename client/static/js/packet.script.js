@@ -7,8 +7,10 @@ var packet = {
     initRoom:function (data) {
         data.system_avatar = "/static/images/system_avatar.png";
         var html = template('system_init', data);
+       /* alert(  $("#chatLineHolder-a").html());*/
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+       /* alert(  $("#chatLineHolder-a").html());*/
+        chat.scrollDiv('menu-pannel-body');
 
 
         packet.event();
@@ -126,7 +128,7 @@ var packet = {
         data.system_avatar = "/static/images/system_avatar.png";
         var html = template('system_prompt_next_packet', data);
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+        chat.scrollDiv('menu-pannel-body');
     },
 
     packet_number :1,
@@ -139,7 +141,7 @@ var packet = {
         data.number = this.packet_number;
         var html = template('system_prompt_next_packet_done', data);
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+        chat.scrollDiv('menu-pannel-body');
 
         var i = 4;
         var interval = setInterval(function () {
@@ -163,7 +165,7 @@ var packet = {
     packet:function (data) {
         var html = template('system_packet_info', data);
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+        chat.scrollDiv('menu-pannel-body');
     },
 
     /**
@@ -174,7 +176,7 @@ var packet = {
         var html = template('system_user_rob_packet_info', data);
 
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+        chat.scrollDiv('menu-pannel-body');
     },
 
     /**
@@ -184,7 +186,7 @@ var packet = {
     next_packet_which_send:function (data) {
         var html = template('system_prompt_next_packet_who_send', data);
         $("#chatLineHolder-a").append(html);
-        chat.scrollDiv('chat-lists');
+        chat.scrollDiv('menu-pannel-body');
     }
     
 }

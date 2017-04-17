@@ -52,6 +52,10 @@ body {
 
 }
 
+button,input[type='button']{
+    -webkit-appearance: none;
+}
+
 input, textarea, keygen, select, button {
     font-family: "冬青黑体简体中文", "Tahoma", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji" ! important;
 }
@@ -353,8 +357,8 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 #body {
-    display: flex;
-    flex-flow: row wrap;
+  /*  display: flex;
+    flex-flow: row wrap;*/
     height: 100vh;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
@@ -405,15 +409,18 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 #menu-pannel-body {
-    -moz-box-flex: 1;
-    flex: 1 1 0%;
-    display: flex;
-    flex-flow: row nowrap;
     position: relative;
-    /*height: 97%;*/
     min-width: 0px;
-    margin-bottom: 60px;
+   /* margin-bottom: 60px;*/
+    height: 100%;
+    overflow-y: scroll;
+    width: 103%;
+    background-color: white;
+    overflow-x: hidden;
+}
 
+#chatLineHolder-a{
+    margin-bottom: 30px;
 }
 
 #sub-menu-pannel {
@@ -444,16 +451,14 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 #content-pannel {
     height: 100%;
     background-color: rgb(248, 251, 255);
-    overflow: hidden;
+    /* overflow: hidden; */
     border-bottom-right-radius: 3px;
-    -moz-box-flex: 1;
-    flex: 1 0 320px;
     position: relative;
 }
 
 #content-pannel > div {
-    display: flex;
-    flex-flow: column wrap;
+    /*display: flex;
+    flex-flow: column wrap;*/
     height: 100%;
 }
 
@@ -482,8 +487,8 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 #content-pannel .content-pannel-body {
-    -moz-box-flex: 1;
-    flex: 1 1 0%;
+    /*-moz-box-flex: 1;
+    flex: 1 1 0%;*/
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -880,7 +885,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 .conv-detail-pannel .content-pannel-body .chat-items .msg-items {
-    position: absolute;
+    /*position: absolute;*/
     box-sizing: border-box;
     min-height: 100%;
     /*min-width: 550px;*/
@@ -2354,7 +2359,7 @@ body .hide {
 
 .redpackNotice, .welfareRule {
         position: absolute;
-        top: 50%;
+        top: 35%;
         left: 50%;
         z-index: 101
 }
@@ -2413,10 +2418,11 @@ color: #ff0000 ;
     height: 3.14rem;
     border: 0;
     border-radius: 0.5rem;
-    background: #ff6600;
+    background-color: #ff6600;
     color: #fff;
     font-size: 1.35rem;
-    margin: 1.15rem auto 0
+    margin: 1.15rem auto 0;
+    -webkit-appearance: none;
 }
 
 /**
@@ -2546,12 +2552,7 @@ color: #ff0000 ;
 /**
 发包提示
 **/
-.redpackNotice, .welfareRule {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 101
-}
+
 
 .redpackNotice {
     width: 20.2rem;
@@ -3446,7 +3447,7 @@ color: #ff0000 ;
 }
 .redpackNotice, .welfareRule {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     z-index: 101
 }
@@ -3466,7 +3467,7 @@ color: #ff0000 ;
 }
 
 #menu-pannel-footer{
-    position: absolute;
+    position: fixed;
     height: 60px;
     line-height: 60px;
     background-color: #313034;
@@ -3475,6 +3476,8 @@ color: #ff0000 ;
     text-align: right;
     padding-right: 3%;
     bottom: 0px;
+    left: 0px;
+  /*  overflow: hidden;*/
 }
 
 #menu-pannel-footer span {

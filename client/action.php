@@ -41,7 +41,11 @@ switch($action){
         }
 
         if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
-            showJson(1,$ret);
+            if($ret === 1){
+                showJson(1,$ret);
+            }else{
+                showJson(0,$ret);
+            }
         }
         showJson(0,"系统异常，请刷新重新试!");
         break;
@@ -65,7 +69,11 @@ switch($action){
         }
 
         if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
-            showJson(1,$ret);
+            if($ret === 1){
+                showJson(1,$ret);
+            }else{
+                showJson(0,$ret);
+            }
         }
         showJson(0,"系统异常，请刷新重新试!");
         break;
