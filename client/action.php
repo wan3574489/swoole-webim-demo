@@ -41,7 +41,7 @@ switch($action){
         }
 
         if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
-            if($ret === 1){
+            if($ret === true){
                 showJson(1,$ret);
             }else{
                 showJson(0,$ret);
@@ -69,7 +69,7 @@ switch($action){
         }
 
         if($ret = tx_alipay($money,$user['openid'],$aliPayAccount)){
-            if($ret === 1){
+            if($ret === true){
                 showJson(1,$ret);
             }else{
                 showJson(0,$ret);

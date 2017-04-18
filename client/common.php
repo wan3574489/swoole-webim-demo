@@ -62,7 +62,7 @@ function tx_alipay($money,$openid,$aliPayAccount){
     $c->rsaPrivateKey = 'MIIEpQIBAAKCAQEAp6AzfIrIqkr4bInF3kP6JPA7KfBP5uD1oG3ddsh330OdQnyFDzM4GL1CJIC19su3BaIS2QlJvNiPSH7DBAWOcJrxPy1378SZuxBfcQx4lXFPqFxy1ZOsqjR2xlJ9Mcgq7N3LuudYclnlJRBveAENedSLHiXpHbA0wd17q81fkrhcbCwxi9k2wi1GACeGDp29GCleI6nM2tG+/kG+WftLTXJfU2S8U0sYC0X+IRg6CjvVTeZNAb+FReIzBQ+hWs4ONQLpJUxHSBHlCrD+subshRTDuhRqQjBUvayR+lhgDZcOYCUAKmIqKAJad2suM3PsUzB+Q3dZoq0xsmB5Awm6ewIDAQABAoIBAQCITclwDT5M0zecso82RFpkrP+/A41FdUnmUVATZcGrx8RZqv1btc94tnTRT+QnMdG6f+cJmvbd287vKTyUyZvgzu067VMoodpL9W1WdMic5I3cnog2SaXOpWirranl0BmvkE84xSPzoEunTu0FTP3TQlR5iGQ94umTdvE4a4C6wWQrkysqhOCTNyL+hThy1DYYE1hwPwDO14MJiNGA7odhAzYw0goYgf6oBR67WkDGfpVws9HT01ZI99hbN9/xk5OoJV7NE+G8aTYpd6xS2shMVeeF7o2sMEPHAzUnSA+2eerG5zddtDqeeGdzVzaoqfibM7AwZxIHUDsGThMILhIpAoGBANcd0kUGwvhwEpp6rl2jC1P8zDk3FpmSXEbsN+RGdla8n1JCvQkCh8+ietukTaMB/1iq237A95byrz27qnqWoFlGmtL9/0+098prigkTVDvDfnu5Y1TvOKK5hc1ucRYhfD4gzeGjkC5Sp1Mj5ElFjwUh0QtfVhhzQMVdWIwKlb5FAoGBAMd7yfWtbJ7PRhJKfu6mOSprqYqm0RP2glMZn9iPN6agRUjkP13pITYFMTs5jqlq5mrRc1pzAQnEiOgK0wh3bO71NqVc1ft6jMhc3EBm2V0I50nkMfUDz4Vwt7oRKQO59GfgNxm81NrXn3Ra1wbTWGKtyQ8J5DSo7NUP85+FsIG/AoGBAKxy8a/4XbDAV4mTs9jI7jnkPOvZJ7rxRBxvHddYTWH3UFmnutdQOgPQI2GU89Art8IjJlcU5ucRoj6BBYfE3ML1AQUILfZ+Au85Cq1/21UVwX35/pGGPQbmZ0dqtCmjqnA76BBtCRa5l/3klgvPQXpBw820Hdb3/gK6dFO/4I9pAoGAI60/BIJcv9ZgONs78mCmLrEMpHCLSh+3VTdrACc1E8bsPUodDyWnu+qX0HjNy/0Dcq09DTsuP1n4BlARSB1bzSzr9g0xdAWJ8jexaI88Zsg13WBDkwd4cOwk39E73Z+/V2ihUigUhYM00HGCrYTU9OkR4W+qccSYfs6Yiro1RC8CgYEAkCWrPkgjTnZWa69e24MGxiLEePXYO9cMWX1Cy95No44tiKO9EzYe0CPMWcOgRj5NY6BO3eku/VQmC56dz4CDaaf96GkiG4uvlzOAoH8Fwi8WJp78UXGUEKlXbeMGDzw8qnhaoZyt4z7HJvXZLiCXgvstkF/Nz+klQ7Aoj7YBmOA=';
     $c->alipayrsaPublicKey = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiq4EeNG+U8WqRxuTkzVrHfoSzwlUiRttuVHkzWCAfH6KPLVprOI+GzHsgeBxNn3qdFEYnryLedQj1tDlJ0wIwKZtroSwIoJ1JiZcpx+kjyEFxxsRJjvIVDo4RxAgyMdoNdhxGQWpHZlo7guW5VWvS+1ylhhjxjOvVQ8cM6a6if3dEWTMyGFpO1IAyc10PHDxn5I0Esgg5jh3TFgSDf8arr47Fxd4GqTHtG0jHFd4RIQq/Mi4xrx6Ysi2eFoC27P03wQt4jljIgtRNXSSBhiwva/eFX7Rsjck+JtNbN7rX3zfV7JKZJswVZ5JjDqLLtRcjyt0TkhlZNJ+vUYa/oWTCwIDAQAB';
 
-    $money = 0.01;
+    $money1 = 0.1;
     //实例化具体API对应的request类,类名称和接口名称对应,当前调用接口名
     $request = new AlipayFundTransToaccountTransferRequest ();
     $out_biz_no = time();
@@ -71,7 +71,7 @@ function tx_alipay($money,$openid,$aliPayAccount){
         "    \"out_biz_no\":\"$out_biz_no\"," .
         "    \"payee_type\":\"ALIPAY_LOGONID\"," .
         "    \"payee_account\":\"$aliPayAccount\"," .
-        "    \"amount\":\"$money\"," .
+        "    \"amount\":\"$money1\"," .
      /*   "    \"payer_show_name\":\"提现\"," .*/
         "    \"remark\":\"提现\"" .
         "  }");
@@ -79,11 +79,18 @@ function tx_alipay($money,$openid,$aliPayAccount){
 
     $responseNode = str_replace(".", "_", $request->getApiMethodName()) . "_response";
     $resultCode = $result->$responseNode->code;
-    echo $resultCode;
-    print_r($result->$responseNode);
-    exit;
+
     if(!empty($resultCode)&&$resultCode == 10000){
-       return true;
+
+        $key = "tx-number-".date("y-m-d");
+        getRedisHandle()->incrby($key,1);
+
+        $key = "tx-money-".date("y-m-d");
+        getRedisHandle()->incrby($key,$money);
+        $sql = "update  ".connect::tablename("fortune_user")." set virtual_money = virtual_money-".$money." where openid ='{$openid}'";
+        connect::query($sql);
+        return true;
+
     } else {
         return $result->$responseNode->sub_msg;
     }

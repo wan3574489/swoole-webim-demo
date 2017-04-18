@@ -45,24 +45,28 @@ function cleanPacket(){
  * @return bool
  */
 function robPacket($roomid,$rob_timer){
-
-    /*$roomid = 'a';*/
     connect::getTime();
     connect::resetTime();
-    $has = hasCanRobPacket($roomid);
-    if($has !== false){
-        if($id = getRandReboot('')){
-            if(packet::rob($has,$id)){
-                melog("自动领取红包成功:红包id{$has},机器人{$id}");
-                \swoole_timer_after($rob_timer+2000,function() use ($roomid,$rob_timer){
-                    robPacket($roomid,$rob_timer);
-                });
-                return ;
-            }else{
-                melog("自动领取红包失败:".packet::getErrorMessage());
-            }
-        }
-    }
+    /*$roomid = 'a';*/
+
+   try{
+       $has = hasCanRobPacket($roomid);
+       if($has !== false){
+           if($id = getRandReboot('')){
+               if(packet::rob($has,$id)){
+                   melog("自动领取红包成功:红包id{$has},机器人{$id}");
+                   \swoole_timer_after($rob_timer+2000,function() use ($roomid,$rob_timer){
+                       robPacket($roomid,$rob_timer);
+                   });
+                   return ;
+               }else{
+                   melog("自动领取红包失败:".packet::getErrorMessage());
+               }
+           }
+       }
+   }catch (Exception $e){
+
+   }
 
     swoole_timer_after($rob_timer,function() use ($roomid,$rob_timer){
         robPacket($roomid,$rob_timer);
