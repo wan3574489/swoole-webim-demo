@@ -31,11 +31,11 @@ function getCurrentUserInfo($filed="*")
     $openid = $_GET['openid'];
     if ($user = connect::select(" select {$filed} from " . connect::tablename("fortune_user") . " where openid = '{$openid}'", true)) {
         if($filed == "*"){
-            $key = "tx-number-".date("y-m-d");
+            $key = $openid."-tx-number-".date("y-m-d");
             if (!$num = getRedisHandle()->get($key)) {
                 $num = 0;
             }
-            $key = "tx-money-".date("y-m-d");
+            $key = $openid."-tx-money-".date("y-m-d");
             if (!$money = getRedisHandle()->get($key)) {
                 $money = 0;
             }
@@ -82,10 +82,10 @@ function tx_alipay($money,$openid,$aliPayAccount){
 
     if(!empty($resultCode)&&$resultCode == 10000){
 
-        $key = "tx-number-".date("y-m-d");
+        $key = $openid."-tx-number-".date("y-m-d");
         getRedisHandle()->incrby($key,1);
 
-        $key = "tx-money-".date("y-m-d");
+        $key = $openid."-tx-money-".date("y-m-d");
         getRedisHandle()->incrby($key,$money);
         $sql = "update  ".connect::tablename("fortune_user")." set virtual_money = virtual_money-".$money." where openid ='{$openid}'";
         connect::query($sql);

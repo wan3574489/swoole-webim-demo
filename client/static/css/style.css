@@ -37,7 +37,7 @@ html, body {
     font-size: 14px;
     line-height: 1.3em;
     font-family:  "Microsoft YaHei","冬青黑体简体中文", "Tahoma", "Hiragino Sans GB", "微软雅黑", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif, "Apple Color Emoji" ! important;
-    background-color: #313034;
+    background-color: #ebebeb;
 }
 
 html {
@@ -48,7 +48,7 @@ html {
 
 body {
     box-sizing: border-box;
-    color: #666666;
+    /*color: #666666;*/
 
 }
 
@@ -415,7 +415,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     height: 100%;
     overflow-y: scroll;
     width: 103%;
-    background-color: white;
+    background-color: #f8fbff;
     overflow-x: hidden;
 }
 
@@ -1146,7 +1146,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     clear: both;
     padding: 5px 11px;
     border-radius: 6px;
-    background-color: rgb(248, 251, 255);
+    background-color: #ebebeb;
     line-height: 21px;
     overflow: hidden;
     transition: background-color 0.25s ease 0s;
