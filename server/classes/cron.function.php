@@ -55,7 +55,7 @@ function robPacket($roomid,$rob_timer){
            if($id = getRandReboot('')){
                if(packet::rob($has,$id)){
                    melog("自动领取红包成功:红包id{$has},机器人{$id}");
-                   \swoole_timer_after($rob_timer+2000,function() use ($roomid,$rob_timer){
+                   \swoole_timer_after(rand(1,3)+2000,function() use ($roomid,$rob_timer){
                        robPacket($roomid,$rob_timer);
                    });
                    return ;
@@ -68,7 +68,7 @@ function robPacket($roomid,$rob_timer){
 
    }
 
-    swoole_timer_after($rob_timer,function() use ($roomid,$rob_timer){
+    swoole_timer_after(rand(1,3),function() use ($roomid,$rob_timer){
         robPacket($roomid,$rob_timer);
     });
 

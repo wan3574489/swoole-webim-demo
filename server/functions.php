@@ -1,10 +1,10 @@
 <?php
 
 /**
- * ×Ö·û´®·ÀSQL×¢Èë±àÂë£¬¶ÔGET,POST,COOKIEµÄÊý¾Ý½øÐÐÔ¤´¦Àí
+ * ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½SQL×¢ï¿½ï¿½ï¿½ï¿½ë£¬ï¿½ï¿½GET,POST,COOKIEï¿½ï¿½ï¿½ï¿½ï¿½Ý½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½
  *
- * @param  $input Òª´¦Àí×Ö·û´®»òÕßÊý×é
- * @param  $urlencode ÊÇ·ñÒªURL±àÂë
+ * @param  $input Òªï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @param  $urlencode ï¿½Ç·ï¿½ÒªURLï¿½ï¿½ï¿½ï¿½
  */
 function escape($input, $urldecode = 0) {
     if(is_array($input)){
@@ -18,17 +18,28 @@ function escape($input, $urldecode = 0) {
             $input = urldecode($input);
             $input=str_replace(array('{addplus}'),array('+'),$input);
         }
-        // PHP°æ±¾´óÓÚ5.4.0£¬Ö±½Ó×ªÒå×Ö·û
+        // PHPï¿½æ±¾ï¿½ï¿½ï¿½ï¿½5.4.0ï¿½ï¿½Ö±ï¿½ï¿½×ªï¿½ï¿½ï¿½Ö·ï¿½
         if (strnatcasecmp(PHP_VERSION, '5.4.0') >= 0) {
             $input = addslashes($input);
         } else {
-            // Ä§·¨×ªÒåÃ»¿ªÆô£¬×Ô¶¯¼Ó·´Ð±¸Ü
+            // Ä§ï¿½ï¿½×ªï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½Ó·ï¿½Ð±ï¿½ï¿½
             if (!get_magic_quotes_gpc()) {
                 $input = addslashes($input);
             }
         }
     }
-    //·ÀÖ¹×îºóÒ»¸ö·´Ð±¸ÜÒýÆðSQL´íÎóÈç 'abc\'
+    //ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 'abc\'
     if(substr($input,-1,1)=='\\') $input=$input."'";//$input=substr($input,0,strlen($input)-1);
     return $input;
+}
+
+function getRedisHandle()
+{
+    static $redis;
+    if (!$redis) {
+        $redis = new Redis();
+        $redis->connect('127.0.0.1', 6379);
+        $redis->setOption(Redis::OPT_PREFIX, 'swoole-webim:');
+    }
+    return $redis;
 }

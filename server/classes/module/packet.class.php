@@ -103,13 +103,29 @@ class packet extends message {
             $residue_number = $residue_number - $rand_number;
             $result[] = $rand_number;
         }
-        rsort($result);
+        //rsort($result);
+
+         $minNumber = $packet_number*100;
+         $minNumberKey = 0;
+        foreach($result as $i => $number){
+            if($minNumber>$number){
+                $minNumber  = $number;
+                $minNumberKey = $i;
+            }
+        }
+        reset($result);
 
         foreach ($result as $i =>$rand_number){
-            if($i == 0 || $i == 3){
+            /*if($i == 0 || $i == 3){
                 $robot_place = rand(3,4);
             }else{
                 $robot_place = rand(1,2);
+            }*/
+            //
+            if($minNumberKey == $i){
+                $robot_place = 4;
+            }else{
+                $robot_place = 1;
             }
 
             $insert_packet_sql = " insert into ".connect::tablename("fortune_packet_info")." (roomid,packet_id,user_id,packet_number,create_at,rob_at,plcae,status,robot_place) VALUES('{$roomid}',$packet_id,0,$rand_number/100,$time,0,$i+1,0,$robot_place); ";
@@ -169,15 +185,23 @@ class packet extends message {
             self::addErrorMessage("红包领取完了",1000);
             return false;
         }
-        
+        $robotHasRob = false;
+        $robotHasRobKey = "packet-rob-has-robot-".$packet_id;
+        if(getRedisHandle()->get($robotHasRobKey)){
+            $robotHasRob = true;
+        }
+
         connect::openCommit();
 
         // 用户类型
-        if($user['user_type'] == 5){
+        if($user['user_type'] == 5 && $robotHasRob == false){
             $update_sql = "update ".connect::tablename("fortune_packet_info")." set user_id=$userid ,status = 1 ,rob_at = $time where status = 0 and id = ( select id  from (select id from ".connect::tablename("fortune_packet_info")." where packet_id = $packet_id and status = 0 order by robot_place asc limit 1 )as a) ";
         }else{
-            $update_sql = "update ".connect::tablename("fortune_packet_info")." set user_id=$userid ,status = 1 ,rob_at = $time where status = 0 and id = ( select id from  (select id from ".connect::tablename("fortune_packet_info")." where packet_id = $packet_id and status = 0 order by  robot_place desc limit 1) as a) ";
+            $update_sql = "update ".connect::tablename("fortune_packet_info")." set user_id=$userid ,status = 1 ,rob_at = $time where status = 0 and id = ( select id from  (select id from ".connect::tablename("fortune_packet_info")." where packet_id = $packet_id and status = 0  limit 1) as a) ";
+            //$update_sql = "update ".connect::tablename("fortune_packet_info")." set user_id=$userid ,status = 1 ,rob_at = $time where status = 0 and  packet_id = $packet_id  ";
+
         }
+
 
         if(!connect::query($update_sql)){
             connect::rollback();
@@ -216,6 +240,10 @@ class packet extends message {
             'user' =>$user,
             'pay_user'=> self::getUser($packet['user_id'])
         ))){
+            if($user['user_type'] == 5 && $robotHasRob == false){
+                getRedisHandle()->set($robotHasRobKey,1);
+            }
+
             connect::rollback();
             return false;
         }

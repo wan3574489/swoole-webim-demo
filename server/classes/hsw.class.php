@@ -256,6 +256,7 @@ class hsw {
 						),
 						'roomid'=>$data['roomid']
 					);
+
 					//已经领取了的信息
 					$pushMsg['data']['packet_number'] = packet::getUserRobPacketNumber($packet_id,packet::$user['id']);
 

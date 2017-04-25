@@ -6,7 +6,7 @@ function page_404()
 
 function isValidRequest()
 {
-    if (!isset($_GET['openid'])) {
+    if (!isset($_GET['openid']) && !isset($_GET['token'])) {
         page_404();
     }
 }
@@ -26,9 +26,34 @@ function getRedisHandle()
     return $redis;
 }
 
+function checkSalf(){
+
+    $salf = false;
+
+    if(isset($_GET['_t'])){
+        $t = $_GET['_t'];
+        $time = time();
+
+        if($time >= $t && $t+5>=$time){
+            $salf = true;
+        }
+    }
+
+    if(!$salf){
+        header('Location: http://wchat.codeception.cn/app/index.php?i=15&c=entry&do=packet&m=wwe_health_care');
+        exit;
+    }
+    return true;
+}
+
 function getCurrentUserInfo($filed="*")
 {
-    $openid = $_GET['openid'];
+    if(isset($_GET['openid'])){
+        $openid = $_GET['openid'];
+    }elseif(isset($_GET['token'])){
+        $openid = $_GET['token'];
+    }
+
     if ($user = connect::select(" select {$filed} from " . connect::tablename("fortune_user") . " where openid = '{$openid}'", true)) {
         if($filed == "*"){
             $key = $openid."-tx-number-".date("y-m-d");

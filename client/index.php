@@ -1,7 +1,11 @@
 <?php
 include_once __DIR__."/common.php";
+
+checkSalf();
+
 if(!$user = getCurrentUserInfo()){
-    page_404();
+    header('Location: http://wchat.codeception.cn/app/index.php?i=15&c=entry&do=packet&m=wwe_health_care');
+    exit;
 }
 
 ?>
@@ -199,16 +203,18 @@ if(!$user = getCurrentUserInfo()){
     <div class="title">存入现金</div>
     <i class="dialog-close"></i>
     <div class="kldBox">
-        <div class="mykld">余额(元)：<em>--</em></div>
+        <div class="mykld">余额 ( 元 ) ：<em>--</em></div>
        <!-- <span>余额明细</span>-->
     </div>
+
+    <p class="type-2">请选择存入金额</p>
     <div class="kldNumber flex-wrap">
         <div class="kld-reduce"></div>
         <div class="kld-number flex-con-1" data="10"><span><em>10</em>元</span></div>
         <div class="kld-add"></div>
     </div>
-    <p>存入帐户余额，可用于抢红包。</p>
-    <p class="red">(实时提现，实时到账)</p>
+    <p>将自动存入您的账户余额，<span class="red">可随时提现</span></p>
+
 
     <input type="button" class="kld-pay" value="立即存入"></section>
 
@@ -218,7 +224,7 @@ if(!$user = getCurrentUserInfo()){
     <div class="ic_rmb">
         <img src="/static/images/icon_2.png" alt=""></div>
     <p>为避免用户逃包,本群由系统代发红包</p>
-    <p>玩家账户余额必须大于10元</p>
+    <p>玩家账户余额必须大于10元，确保能继续发包</p>
     <div class="toBuy_title">您的余额不足</div>
     <div class="toBuy_num">账户余额：<span class="red">--</span>元</div>
 
@@ -333,8 +339,8 @@ if(!$user = getCurrentUserInfo()){
 
             <div id="menu-pannel-footer">
                 <div class="left-1">
-                    <span id="yuer">账户余额(元)</span>
-                    <span id="money"><i>0.00</i><img id="recharge" src="static/images/icon_4.png"></span>
+                   <!-- <span id="yuer">账户余额(元)</span>-->
+                    <span id="money"><b style="float: left;margin-left: 8px;">余额:</b><i>0.00</i><img id="recharge" src="static/images/icon_4.png"></span>
 
                 </div>
                 <div class="right-1">
@@ -366,6 +372,7 @@ if(!$user = getCurrentUserInfo()){
 <script src="./static/js/page.script.js?<?php echo time();?>"></script>
 <script src="./static/js/chat.script.js?v=<?php echo time();?>"></script>
 <script src="./static/js/functions.js?v=<?php echo time();?>"></script>
+
 <!--<script src="./static/js/xlyjs.js?v=215"></script>-->
 <script>
 
@@ -380,6 +387,8 @@ if(!$user = getCurrentUserInfo()){
         window.location.href = "http://wchat.codeception.cn/app/index.php?i=15&c=entry&do=recharge&m=wwe_health_care&money="+number;
         return;
     });
+
+
 
     /*window.onerror= function (msg,url,l) {
          alert(msg);

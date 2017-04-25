@@ -919,15 +919,16 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
 }
 
 .conv-detail-pannel .content-pannel-body .chat-rob-packet .chat-content-out{
-    background-color: rgb(189, 190, 191);
+    background-color: #cccccc;
     margin: 0 auto;
     max-width: 75vw;
     display: inline-block;
     padding: 0 10px;
+    height: 24px;
 }
 
 .conv-detail-pannel .content-pannel-body .chat-rob-packet .chat-content-out span img{
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .chat-next-packet .chat-content-out{
@@ -980,7 +981,7 @@ button.onloading::after, .button.onloading::after, .datetime-input-box .dtpicker
     display: inline-block;
     overflow: hidden;
     height: 25px;
-    line-height: 30px;
+    line-height: 25px;
 }
 
 .over-hiden{
@@ -2368,19 +2369,20 @@ body .hide {
 }
 
 .welfareRule {
-    width: 20.2rem;
+    width: 23.2rem;
     background: #f9f9f9;
-    margin-left: -10.1rem;
-    margin-top: -13.7rem;
-    border-radius: .5rem;
-    padding: 0 1.15rem 1.15rem;
-    box-sizing: border-box
+    margin-left: -12rem;
+    margin-top: -13rem;
+    border-radius: 10px;
+    padding: 0 1.45rem 1.15rem;
+    box-sizing: border-box;
+    height: 28.14rem;
 }
 
 .welfareRuleHeader{
     width: 100%;
-    height: 53px;
-    line-height: 53px;
+    height: 42px;
+    line-height: 42px;
     text-align: center;
     color: black;
     font-size: 18px;
@@ -2414,10 +2416,10 @@ color: #ff0000 ;
 
 .knowBtn {
     display: block;
-    width: 17.1rem;
-    height: 3.14rem;
+    width: 100%;
+    height: 50px;
     border: 0;
-    border-radius: 0.5rem;
+    border-radius: 10px;
     background-color: #ff6600;
     color: #fff;
     font-size: 1.35rem;
@@ -2431,7 +2433,7 @@ color: #ff0000 ;
 .noRedpack, .openRedpack {
     position: absolute;
     height: 27.4rem;
-    top: 50%;
+    top: 45%;
     left: 50%;
     margin-left: -10.1rem;
     background: #d84e43;
@@ -2540,7 +2542,7 @@ color: #ff0000 ;
     height: 2.4rem;
     background: url(/static/images/ic_reddel.png) center no-repeat;
     background-size: 1.2rem;
-    left: .5rem;
+    right: .5rem;
     top: .6rem
 }
 
@@ -2632,7 +2634,7 @@ color: #ff0000 ;
 
 .getKld {
     padding-top: 2.8rem;
-    height: 20rem !important;
+    height: 25.14rem !important;
     margin-top: -10rem
 }
 
@@ -2662,6 +2664,7 @@ color: #ff0000 ;
     line-height: 1.6rem;
     color: #ecdbdb;
     padding-top: 28px;
+    height: 5rem;
 }
 
 .kldBox span {
@@ -2674,7 +2677,7 @@ color: #ff0000 ;
 .mykld {
     line-height: 2rem;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     color: #333333;
 }
 
@@ -2685,10 +2688,10 @@ color: #ff0000 ;
 .kldNumber {
     width: 20.8rem;
     height: 3.5rem;
-    margin: 1.4rem auto .8rem;
-    background: #ededed;
-    border-radius: 0.35rem;
-    -moz-border-radius: 0.35rem;
+    margin: 0.4rem auto .8rem;
+
+    border-radius: 10px;
+    -moz-border-radius: 10px;
     position: relative
 }
 
@@ -2763,13 +2766,13 @@ color: #ff0000 ;
 .kld-pay {
     display: block;
     width: 20.4rem;
-    height: 3.14rem;
+    height: 50px;
     background: #4fc655;
     color: #fff;
-    margin: 2rem auto 1rem;
+    margin: 6.5rem auto 1rem;
     border: 0;
-    border-radius: .3rem;
-    font-size: 1.35rem
+    border-radius: 10px;
+    font-size: 1.35rem;
 }
 
 .kld-hint {
@@ -2817,9 +2820,13 @@ color: #ff0000 ;
     width: 22.85rem;
     height: 25rem;
     background: #ffffff;
-    margin-left: -11.425rem;
-    margin-top: -12.5rem;
-    border-radius: .34rem;
+    /* margin-left: -11.425rem; */
+    /* margin-top: -12.5rem; */
+    /* border-radius: .34rem; */
+    margin-left: -12rem;
+    margin-top: -15rem;
+    border-radius: 10px;
+    /* padding: 0 1.45rem 1.15rem; */
 }
 
 
@@ -2855,7 +2862,15 @@ color: #ff0000 ;
     text-align: center;
     line-height: 3.62rem;
     color: #333333;
-    font-size: 1.54rem
+    font-size: 1.54rem;
+    background: #ededed;
+    margin: 0 4px;
+}
+
+.type-2{
+    text-align: left !important;
+    margin-left: 2rem;
+    width: 20.8rem;
 }
 
 .kld-number span em {
@@ -2908,29 +2923,31 @@ color: #ff0000 ;
 
 .toBuy {
     position: absolute;
-    width: 20.6rem;
     background: #ffffff;
     top: 50%;
     left: 50%;
-    margin-left: -10.3rem;
-    margin-top: -11.9rem;
-    border-radius: .5rem;
     z-index: 101;
-    padding: 0 1.15rem 1.15rem;
-    box-sizing: border-box
+    /* padding: 0 1.15rem 1.15rem; */
+    box-sizing: border-box;
+    margin-left: -12rem;
+    margin-top: -15rem;
+    border-radius: 10px;
+    width: 22.85rem;
+    height: 28rem;
 }
 
 .ic_rmb {
-    width: 6.4rem;
-    height: 6.4rem;
-    margin: 2rem auto 1rem
+    width: 8.4rem;
+    height: 8.4rem;
+    margin: 2rem auto 2rem
 }
 
 .toBuy_title {
     color: #e03333;
-    font-size: 1.35rem;
+    font-size: 22px;
     text-align: center;
-    line-height: 2rem
+    line-height: 2rem;
+    margin-top: 2rem;
 }
 
 .toBuy_num {
@@ -2946,7 +2963,7 @@ color: #ff0000 ;
 }
 
 .toBuy p {
-    color: #997a7d;
+    /*color: #997a7d;*/
     text-align: justify;
     font-size: 1rem;
     line-height: 1.3rem;
@@ -2960,13 +2977,14 @@ color: #ff0000 ;
 .buyBtn {
     display: block;
     border: 0;
-    width: 17.8rem;
-    height: 3.5rem;
+    width: 19.8rem;
+    /* height: 3.5rem; */
     background: #ffd42a;
     margin: 1rem auto 0;
     color: red;
-    border-radius: .5rem;
-    font-size: 1.35rem;
+    border-radius: 10px;
+    font-size: 1.65rem;
+    height: 50px;
 }
 
 .ic_yuan_del {
@@ -3255,9 +3273,11 @@ color: #ff0000 ;
 
 .openEndTitle span {
     line-height: 4rem;
-    padding-left: 1rem;
     font-size: 1.15rem;
-    color: #ffe4b2
+    color: #ffe4b2;
+    text-align: right;
+    width: 97%;
+    display: inline-block;
 }
 
 .openEndTitleMain {
@@ -3490,13 +3510,19 @@ color: #ff0000 ;
     float: left;
     height: 100%;
 }
+
+
+.msg-box ,.chat-status{
+    margin-top:1.07em !important;
+}
+
 #menu-pannel-footer .left-1 span{
     font-size: 12px;
     display: inline;
     float: left;
     height: 24px;
     margin: 0;
-    line-height: 24px;
+    line-height: 23px;
     width: 60%;
     color: #848484;
 }
@@ -3517,6 +3543,9 @@ color: #ff0000 ;
     border-radius: 15px;
     margin-left: 15px;
     padding-top: 2px;
+    width: 150px;
+    margin-top: 17px;
+    font-size: 15px;
 }
 #menu-pannel-footer .right-1{
 
@@ -3545,6 +3574,8 @@ color: #ff0000 ;
     font-size: 15px;
     text-decoration: underline;
 }
+
+
 
 @media screen and (min-width: 240px) {
     body, button, html, input, select, textarea {

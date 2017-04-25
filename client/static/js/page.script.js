@@ -260,7 +260,7 @@ var page = {
         /**
          * 充点钱去看看
          */
-        $(".toBuy .buyBtn,#recharge").click(function () {
+        $(".toBuy .buyBtn,#money").click(function () {
             $(".toBuy,.mask2").hide();
             //
             page.showRecharge();
